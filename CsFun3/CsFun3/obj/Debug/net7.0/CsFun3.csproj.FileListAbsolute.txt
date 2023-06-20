@@ -1,0 +1,15 @@
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\bin\Debug\net7.0\CsFun3.exe
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\bin\Debug\net7.0\CsFun3.deps.json
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\bin\Debug\net7.0\CsFun3.runtimeconfig.json
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\bin\Debug\net7.0\CsFun3.dll
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\bin\Debug\net7.0\CsFun3.pdb
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\CsFun3.csproj.AssemblyReference.cache
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\CsFun3.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\CsFun3.AssemblyInfoInputs.cache
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\CsFun3.AssemblyInfo.cs
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\CsFun3.csproj.CoreCompileInputs.cache
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\CsFun3.dll
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\refint\CsFun3.dll
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\CsFun3.pdb
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\CsFun3.genruntimeconfig.cache
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3\CsFun3\obj\Debug\net7.0\ref\CsFun3.dll

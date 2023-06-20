@@ -1,0 +1,15 @@
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\bin\Debug\net7.0\CsFun3_Clock.exe
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\bin\Debug\net7.0\CsFun3_Clock.deps.json
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\bin\Debug\net7.0\CsFun3_Clock.runtimeconfig.json
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\bin\Debug\net7.0\CsFun3_Clock.dll
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\bin\Debug\net7.0\CsFun3_Clock.pdb
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\CsFun3_Clock.csproj.AssemblyReference.cache
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\CsFun3_Clock.GeneratedMSBuildEditorConfig.editorconfig
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\CsFun3_Clock.AssemblyInfoInputs.cache
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\CsFun3_Clock.AssemblyInfo.cs
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\CsFun3_Clock.csproj.CoreCompileInputs.cache
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\CsFun3_Clock.dll
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\refint\CsFun3_Clock.dll
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\CsFun3_Clock.pdb
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\CsFun3_Clock.genruntimeconfig.cache
+F:\NashTech Intern\Intern\NashTech-Intern\CsFun3_Clock\CsFun3_Clock\obj\Debug\net7.0\ref\CsFun3_Clock.dll
