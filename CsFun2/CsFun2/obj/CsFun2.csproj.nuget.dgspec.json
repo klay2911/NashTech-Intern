@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun#2\\CsFun2\\CsFun2.csproj": {}
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun2\\CsFun2\\CsFun2.csproj": {}
   },
   "projects": {
-    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun#2\\CsFun2\\CsFun2.csproj": {
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun2\\CsFun2\\CsFun2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun#2\\CsFun2\\CsFun2.csproj",
+        "projectUniqueName": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun2\\CsFun2\\CsFun2.csproj",
         "projectName": "CsFun2",
-        "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun#2\\CsFun2\\CsFun2.csproj",
+        "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun2\\CsFun2\\CsFun2.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun#2\\CsFun2\\obj\\",
+        "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\CsFun2\\CsFun2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
