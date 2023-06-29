@@ -1,0 +1,44 @@
+@model IEnumerable<MVC.Models.Person>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>This is list of people</h1>
+
+<p>
+    <a asp-action="Create">Add new person</a>
+    @using (Html.BeginForm("Export", "Rookies", FormMethod.Post))
+                        {
+                            <input type="submit" value="Export"/>
+                        }
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+        <th>@Html.DisplayNameFor(model => model.LastName)</th>
+        <th>@Html.DisplayNameFor(model => model.Age)</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+            <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id  }) |
+                <form asp-action="Delete" onclick="return confirm('Are you sure you want to delete this?')">
+                    <div class="form-group">
+                        <input type="submit" value="Delete" class="btn btn-primary"/>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

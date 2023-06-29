@@ -1,0 +1,34 @@
+@model Person
+
+@{
+    ViewData["Title"] = "Oldest Person";
+}
+
+<h1>Oldest Person</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Date of Birth</th>
+            <th>Phone Number</th>
+            <th>Birth Place</th>
+            <th>Age</th>
+            <th>Is Graduate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.FirstName</td>
+            <td>@Model.LastName</td>
+            <td>@Model.Gender</td>
+            <td>@Model.Dob.ToShortDateString()</td>
+            <td>@Model.PhoneNumber</td>
+            <td>@Model.BirthPlace</td>
+            <td>@Model.Age</td>
+            <td>@Model.IsGraduated</td>
+        </tr>
+    </tbody>
+</table>

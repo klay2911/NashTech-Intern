@@ -1,0 +1,35 @@
+@model List<Person>
+
+@{
+    ViewData["Title"] = "Fullname Person";
+}
+
+<h1>Fullname Persons</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Full Name</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Phone Number</th>
+        <th>Birth Place</th>
+        <th>Age</th>
+        <th>Is Graduated</th>
+    </tr>
+    </thead>
+    <tbody>
+            @foreach (var person in Model)
+            {
+                <tr>
+                    <td>@person.FullName</td>
+                    <td>@person.Gender</td>
+                    <td>@person.Dob.ToShortDateString()</td>
+                    <td>@person.PhoneNumber</td>
+                    <td>@person.BirthPlace</td>
+                    <td>@person.Age</td>
+                    <td>@person.IsGraduated</td>
+                </tr>
+            }
+        </tbody>
+</table>
