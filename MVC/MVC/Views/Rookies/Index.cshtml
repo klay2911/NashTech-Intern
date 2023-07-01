@@ -32,11 +32,7 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
                 @Html.ActionLink("Details", "Details", new { id=item.Id  }) |
-                <form asp-action="Delete" onclick="return confirm('Are you sure you want to delete this?')">
-                    <div class="form-group">
-                        <input type="submit" value="Delete" class="btn btn-primary"/>
-                    </div>
-                </form>
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id  }) |
             </td>
         </tr>
     }

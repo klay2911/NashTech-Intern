@@ -9,81 +9,81 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MVC
 build_property.RootNamespace = MVC
-build_property.ProjectDir = F:\NashTech Intern\Intern\NashTech-Intern\MVC\MVC\
+build_property.ProjectDir = F:\NashTech Intern\Intern\Example\MVC\MVC\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\NashTech Intern\Intern\NashTech-Intern\MVC\MVC
+build_property.MSBuildProjectDirectory = F:\NashTech Intern\Intern\Example\MVC\MVC
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Home/Index.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Home/Privacy.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/BirthGreaterThan2000.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/BirthGreaterThan2000.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xCaXJ0aEdyZWF0ZXJUaGFuMjAwMC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/BirthIs2000.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/BirthIs2000.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xCaXJ0aElzMjAwMC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/BirthLessThan2000.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/BirthLessThan2000.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xCaXJ0aExlc3NUaGFuMjAwMC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/Create.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/Details.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/Edit.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/FullNames.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/FullNames.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xGdWxsTmFtZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/Index.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/MalePersons.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/MalePersons.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xNYWxlUGVyc29ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/OldestPerson.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Rookies/OldestPerson.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xPbGRlc3RQZXJzb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Rookies/Redirect.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9va2llc1xSZWRpcmVjdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Shared/Error.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/_ViewImports.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/_ViewStart.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/NashTech-Intern/MVC/MVC/Views/Shared/_Layout.cshtml]
+[F:/NashTech Intern/Intern/Example/MVC/MVC/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-q0a04yuu0e

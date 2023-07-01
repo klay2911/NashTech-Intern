@@ -1,0 +1,19 @@
+@model MVC.Models.Person
+
+@{
+    ViewData["Title"] = "Delete person";
+}
+
+<h2>
+    Delete Confirmation
+</h2>
+
+<div>
+    <p>Please confirm you want to delete information of: 
+        <i> @Html.Encode(Model.FullName)  </i> 
+    </p>
+    <form asp-action="DeleteConfirm">
+        <input asp-for="Id" type="hidden" class="form-control"/>
+        <input name="confirmButton" type="submit" value="Delete"/>
+    </form>
+</div>

@@ -3,9 +3,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-//Dependency injection
-//builder.Services.AddTransient<ISender, SMSSender>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
