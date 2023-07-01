@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\NashTech Intern\\Intern\\Example\\MVC\\MVC\\MVC.csproj": {}
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\MVC\\MVC\\MVC.csproj": {}
   },
   "projects": {
-    "F:\\NashTech Intern\\Intern\\Example\\MVC\\MVC\\MVC.csproj": {
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\MVC\\MVC\\MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NashTech Intern\\Intern\\Example\\MVC\\MVC\\MVC.csproj",
+        "projectUniqueName": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\MVC\\MVC\\MVC.csproj",
         "projectName": "MVC",
-        "projectPath": "F:\\NashTech Intern\\Intern\\Example\\MVC\\MVC\\MVC.csproj",
+        "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\MVC\\MVC\\MVC.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "F:\\NashTech Intern\\Intern\\Example\\MVC\\MVC\\obj\\",
+        "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\MVC\\MVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,10 +44,6 @@
             "ClosedXML": {
               "target": "Package",
               "version": "[0.102.0, )"
-            },
-            "EPPlus": {
-              "target": "Package",
-              "version": "[6.2.6, )"
             },
             "Syncfusion.XlsIO.Net.Core": {
               "target": "Package",

@@ -8,13 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="ClosedXML" Version="0.102.0" />
-      <PackageReference Include="EPPlus" Version="6.2.6" />
       <PackageReference Include="Syncfusion.XlsIO.Net.Core" Version="22.1.36" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Implementation\" />
-      <Folder Include="Interfaces\" />
     </ItemGroup>
 
 </Project>
