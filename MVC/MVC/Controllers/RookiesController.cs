@@ -166,6 +166,7 @@ public class RookiesController : Controller
     public ActionResult DeleteConfirm(int id) 
     { 
         var person = _people.FirstOrDefault(s => s.Id == id);
+        
         if (person != null) _people.Remove(person);
         return RedirectToAction("Index");
     }
