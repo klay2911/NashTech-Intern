@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Rookies\BirthGreaterThan2000.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\BirthIs2000.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\BirthLessThan2000.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\FullNames.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\MalePersons.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Rookies\OldestPerson.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Views\Person\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="X.PagedList" Version="8.4.7" />
+      <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="Views\Home\Index.cshtml" />
+      <UpToDateCheckInput Remove="Views\Home\Privacy.cshtml" />
+    </ItemGroup>
+
+</Project>

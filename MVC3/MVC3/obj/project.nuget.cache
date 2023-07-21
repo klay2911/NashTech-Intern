@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q2pTbVtIo0LYu14xmYmQKrKmwg6jgB5IqLw38dr61Cj1bAt761kCfiWVN0FadbhoHORqt+4mQuMsbS7uKAoX+Q==",
+  "success": true,
+  "projectFilePath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\MVC3\\MVC3\\MVC3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Acer\\.nuget\\packages\\jetbrains.annotations\\2022.3.1\\jetbrains.annotations.2022.3.1.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\x.pagedlist\\8.4.7\\x.pagedlist.8.4.7.nupkg.sha512",
+    "C:\\Users\\Acer\\.nuget\\packages\\x.pagedlist.mvc.core\\8.4.7\\x.pagedlist.mvc.core.8.4.7.nupkg.sha512"
+  ],
+  "logs": []
+}

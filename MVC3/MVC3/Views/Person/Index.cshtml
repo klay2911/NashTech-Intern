@@ -1,0 +1,35 @@
+@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<MVC3.Models.Person>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>This is list of people</h1>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.First().FullName)</th>
+        <th>@Html.DisplayNameFor(model => model.First().Gender)</th>
+        <th>@Html.DisplayNameFor(model => model.First().Age)</th>
+        <th>@Html.DisplayNameFor(model => model.First().PhoneNumber)</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(item.FullName, "Details", new { id=item.Id })</td>
+            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+            <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+

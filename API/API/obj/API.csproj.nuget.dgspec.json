@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\NashTech Intern\\Intern\\Example\\API\\API\\API.csproj": {}
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\API\\API\\API.csproj": {}
   },
   "projects": {
-    "F:\\NashTech Intern\\Intern\\Example\\API\\API\\API.csproj": {
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\API\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NashTech Intern\\Intern\\Example\\API\\API\\API.csproj",
+        "projectUniqueName": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\API\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "F:\\NashTech Intern\\Intern\\Example\\API\\API\\API.csproj",
+        "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\API\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "F:\\NashTech Intern\\Intern\\Example\\API\\API\\obj\\",
+        "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\API\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
