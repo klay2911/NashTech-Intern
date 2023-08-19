@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\EFCore2.props" />
+</Project>

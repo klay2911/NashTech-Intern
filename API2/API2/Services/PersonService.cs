@@ -1,5 +1,6 @@
 using API2.Interfaces;
 using API2.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace API2.Services;
 
@@ -63,13 +64,6 @@ public class PersonService : IPerson
         {
             query = query.Where(p => (p.FirstName.Contains(filters[FilterNames.Name])) || (p.LastName.Contains(filters[FilterNames.Name])));
         }
-
-        /*if (filters.ContainsKey(FilterNames.Name))
-        {
-            query = query.Where(p => (EF.Functions.Like(p.FirstName,
-                $"%{filters[FilterNames.Name]}" +
-                $"%")) || (EF.Functions.Like(p.LastName, $"%{filters[FilterNames.Name]}%")));
-        }*/
 
         if (filters.TryGetValue(FilterNames.Gender, out var filter))
         {

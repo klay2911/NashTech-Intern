@@ -30,9 +30,13 @@
             <td>@Html.DisplayFor(modelItem => item.LastName)</td>
             <td>@Html.DisplayFor(modelItem => item.Age)</td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                <form asp-action="Edit" asp-route-id="@Model.Id" method="get">
+                    <input type="submit" value="Edit" />
+                </form>
                 @Html.ActionLink("Details", "Details", new { id=item.Id  }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id  }) |
+                <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                    <input type="submit" value="Delete" />
+                </form>
             </td>
         </tr>
     }
