@@ -1,0 +1,27 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	
+	
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=94403479_002Da2ff_002D414e_002Da348_002De0de0dc41da3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CreateProductAsync_ValidProduct_CreatesProductAndSavesChanges" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProductAsync_ValidProduct_CreatesProductAndSavesChanges&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests2.CreateProductAsync_WhenCategoryExists_ShouldCreateProductAndCommitTransaction&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.UpdateProductAsync_WhenProductExists_ShouldUpdateProductAndSaveChanges&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.GetAllProducts_ReturnsAllProducts&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.CategoryServiceTests.GetAllCategoriesAsync_ShouldReturnAllCategories&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.GetProductById_ReturnsProductWithGivenId&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.UpdateProduct_ProductNotExist_ThrowException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProductAsync_ValidProduct_ReturnsSuccess&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProductAsync_InvalidCategory_ThrowsException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProductAsync_ValidProduct_ReturnsNull&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProduct_ValidProduct_ReturnsNull&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProduct_EmptyManufacture_SuccessCreate&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProduct_NullCategory_ThrowsException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.DeleteProduct_ProductExists_DeleteProduct&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.DeleteProductAsync_WhenProductDoesNotExist_ShouldNotThrowExceptionOrDeleteAnyProduct&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.DeleteProduct_ProductDoesNotExist_NotThrowExceptionOrDeleteAnyProduct&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProductAsync_WhenCategoryExists_ShouldCreateProductAndCommitTransaction&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProduct_NullManufacture_SuccessCreate&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	</wpf:ResourceDictionary>
