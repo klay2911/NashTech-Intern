@@ -4809,11 +4809,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NashTech Intern\\Intern\\UnitTest\\UnitTest\\UnitTest.csproj",
+      "projectUniqueName": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\UnitTest\\UnitTest.csproj",
       "projectName": "UnitTest",
-      "projectPath": "F:\\NashTech Intern\\Intern\\UnitTest\\UnitTest\\UnitTest.csproj",
+      "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\UnitTest\\UnitTest.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "F:\\NashTech Intern\\Intern\\UnitTest\\UnitTest\\obj\\",
+      "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\UnitTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4830,8 +4830,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\EFCore2.csproj": {
-              "projectPath": "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\EFCore2.csproj"
+            "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\EFCore2.csproj": {
+              "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\EFCore2.csproj"
             }
           }
         }

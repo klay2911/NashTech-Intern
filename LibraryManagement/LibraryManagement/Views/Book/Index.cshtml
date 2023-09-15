@@ -1,0 +1,46 @@
+@using X.PagedList.Mvc.Core
+@using X.PagedList
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model IPagedList<Book>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Book Page";
+}
+<h1>This is list of book</h1>
+<p>
+    <a asp-action="Create">Add new book</a>
+</p>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.First().Title)</th>
+        <th>@Html.DisplayNameFor(model => model.First().Author)</th>
+        <th>@Html.DisplayNameFor(model => model.First().ISBN)</th>
+         <th>@Html.DisplayNameFor(model => model.First().Category.CategoryName)</th> 
+        
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>@Html.DisplayFor(modelItem => item.Author)</td>
+            <td>@Html.DisplayFor(modelItem => item.ISBN)</td>
+            <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
+            <td>
+                @Html.ActionLink("Edit", "Update", new { id = item.BookId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BookId }) |
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+ @Html.PagedListPager(Model, page => Url.Action("Index", new { page })) 

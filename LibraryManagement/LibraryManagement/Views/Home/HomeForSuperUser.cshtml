@@ -1,0 +1,15 @@
+@{
+    Layout = "_Layout";
+}
+@{
+    ViewBag.Title = "Home Page for Super User";
+}
+
+<h2>Welcome, @User.Identity.Name!</h2>
+
+<p>You can do the following actions:</p>
+<ul>
+    <li><a href="@Url.Action("Index", "Category")">Manage categories</a></li>
+    <li><a href="@Url.Action("Index", "Book")">Manage books</a></li>
+    @* <li><a href="@Url.Action("Index", "BorrowingRequests")">View borrowing requests</a></li> *@
+</ul>

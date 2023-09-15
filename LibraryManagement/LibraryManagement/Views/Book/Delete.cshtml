@@ -1,0 +1,20 @@
+@model Book
+
+@{
+    ViewBag.Title = "Delete Book";
+    Layout = "_Layout";
+}
+
+<h2>
+    Delete Confirmation
+</h2>
+
+<div>
+    <p>Please confirm you want to delete information of: 
+        <i> @Html.Encode(Model.Title)  </i> 
+    </p>
+    <form asp-action="Delete">
+        <input asp-for="BookId" type="hidden" class="form-control"/>
+        <input name="confirmButton" type="submit" value="Delete"/>
+    </form>
+</div>

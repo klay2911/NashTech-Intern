@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\NashTech Intern\\Intern\\Example\\EFCore2\\EFCore2\\EFCore2.csproj": {}
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\EFCore2\\EFCore2\\EFCore2.csproj": {}
   },
   "projects": {
-    "F:\\NashTech Intern\\Intern\\Example\\EFCore2\\EFCore2\\EFCore2.csproj": {
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\EFCore2\\EFCore2\\EFCore2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NashTech Intern\\Intern\\Example\\EFCore2\\EFCore2\\EFCore2.csproj",
+        "projectUniqueName": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\EFCore2\\EFCore2\\EFCore2.csproj",
         "projectName": "EFCore2",
-        "projectPath": "F:\\NashTech Intern\\Intern\\Example\\EFCore2\\EFCore2\\EFCore2.csproj",
+        "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\EFCore2\\EFCore2\\EFCore2.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "F:\\NashTech Intern\\Intern\\Example\\EFCore2\\EFCore2\\obj\\",
+        "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\EFCore2\\EFCore2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",

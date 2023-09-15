@@ -1,0 +1,20 @@
+@model Category
+
+@{
+    ViewBag.Title = "Delete Category";
+    Layout = "_Layout";
+}
+
+<h2>
+    Delete Confirmation
+</h2>
+
+<div>
+    <p>Please confirm you want to delete information of: 
+        <i> @Html.Encode(Model.CategoryName)  </i> 
+    </p>
+    <form asp-action="Delete">
+        <input asp-for="CategoryId" type="hidden" class="form-control"/>
+        <input name="confirmButton" type="submit" value="Delete"/>
+    </form>
+</div>

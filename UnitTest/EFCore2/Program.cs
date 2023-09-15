@@ -1,15 +1,11 @@
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using EFCore2;
 using EFCore2.Interfaces;
 using EFCore2.Models;
 using EFCore2.Repositories;
 using EFCore2.Services;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

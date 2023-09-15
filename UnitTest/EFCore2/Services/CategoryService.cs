@@ -32,7 +32,7 @@ public class CategoryService : ICategoryService
         var existingCategory = await _unitOfWork.CategoryRepository.GetByIdAsync(category.CategoryId);
         if (existingCategory == null)
         {
-            throw new Exception("The category with Id does not exsist");
+            throw new Exception("The category with Id does not exist");
         }
 
         existingCategory.CategoryName = category.CategoryName;

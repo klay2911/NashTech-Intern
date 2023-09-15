@@ -1,0 +1,35 @@
+@model IEnumerable<Category>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Category Page";
+
+}
+
+<h1>This is list of category</h1>
+<p>
+    <a asp-action="Create">Add new category</a>
+</p>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+            <td>
+                @Html.ActionLink("Edit", "Update", new { id = item.CategoryId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }) |
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

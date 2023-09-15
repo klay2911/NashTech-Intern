@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\NashTech Intern\\Intern\\UnitTest\\UnitTest\\UnitTest.csproj": {}
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\UnitTest\\UnitTest.csproj": {}
   },
   "projects": {
-    "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\EFCore2.csproj": {
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\EFCore2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\EFCore2.csproj",
+        "projectUniqueName": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\EFCore2.csproj",
         "projectName": "EFCore2",
-        "projectPath": "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\EFCore2.csproj",
+        "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\EFCore2.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\obj\\",
+        "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -95,14 +95,14 @@
         }
       }
     },
-    "F:\\NashTech Intern\\Intern\\UnitTest\\UnitTest\\UnitTest.csproj": {
+    "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\UnitTest\\UnitTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\NashTech Intern\\Intern\\UnitTest\\UnitTest\\UnitTest.csproj",
+        "projectUniqueName": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\UnitTest\\UnitTest.csproj",
         "projectName": "UnitTest",
-        "projectPath": "F:\\NashTech Intern\\Intern\\UnitTest\\UnitTest\\UnitTest.csproj",
+        "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\UnitTest\\UnitTest.csproj",
         "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-        "outputPath": "F:\\NashTech Intern\\Intern\\UnitTest\\UnitTest\\obj\\",
+        "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\UnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -119,8 +119,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\EFCore2.csproj": {
-                "projectPath": "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\EFCore2.csproj"
+              "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\EFCore2.csproj": {
+                "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\EFCore2.csproj"
               }
             }
           }

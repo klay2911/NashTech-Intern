@@ -3948,11 +3948,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\EFCore2.csproj",
+      "projectUniqueName": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\EFCore2.csproj",
       "projectName": "EFCore2",
-      "projectPath": "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\EFCore2.csproj",
+      "projectPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\EFCore2.csproj",
       "packagesPath": "C:\\Users\\Acer\\.nuget\\packages\\",
-      "outputPath": "F:\\NashTech Intern\\Intern\\UnitTest\\EFCore2\\obj\\",
+      "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\UnitTest\\EFCore2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
