@@ -2,7 +2,7 @@ using LibraryManagement.Models;
 
 namespace LibraryManagement.Interfaces;
 
-public interface IBookBorrowingRequestDetailsRepository
+public interface IBookBorrowingRequestDetailsService
 {
     IQueryable<BookBorrowingRequestDetails> GetAll();
     Task<BookBorrowingRequestDetails> GetBookByRequestId(int requestId, int bookId);

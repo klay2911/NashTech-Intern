@@ -60,7 +60,7 @@ public class AccountController : Controller
                 case "SuperUser":
                     return RedirectToAction("HomeForSuperUser", "Home");
                 case "NormalUser":
-                    return RedirectToAction("HomeForNormalUser", "Home");
+                    return RedirectToAction("Index", "BorrowingRequest");
             }
         }
         else
@@ -127,11 +127,8 @@ public class AccountController : Controller
 
     public string HashPassword(string password)
     {
-        using (var sha256 = SHA256.Create())
-        {
-            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-            return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-        }
+        var hashedBytes = SHA256.HashData(Encoding.UTF8.GetBytes(password));
+        return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
     }
 
 }

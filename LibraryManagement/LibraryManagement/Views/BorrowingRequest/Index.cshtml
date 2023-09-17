@@ -5,17 +5,17 @@
 @model IPagedList<Book>
 
 @{
-    Layout = "_SuperUserLayout";
-    ViewData["Title"] = "Book Page";
+    Layout = "_NormalUserLayout";
+    ViewData["Title"] = "Viewing Book Page";
 }
 <h1>This is list of book</h1>
 <form asp-action="Index" method="get">
     <input type="text" name="searchTerm" placeholder="Search books..." />
     <input type="submit" value="Search" />
 </form>
-<p>
-    <a asp-action="Create">Add new book</a>
-</p>
+@* <p> *@
+@*     <a asp-action="CreateBorrowingRequest" asp-controller="BorrowingRequests">Request Borrowing</a> *@
+@* </p> *@
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success">@TempData["Message"]</div>
@@ -38,15 +38,21 @@
             <td>@Html.DisplayFor(modelItem => item.Author)</td>
             <td>@Html.DisplayFor(modelItem => item.ISBN)</td>
             <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
-            <td>
-                @Html.ActionLink("Edit", "Update", new { id = item.BookId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.BookId }) |
-            </td>
+            @* <td> *@
+            @*     @if (ViewBag.BooksInRequest.Contains(item.BookId)) *@
+            @*     { *@
+            @*         @Html.ActionLink("Add to request", "AddBookToBorrowingRequest", "BorrowingRequest", new { id = item.BookId }) *@
+            @*     } *@
+            @*     else *@
+            @*     { *@
+            @*         @Html.ActionLink("Remove from request", "RemoveBookFromBorrowingRequest","BorrowingRequest", new { id = item.BookId }) *@
+            @*     } *@
+            @* </td> *@
         </tr>
     }
     </tbody>
 </table>
 <div>
-    <a asp-action="HomeForSuperUser" asp-controller="Home">Back to Home Page</a>
+    <a asp-action="Index" asp-controller="BorrowingRequest">Back to Home Page</a>
 </div>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page })) 
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

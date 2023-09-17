@@ -1,13 +1,10 @@
-using System.Text;
-using LibraryManagement;
+
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using LibraryManagement.Repositories;
 using LibraryManagement.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +14,14 @@ builder.Services.AddScoped<UnitOfWork>();
 builder.Services.AddScoped<ILibraryRepository<Book>, BookRepository>();
 builder.Services.AddScoped<ILibraryRepository<Category>, CategoryRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ILibraryRepository<BookBorrowingRequest>, BookBorrowingRequestRepository>();
+builder.Services.AddScoped<IBookBorrowingRequestDetailsRepository, BookBorrowingRequestDetailsRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IBookBorrowingRequestService, BookBorrowingRequestService>();
+builder.Services.AddScoped<IBookBorrowingRequestDetailsService, BookBorrowingRequestDetailsService>();
+
 builder.Services.AddDbContext<LibraryContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));

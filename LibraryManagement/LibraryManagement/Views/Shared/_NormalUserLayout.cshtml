@@ -20,13 +20,16 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item"> 
-                        <a class="nav-link text-dark" asp-area="" asp-controller="" asp-action="">Book Requested</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="BorrowingRequest" asp-action="Index">Library Management</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                    <li class="nav-item"> 
+                        <a class="nav-link text-dark" asp-controller="" asp-action="">Requested List</a>
                     </li>
                 </ul>
             </div>
+            <form asp-action="Logout" asp-controller="Account" method="post">
+                <input type="submit" value="Logout" />
+            </form>
         </div>
     </nav>
 </header>

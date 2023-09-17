@@ -1,5 +1,6 @@
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
+using LibraryManagement.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Services;

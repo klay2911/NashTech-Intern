@@ -1,8 +1,7 @@
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
-using LibraryManagement.Repositories;
 
-namespace LibraryManagement;
+namespace LibraryManagement.Repositories;
 
 public class UnitOfWork: IUnitOfWork, IDisposable
 {
@@ -17,15 +16,14 @@ public class UnitOfWork: IUnitOfWork, IDisposable
         BookRepository = new BookRepository(context);
         CategoryRepository = new CategoryRepository(context);
         UserRepository = new UserRepository(context);
-        // BorrowingRequestRepository = new BorrowingRequestRepository(context);
-        // BorrowingRequestDetailsRepository = new BorrowingRequestDetailsRepository();
+        BookBorrowingRequestRepository = new BookBorrowingRequestRepository(context);
+        BookBorrowingRequestDetailsRepository = new BookBorrowingRequestDetailsRepository(context);
     }
     public virtual BookRepository BookRepository { get; }
     public virtual CategoryRepository CategoryRepository { get; }
     public virtual UserRepository UserRepository { get; }
-    // public virtual BorrowingRequestRepository BorrowingRequestRepository{ get; }
-    // public virtual BorrowingRequestDetailsRepository BorrowingRequestDetailsRepository { get; }
-
+    public virtual BookBorrowingRequestRepository BookBorrowingRequestRepository{ get; }
+    public virtual BookBorrowingRequestDetailsRepository BookBorrowingRequestDetailsRepository { get; }
 
     public virtual async Task CreateTransaction()
     {
