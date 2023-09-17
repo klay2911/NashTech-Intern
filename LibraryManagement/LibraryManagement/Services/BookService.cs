@@ -58,8 +58,4 @@ public class BookService: IBookService
     {
         await _unitOfWork.BookRepository.DeleteAsync(id);
     }
-   /* public async Task<IEnumerable<Book>> GetBooksForUserAsync(int userId)
-    {
-        return await _unitOfWork.BookRepository.GetBooksForUserAsync(userId);
-    }*/
 }

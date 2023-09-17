@@ -1,3 +1,52 @@
+/* _content/LibraryManagement/Views/Account/Login.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-90oose29nn] {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+a[b-90oose29nn] {
+    color: #0077cc;
+}
+
+.btn-primary[b-90oose29nn] {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-90oose29nn], .nav-pills .show > .nav-link[b-90oose29nn] {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.border-top[b-90oose29nn] {
+    border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-90oose29nn] {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-90oose29nn] {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-90oose29nn] {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+.footer[b-90oose29nn] {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
 /* _content/LibraryManagement/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
@@ -47,49 +96,98 @@ button.accept-policy[b-zogy9lo6il] {
   white-space: nowrap;
   line-height: 60px;
 }
-/* _content/LibraryManagement/Views/Shared/_Layout1.cshtml.rz.scp.css */
+/* _content/LibraryManagement/Views/Shared/_NormalUserLayout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-a.navbar-brand[b-0pkmxrcmer] {
+a.navbar-brand[b-f8ipm6emve] {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
 
-a[b-0pkmxrcmer] {
+a[b-f8ipm6emve] {
   color: #0077cc;
 }
 
-.btn-primary[b-0pkmxrcmer] {
+.btn-primary[b-f8ipm6emve] {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active[b-0pkmxrcmer], .nav-pills .show > .nav-link[b-0pkmxrcmer] {
+.nav-pills .nav-link.active[b-f8ipm6emve], .nav-pills .show > .nav-link[b-f8ipm6emve] {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
 
-.border-top[b-0pkmxrcmer] {
+.border-top[b-f8ipm6emve] {
   border-top: 1px solid #e5e5e5;
 }
-.border-bottom[b-0pkmxrcmer] {
+.border-bottom[b-f8ipm6emve] {
   border-bottom: 1px solid #e5e5e5;
 }
 
-.box-shadow[b-0pkmxrcmer] {
+.box-shadow[b-f8ipm6emve] {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
 
-button.accept-policy[b-0pkmxrcmer] {
+button.accept-policy[b-f8ipm6emve] {
   font-size: 1rem;
   line-height: inherit;
 }
 
-.footer[b-0pkmxrcmer] {
+.footer[b-f8ipm6emve] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}
+/* _content/LibraryManagement/Views/Shared/_SuperUserLayout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-5jz7w3tq96] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-5jz7w3tq96] {
+  color: #0077cc;
+}
+
+.btn-primary[b-5jz7w3tq96] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-5jz7w3tq96], .nav-pills .show > .nav-link[b-5jz7w3tq96] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-5jz7w3tq96] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-5jz7w3tq96] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-5jz7w3tq96] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-5jz7w3tq96] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-5jz7w3tq96] {
   position: absolute;
   bottom: 0;
   width: 100%;

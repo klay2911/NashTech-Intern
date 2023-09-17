@@ -2,6 +2,7 @@ using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using X.PagedList;
 
 namespace LibraryManagement.Controllers;
 
@@ -16,10 +17,17 @@ public class CategoryController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? page, string searchTerm)
     {
+        page ??= 1;
+        const int pageSize = 3;
+        var pageNumber = (int)page;
         var categories = await _categoryService.GetAllCategoriesAsync();
-        return View(categories);
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            categories = categories.Where(b => b.CategoryName.Contains(searchTerm));
+        }
+        return View(categories.ToPagedList(pageNumber, pageSize));
     }
 
     [HttpGet]

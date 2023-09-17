@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Repositories;
 
-public sealed class CategoryRepository : ICategoryRepository
+public sealed class CategoryRepository : ILibraryRepository<Category>
 {
     private readonly LibraryContext _context;
 
@@ -16,9 +16,9 @@ public sealed class CategoryRepository : ICategoryRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Category>> GetAllAsync()
+    public  IQueryable<Category> GetAll()
     {
-        return await _context.Categories.ToListAsync();
+        return _context.Categories;
     }
 
     public async Task<Category> GetByIdAsync(int id)
@@ -39,7 +39,7 @@ public sealed class CategoryRepository : ICategoryRepository
     }
     public async Task DeleteAsync(int id)
     {
-        var category = await _context.Categories.FindAsync(id);
+        var category = await _context.Categories.Include(c => c.Books).FirstOrDefaultAsync(c => c.CategoryId == id);        
         if (category != null)
         {
             _context.Categories.Remove(category);

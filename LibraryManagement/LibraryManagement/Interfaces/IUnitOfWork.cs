@@ -7,6 +7,8 @@ public interface IUnitOfWork
     BookRepository BookRepository { get; }
     CategoryRepository CategoryRepository { get; }
     UserRepository UserRepository { get; }
+    // BorrowingRequestRepository BorrowingRequestRepository { get; }
+    // BorrowingRequestDetailsRepository BorrowingRequestDetailsRepository { get; }
     Task CreateTransaction();
     Task SaveAsync();
     Task CommitAsync();

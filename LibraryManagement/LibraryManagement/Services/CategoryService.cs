@@ -1,5 +1,6 @@
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Services;
 
@@ -14,7 +15,7 @@ public class CategoryService : ICategoryService
 
     public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
     {
-        return await _unitOfWork.CategoryRepository.GetAllAsync();
+        return await _unitOfWork.CategoryRepository.GetAll().ToListAsync();
     }
 
     public async Task<Category> GetCategoryByIdAsync(int id)

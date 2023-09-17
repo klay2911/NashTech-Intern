@@ -7,11 +7,11 @@ using X.PagedList;
 
 namespace LibraryManagement.Controllers;
 
+[Authorize(Roles = "SuperUser")]
 public class BookController : Controller
 {
     private readonly IBookService _bookService;
     private readonly ICategoryService _categoryService;
-    private readonly UnitOfWork _unitOfWork;
 
     public BookController(IBookService bookService, ICategoryService categoryService)
     {
@@ -19,17 +19,32 @@ public class BookController : Controller
         _categoryService = categoryService;
     }
 
+    // [Authorize(Roles = "SuperUser")]
+    // [HttpGet]
+    // public async Task<IActionResult> Index(int? page)
+    // {
+    //     page ??= 1;
+    //     const int pageSize = 3;
+    //     var pageNumber = (int)page;
+    //     var books = await _bookService.GetAllBooksAsync(includeCategory: true);
+    //     return View(books.ToPagedList(pageNumber, pageSize));
+    // }
     [Authorize(Roles = "SuperUser")]
     [HttpGet]
-    public async Task<IActionResult> Index(int? page)
+    public async Task<IActionResult> Index(int? page, string searchTerm)
     {
         page ??= 1;
         const int pageSize = 3;
         var pageNumber = (int)page;
         var books = await _bookService.GetAllBooksAsync(includeCategory: true);
+
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            books = books.Where(b => b.Title.Contains(searchTerm));
+        }
+
         return View(books.ToPagedList(pageNumber, pageSize));
     }
-    [Authorize(Roles = "SuperUser")]
     [HttpGet]
     public async Task<IActionResult> Create()    
     {
@@ -38,7 +53,6 @@ public class BookController : Controller
         return View();
     }
     
-    [Authorize(Roles = "SuperUser")]
     [HttpPost]
     public async Task<IActionResult> Create(Book book)
     {
@@ -46,33 +60,25 @@ public class BookController : Controller
         return RedirectToAction("Index");
     }
     
-    [Authorize(Roles = "SuperUser")]
     [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
         var book = await _bookService.GetBookByIdAsync(id);
         var categories = await _categoryService.GetAllCategoriesAsync();
         ViewBag.CategoryId = new SelectList(categories, "CategoryId", "CategoryName");
-        if (book == null)
-            return NotFound();
         return View(book);
     }
 
-    [Authorize(Roles = "SuperUser")]
     [HttpPost]
     public async Task<IActionResult> Update(int id, Book book)
     {
         if (id != book.BookId)
             return NotFound();
-        if (ModelState.IsValid)
-        {
-            await _bookService.UpdateBookAsync(book);
-            return RedirectToAction("Index");
-        }
-        return View(book);
+        if (!ModelState.IsValid) return View(book);
+        await _bookService.UpdateBookAsync(book);
+        return RedirectToAction("Index");
     }
    
-    [Authorize(Roles = "SuperUser")]
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
@@ -89,22 +95,12 @@ public class BookController : Controller
         await _bookService.DeleteBookAsync(id);
         return RedirectToAction("Index");
     }
-    
-    [Authorize(Roles = "NormalUser")]
-    public async Task<IActionResult> Viewing(int? page)
-    {
-        page ??= 1;
-        const int pageSize = 3;
-        var pageNumber = (int)page;
-        var books = await _bookService.GetAllBooksAsync(includeCategory: true);
-        return View(books.ToPagedList(pageNumber, pageSize));
-    }
-    /*[HttpGet]
-   public async Task<IActionResult> Details(int id)
-   {
-       var book = await _bookService.GetBookByIdAsync(id);
-       if (book == null)
-           return NotFound();
-       return View(book);
-   }*/
-}
+} 
+/*[HttpGet]
+ public async Task<IActionResult> Details(int id)
+ {
+     var book = await _bookService.GetBookByIdAsync(id);
+     if (book == null)
+         return NotFound();
+     return View(book);
+ }*/

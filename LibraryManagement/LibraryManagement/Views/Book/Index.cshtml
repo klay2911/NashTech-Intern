@@ -9,9 +9,16 @@
     ViewData["Title"] = "Book Page";
 }
 <h1>This is list of book</h1>
+<form asp-action="Index" method="get">
+    <input type="text" name="searchTerm" placeholder="Search books..." />
+    <input type="submit" value="Search" />
+</form>
 <p>
     <a asp-action="Create">Add new book</a>
 </p>
+<form asp-action="Logout" asp-controller="Account" method="post">
+    <input type="submit" value="Logout" />
+</form>
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success">@TempData["Message"]</div>
@@ -22,7 +29,7 @@
         <th>@Html.DisplayNameFor(model => model.First().Title)</th>
         <th>@Html.DisplayNameFor(model => model.First().Author)</th>
         <th>@Html.DisplayNameFor(model => model.First().ISBN)</th>
-         <th>@Html.DisplayNameFor(model => model.First().Category.CategoryName)</th> 
+        <th>@Html.DisplayNameFor(model => model.First().Category.CategoryName)</th> 
         
         <th>Action</th>
     </tr>
@@ -43,4 +50,7 @@
     }
     </tbody>
 </table>
- @Html.PagedListPager(Model, page => Url.Action("Index", new { page })) 
+<div>
+    <a asp-action="HomeForSuperUser" asp-controller="Home">Back to Home Page</a>
+</div>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page })) 

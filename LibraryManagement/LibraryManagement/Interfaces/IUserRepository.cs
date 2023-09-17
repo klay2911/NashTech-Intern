@@ -6,6 +6,5 @@ public interface IUserRepository
 {
     User GetUserById(int id);
     User GetUserByUserNameAndPassword(string userName, string password);
-    // Other methods to handle user data...
 }
 

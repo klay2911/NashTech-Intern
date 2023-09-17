@@ -1,22 +1,21 @@
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Repositories;
 
-public sealed class BookRepository : IBookRepository
+public sealed class BookRepository : ILibraryRepository<Book>
 {
     private readonly LibraryContext _context;
 
     public BookRepository()
     {
     }
-
     public BookRepository(LibraryContext context)
     {
         _context = context;
     }
-    public  IQueryable<Book> GetAll()
+    
+    public IQueryable<Book> GetAll()
     {
         return _context.Books;
     }
@@ -47,11 +46,11 @@ public sealed class BookRepository : IBookRepository
         }
     }
 
-    public async Task<List<ICollection<Book>>> GetBooksForUserAsync(int userId)
-    {
-        return await _context.BookBorrowingRequestDetails
-            .Where(b => b.RequestId == userId && b.BookBorrowingRequest.Status == "Approved")
-            .Select(b => b.Books)
-            .ToListAsync();
-    }
+    // public async Task<List<ICollection<Book>>> GetBooksForUserAsync(int userId)
+    // {
+    //     return await _context.BookBorrowingRequestDetails
+    //         .Where(b => b.RequestId == userId && b.BookBorrowingRequestRepository.Status == "Approved")
+    //         .Select(b => b.Books)
+    //         .ToListAsync();
+    // }
 }

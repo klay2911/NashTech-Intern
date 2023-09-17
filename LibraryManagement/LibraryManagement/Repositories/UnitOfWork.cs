@@ -17,12 +17,14 @@ public class UnitOfWork: IUnitOfWork, IDisposable
         BookRepository = new BookRepository(context);
         CategoryRepository = new CategoryRepository(context);
         UserRepository = new UserRepository(context);
+        // BorrowingRequestRepository = new BorrowingRequestRepository(context);
+        // BorrowingRequestDetailsRepository = new BorrowingRequestDetailsRepository();
     }
-
     public virtual BookRepository BookRepository { get; }
-
     public virtual CategoryRepository CategoryRepository { get; }
     public virtual UserRepository UserRepository { get; }
+    // public virtual BorrowingRequestRepository BorrowingRequestRepository{ get; }
+    // public virtual BorrowingRequestDetailsRepository BorrowingRequestDetailsRepository { get; }
 
 
     public virtual async Task CreateTransaction()

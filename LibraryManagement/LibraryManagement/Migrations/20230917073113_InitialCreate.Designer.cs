@@ -12,33 +12,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagement.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20230912111904_FixDb2")]
-    partial class FixDb2
+    [Migration("20230917073113_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("BookBookBorrowingRequestDetails", b =>
-                {
-                    b.Property<int>("BookBorrowingRequestDetailsRequestDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BooksBookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BookBorrowingRequestDetailsRequestDetailsId", "BooksBookId");
-
-                    b.HasIndex("BooksBookId");
-
-                    b.ToTable("BookBookBorrowingRequestDetails");
-                });
 
             modelBuilder.Entity("LibraryManagement.Models.Book", b =>
                 {
@@ -103,24 +88,17 @@ namespace LibraryManagement.Migrations
 
             modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequestDetails", b =>
                 {
-                    b.Property<int>("RequestDetailsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("RequestDetailsId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestDetailsId"));
+                    b.Property<int>("RequestId")
+                        .HasColumnType("int");
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RequestId")
-                        .HasColumnType("int");
+                    b.HasKey("RequestId", "BookId");
 
-                    b.HasKey("RequestDetailsId");
+                    b.HasIndex("BookId");
 
-                    b.HasIndex("RequestId");
-
-                    b.ToTable("RequestDetails", (string)null);
+                    b.ToTable("BookBorrowingRequestDetails", (string)null);
                 });
 
             modelBuilder.Entity("LibraryManagement.Models.Category", b =>
@@ -207,21 +185,6 @@ namespace LibraryManagement.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BookBookBorrowingRequestDetails", b =>
-                {
-                    b.HasOne("LibraryManagement.Models.BookBorrowingRequestDetails", null)
-                        .WithMany()
-                        .HasForeignKey("BookBorrowingRequestDetailsRequestDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryManagement.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksBookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("LibraryManagement.Models.Book", b =>
                 {
                     b.HasOne("LibraryManagement.Models.Category", "Category")
@@ -246,13 +209,26 @@ namespace LibraryManagement.Migrations
 
             modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequestDetails", b =>
                 {
+                    b.HasOne("LibraryManagement.Models.Book", "Book")
+                        .WithMany("BookBorrowingRequestDetails")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("LibraryManagement.Models.BookBorrowingRequest", "BookBorrowingRequest")
                         .WithMany("BookBorrowingRequestDetails")
                         .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Book");
+
                     b.Navigation("BookBorrowingRequest");
+                });
+
+            modelBuilder.Entity("LibraryManagement.Models.Book", b =>
+                {
+                    b.Navigation("BookBorrowingRequestDetails");
                 });
 
             modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequest", b =>

@@ -10,5 +10,4 @@ public class Book
     
     public Category? Category { get; set; }
     public ICollection<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; } = new List<BookBorrowingRequestDetails>();
-
 }

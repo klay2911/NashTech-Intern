@@ -17,25 +17,10 @@ namespace LibraryManagement.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("BookBookBorrowingRequestDetails", b =>
-                {
-                    b.Property<int>("BookBorrowingRequestDetailsRequestDetailsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BooksBookId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BookBorrowingRequestDetailsRequestDetailsId", "BooksBookId");
-
-                    b.HasIndex("BooksBookId");
-
-                    b.ToTable("BookBookBorrowingRequestDetails");
-                });
 
             modelBuilder.Entity("LibraryManagement.Models.Book", b =>
                 {
@@ -69,7 +54,7 @@ namespace LibraryManagement.Migrations
                     b.ToTable("Book", (string)null);
                 });
 
-            modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequest", b =>
+            modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequestRepository", b =>
                 {
                     b.Property<int>("RequestId")
                         .ValueGeneratedOnAdd()
@@ -95,27 +80,20 @@ namespace LibraryManagement.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("BookBorrowingRequest", (string)null);
+                    b.ToTable("BookBorrowingRequestRepository", (string)null);
                 });
 
             modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequestDetails", b =>
                 {
-                    b.Property<int>("RequestDetailsId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("RequestDetailsId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RequestDetailsId"));
+                    b.Property<int>("RequestId")
+                        .HasColumnType("int");
 
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RequestId")
-                        .HasColumnType("int");
+                    b.HasKey("RequestId", "BookId");
 
-                    b.HasKey("RequestDetailsId");
-
-                    b.HasIndex("RequestId");
+                    b.HasIndex("BookId");
 
                     b.ToTable("BookBorrowingRequestDetails", (string)null);
                 });
@@ -187,7 +165,7 @@ namespace LibraryManagement.Migrations
                             Email = "thienvu2911@gmail.com",
                             FirstName = "La ",
                             LastName = "Vu",
-                            Password = "29112002",
+                            Password = "f0a105444ba6609d13ddb9ee19774bd21a71ba86148d730a704e5dbead8437ee",
                             Role = "SuperUser",
                             UserName = "vu2911"
                         },
@@ -198,25 +176,10 @@ namespace LibraryManagement.Migrations
                             Email = "tuanduc@gmail.com",
                             FirstName = "Do ",
                             LastName = "Duc",
-                            Password = "06052002",
+                            Password = "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db",
                             Role = "NormalUser",
                             UserName = "duc0605"
                         });
-                });
-
-            modelBuilder.Entity("BookBookBorrowingRequestDetails", b =>
-                {
-                    b.HasOne("LibraryManagement.Models.BookBorrowingRequestDetails", null)
-                        .WithMany()
-                        .HasForeignKey("BookBorrowingRequestDetailsRequestDetailsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryManagement.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksBookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("LibraryManagement.Models.Book", b =>
@@ -230,7 +193,7 @@ namespace LibraryManagement.Migrations
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequest", b =>
+            modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequestRepository", b =>
                 {
                     b.HasOne("LibraryManagement.Models.User", "User")
                         .WithMany("BookBorrowingRequests")
@@ -243,16 +206,29 @@ namespace LibraryManagement.Migrations
 
             modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequestDetails", b =>
                 {
-                    b.HasOne("LibraryManagement.Models.BookBorrowingRequest", "BookBorrowingRequest")
+                    b.HasOne("LibraryManagement.Models.Book", "Book")
+                        .WithMany("BookBorrowingRequestDetails")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LibraryManagement.Models.BookBorrowingRequestRepository", "BookBorrowingRequestRepository")
                         .WithMany("BookBorrowingRequestDetails")
                         .HasForeignKey("RequestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("BookBorrowingRequest");
+                    b.Navigation("Book");
+
+                    b.Navigation("BookBorrowingRequestRepository");
                 });
 
-            modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequest", b =>
+            modelBuilder.Entity("LibraryManagement.Models.Book", b =>
+                {
+                    b.Navigation("BookBorrowingRequestDetails");
+                });
+
+            modelBuilder.Entity("LibraryManagement.Models.BookBorrowingRequestRepository", b =>
                 {
                     b.Navigation("BookBorrowingRequestDetails");
                 });

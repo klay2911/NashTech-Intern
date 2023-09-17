@@ -1,4 +1,9 @@
-@model IEnumerable<Category>
+@using X.PagedList.Mvc.Core
+@using X.PagedList
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model IPagedList<Category>
+
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Category Page";
@@ -6,9 +11,16 @@
 }
 
 <h1>This is list of category</h1>
+<form asp-action="Index" method="get">
+    <input type="text" name="searchTerm" placeholder="Search books..." />
+    <input type="submit" value="Search" />
+</form>
 <p>
     <a asp-action="Create">Add new category</a>
 </p>
+<form asp-action="Logout" asp-controller="Account" method="post">
+    <input type="submit" value="Logout" />
+</form>
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success">@TempData["Message"]</div>
@@ -16,7 +28,7 @@
 <table class="table">
     <thead>
     <tr>
-        <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
+        <th>@Html.DisplayNameFor(model => model.First().CategoryName)</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -33,3 +45,7 @@
     }
     </tbody>
 </table>
+<div>
+    <a asp-action="Index">Back to Home Page</a>
+</div>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page })) 
