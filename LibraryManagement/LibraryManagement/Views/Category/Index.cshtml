@@ -18,9 +18,6 @@
 <p>
     <a asp-action="Create">Add new category</a>
 </p>
-<form asp-action="Logout" asp-controller="Account" method="post">
-    <input type="submit" value="Logout" />
-</form>
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success">@TempData["Message"]</div>

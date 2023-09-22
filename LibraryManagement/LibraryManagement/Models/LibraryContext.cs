@@ -46,7 +46,7 @@ public class LibraryContext: DbContext
         });
         modelBuilder.Entity<BookBorrowingRequest>(entity =>
         {
-            entity.ToTable("BookBorrowingRequestRepository").HasKey(c => c.RequestId);
+            entity.ToTable("BookBorrowingRequest").HasKey(c => c.RequestId);
 
             entity.Property(c => c.RequestId)
                 .UseIdentityColumn(1)
@@ -83,6 +83,21 @@ public class LibraryContext: DbContext
                 {
                     UserId = 2, FirstName = "Do ", LastName = "Duc", Email = "tuanduc@gmail.com",
                     UserName = "duc0605", Password = "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db", Role = "NormalUser", Dob = new DateTime(2002, 05, 06)
+                },
+                new User
+                {
+                    UserId = 3, FirstName = "Do ", LastName = "Minh", Email = "dominh@gmail.com",
+                    UserName = "minh0605", Password = "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db", Role = "NormalUser", Dob = new DateTime(2002, 05, 06)
+                },
+                new User
+                {
+                    UserId = 4, FirstName = "Thanh ", LastName = "Huong", Email = "thanhhuong2911@gmail.com",
+                    UserName = "huong297", Password = "73ac70e3ac72ee1ac00f2ba2e51aa4af5b7f86a62e8439036c0c6bcebbfa6b79", Role = "SuperUser", Dob = new DateTime(2000, 7, 29)
+                },
+                new User
+                {
+                    UserId = 5, FirstName = "Ngoc ", LastName = "Hoa", Email = "ngochoa@gmail.com",
+                    UserName = "hoa0605", Password = "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db", Role = "NormalUser", Dob = new DateTime(2002, 05, 06)
                 });
         });
     }

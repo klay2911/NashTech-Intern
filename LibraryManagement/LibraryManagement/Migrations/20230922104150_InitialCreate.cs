@@ -68,7 +68,7 @@ namespace LibraryManagement.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookBorrowingRequestRepository",
+                name: "BookBorrowingRequest",
                 columns: table => new
                 {
                     RequestId = table.Column<int>(type: "int", nullable: false)
@@ -102,7 +102,7 @@ namespace LibraryManagement.Migrations
                     table.ForeignKey(
                         name: "FK_BookBorrowingRequestDetails_BookBorrowingRequest_RequestId",
                         column: x => x.RequestId,
-                        principalTable: "BookBorrowingRequestRepository",
+                        principalTable: "BookBorrowingRequest",
                         principalColumn: "RequestId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -118,8 +118,11 @@ namespace LibraryManagement.Migrations
                 columns: new[] { "UserId", "Dob", "Email", "FirstName", "LastName", "Password", "Role", "UserName" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2002, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "thienvu2911@gmail.com", "La ", "Vu", "29112002", "SuperUser", "vu2911" },
-                    { 2, new DateTime(2002, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "tuanduc@gmail.com", "Do ", "Duc", "06052002", "NormalUser", "duc0605" }
+                    { 1, new DateTime(2002, 11, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "thienvu2911@gmail.com", "La ", "Vu", "f0a105444ba6609d13ddb9ee19774bd21a71ba86148d730a704e5dbead8437ee", "SuperUser", "vu2911" },
+                    { 2, new DateTime(2002, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "tuanduc@gmail.com", "Do ", "Duc", "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db", "NormalUser", "duc0605" },
+                    { 3, new DateTime(2002, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "dominh@gmail.com", "Do ", "Minh", "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db", "NormalUser", "minh0605" },
+                    { 4, new DateTime(2000, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified), "thanhhuong2911@gmail.com", "Thanh ", "Huong", "73ac70e3ac72ee1ac00f2ba2e51aa4af5b7f86a62e8439036c0c6bcebbfa6b79", "SuperUser", "huong297" },
+                    { 5, new DateTime(2002, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "ngochoa@gmail.com", "Ngoc ", "Hoa", "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db", "NormalUser", "hoa0605" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -129,7 +132,7 @@ namespace LibraryManagement.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookBorrowingRequest_UserId",
-                table: "BookBorrowingRequestRepository",
+                table: "BookBorrowingRequest",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
@@ -145,7 +148,7 @@ namespace LibraryManagement.Migrations
                 name: "BookBorrowingRequestDetails");
 
             migrationBuilder.DropTable(
-                name: "BookBorrowingRequestRepository");
+                name: "BookBorrowingRequest");
 
             migrationBuilder.DropTable(
                 name: "Book");

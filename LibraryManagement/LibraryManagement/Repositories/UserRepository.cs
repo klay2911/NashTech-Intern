@@ -20,5 +20,8 @@ public class UserRepository : IUserRepository
     {
         return _context.Users.Find(id);
     }
-
+    // public int GetUserId()
+    // {
+    //     return UserId;
+    // }
 }

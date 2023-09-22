@@ -9,85 +9,85 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = LibraryManagement
 build_property.RootNamespace = LibraryManagement
-build_property.ProjectDir = F:\NashTech Intern\Intern\Example\LibraryManagement\LibraryManagement\
+build_property.ProjectDir = F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = F:\NashTech Intern\Intern\Example\LibraryManagement\LibraryManagement
+build_property.MSBuildProjectDirectory = F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement
 build_property._RazorSourceGeneratorDebug = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Book/Create.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Book/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Book/Delete.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Book/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Book/Index.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Book/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Book/Update.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Book/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/BorrowingRequest/Index.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93aW5nUmVxdWVzdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Category/Create.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Category/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Category/Delete.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Category/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Category/Index.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Category/Update.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Category/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Home/HomeForNormalUser.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Home/HomeForNormalUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lRm9yTm9ybWFsVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Home/HomeForSuperUser.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Home/HomeForSuperUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb21lRm9yU3VwZXJVc2VyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Shared/Error.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/_ViewImports.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/_ViewStart.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Account/Login.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-90oose29nn
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Shared/_Layout.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-zogy9lo6il
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Shared/_NormalUserLayout.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Shared/_NormalUserLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3JtYWxVc2VyTGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-f8ipm6emve
 
-[F:/NashTech Intern/Intern/Example/LibraryManagement/LibraryManagement/Views/Shared/_SuperUserLayout.cshtml]
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Shared/_SuperUserLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TdXBlclVzZXJMYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-5jz7w3tq96

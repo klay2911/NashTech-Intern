@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagement.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20230917095536_AddSeedData")]
-    partial class AddSeedData
+    [Migration("20230922104150_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -182,6 +182,39 @@ namespace LibraryManagement.Migrations
                             Password = "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db",
                             Role = "NormalUser",
                             UserName = "duc0605"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            Dob = new DateTime(2002, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "dominh@gmail.com",
+                            FirstName = "Do ",
+                            LastName = "Minh",
+                            Password = "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db",
+                            Role = "NormalUser",
+                            UserName = "minh0605"
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            Dob = new DateTime(2000, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "thanhhuong2911@gmail.com",
+                            FirstName = "Thanh ",
+                            LastName = "Huong",
+                            Password = "73ac70e3ac72ee1ac00f2ba2e51aa4af5b7f86a62e8439036c0c6bcebbfa6b79",
+                            Role = "SuperUser",
+                            UserName = "huong297"
+                        },
+                        new
+                        {
+                            UserId = 5,
+                            Dob = new DateTime(2002, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "ngochoa@gmail.com",
+                            FirstName = "Ngoc ",
+                            LastName = "Hoa",
+                            Password = "68c1fd598364b2f944a99d369dab0e3fb842864a528667d39550f249a48d68db",
+                            Role = "NormalUser",
+                            UserName = "hoa0605"
                         });
                 });
 

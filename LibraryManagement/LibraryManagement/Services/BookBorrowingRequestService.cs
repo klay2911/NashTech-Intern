@@ -22,15 +22,21 @@ public class BookBorrowingRequestService : IBookBorrowingRequestService
     {
         return await _unitOfWork.BookBorrowingRequestRepository.GetByIdAsync(id);
     }
+    
 
-    public async Task<BookBorrowingRequest> CreateAsync(BookBorrowingRequest borrowingRequest)
-    {
-        return await _unitOfWork.BookBorrowingRequestRepository.CreateAsync(borrowingRequest);
+    public async Task CreateAsync(BookBorrowingRequest borrowingRequest)
+    { 
+        await _unitOfWork.BookBorrowingRequestRepository.CreateAsync(borrowingRequest);
     }
 
     public async Task DeleteAsync(int id)
     {
         await _unitOfWork.BookBorrowingRequestRepository.DeleteAsync(id);
     }
+    public async Task<int> GetRequestsByUserThisMonth(int userId)
+    {
+        return await _unitOfWork.BookBorrowingRequestRepository.GetRequestsByUserThisMonth(userId);
+    }
+
 }
 

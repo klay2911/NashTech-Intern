@@ -1,9 +1,10 @@
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Repositories;
 
-    public class BookBorrowingRequestRepository : ILibraryRepository<BookBorrowingRequest>
+    public class BookBorrowingRequestRepository : IBookBorrowingRequestRepository
     {
         private readonly LibraryContext _context;
 
@@ -40,15 +41,21 @@ namespace LibraryManagement.Repositories;
                 await _context.SaveChangesAsync();
             }
         }
-
-        /*public void Delete(int id)
+        // public async Task<List<BookBorrowingRequest>> GetRequestsByUserAndMonth(int userId, int month)
+        // {
+        //     return await _context.BorrowingRequests
+        //         .Where(r => r.UserId == userId && r.DateRequested.Month == month)
+        //         .CountAsync();
+        // }
+        public async Task<int> GetRequestsByUserThisMonth(int userId)
         {
-            var request = GetById(id);
-            if (request != null)
-            {
-                _context.BorrowingRequests.Remove(request);
-                _context.SaveChanges();
-            }
-        }*/
+            var startOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            var endOfMonth = startOfMonth.AddMonths(1).AddDays(-1);
+
+            return await _context.BorrowingRequests
+                .Where(r => r.UserId == userId && r.DateRequested >= startOfMonth && r.DateRequested <= endOfMonth)
+                .CountAsync();
+        }
+
 
     }

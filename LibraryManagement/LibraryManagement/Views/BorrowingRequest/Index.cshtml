@@ -3,7 +3,6 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 
 @model IPagedList<Book>
-
 @{
     Layout = "_NormalUserLayout";
     ViewData["Title"] = "Viewing Book Page";
@@ -13,12 +12,16 @@
     <input type="text" name="searchTerm" placeholder="Search books..." />
     <input type="submit" value="Search" />
 </form>
-@* <p> *@
-@*     <a asp-action="CreateBorrowingRequest" asp-controller="BorrowingRequests">Request Borrowing</a> *@
-@* </p> *@
+<form asp-action="CreateBorrowingRequest" asp-controller="BorrowingRequest" method="post">
+    <input type="submit" value="Request Borrowing" class="btn btn-success" />
+</form>
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success">@TempData["Message"]</div>
+}
+@if (TempData["Warning"] != null)
+{
+    <div class="alert alert-danger">@TempData["Warning"]</div>
 }
 <table class="table">
     <thead>
@@ -48,6 +51,23 @@
             @*         @Html.ActionLink("Remove from request", "RemoveBookFromBorrowingRequest","BorrowingRequest", new { id = item.BookId }) *@
             @*     } *@
             @* </td> *@
+            <td>
+                @if (ViewBag.BookIdsInRequest.Contains(item.BookId))
+                {
+                    <form asp-action="RemoveBookFromRequest" asp-controller="BorrowingRequest" method="post">
+                        <input type="hidden" name="bookId" value="@item.BookId" />
+                        <input type="submit" value="Remove from request" class="btn btn-danger" />
+                    </form>
+                }
+                else
+                {
+                    <form asp-action="AddBookToRequest" asp-controller="BorrowingRequest" method="post">
+                        <input type="hidden" name="bookId" value="@item.BookId" />
+                        <input type="submit" value="Add to request" class="btn btn-success" />
+                    </form>
+                }
+            </td>
+            
         </tr>
     }
     </tbody>

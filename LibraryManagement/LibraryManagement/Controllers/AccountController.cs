@@ -44,10 +44,11 @@ public class AccountController : Controller
             {
                 new Claim(ClaimTypes.Name, userLogin.UserName),
                 new Claim(ClaimTypes.Role, existingUser.Role),
-                new Claim("Token", token)
+                new Claim("Token", token),
             };
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
+            HttpContext.Session.SetString("UserId", existingUser.UserId.ToString());
 
             Response.Cookies.Append("JwtToken", token, new CookieOptions { HttpOnly = true });
             await HttpContext.SignInAsync(
@@ -130,5 +131,4 @@ public class AccountController : Controller
         var hashedBytes = SHA256.HashData(Encoding.UTF8.GetBytes(password));
         return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
     }
-
 }
