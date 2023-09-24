@@ -1,0 +1,46 @@
+@using X.PagedList.Mvc.Core
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model X.PagedList.IPagedList<BookBorrowingRequest>
+
+@{
+    ViewData["Title"] = "View Borrowing Requests";
+    Layout = "_SuperUserLayout";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User ID</th>
+            <th>Date Requested</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+        {
+            <tr>
+                <td>@request.UserId</td>
+                <td>@request.DateRequested.ToString("g")</td>
+                <td>@request.Status</td>
+                <td>
+                    <form asp-action="DetailsRequest" method="get">
+                        <input type="hidden" name="requestId" value="@request.RequestId" />
+                        <input type="submit" value="Details" style="background-color: #0c63e4; color: white; border-radius: 5px;" />
+                    </form>
+                    <form asp-action="ApproveRequest" method="post">
+                        <input type="hidden" name="requestId" value="@request.RequestId"/>
+                        <input type="submit" value="Approve"style="background-color: #198754; color: white;border-radius: 5px;"/>
+                    </form>
+                    <form asp-action="RejectRequest" method="post">
+                        <input type="hidden" name="requestId" value="@request.RequestId"/>
+                        <input type="submit" value="Reject" style="background-color: #bb2d3b; color: white;border-radius: 5px;"/>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager(Model, page => Url.Action("ViewBorrowingRequests", new { page }))

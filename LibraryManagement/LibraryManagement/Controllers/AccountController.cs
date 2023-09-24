@@ -59,7 +59,7 @@ public class AccountController : Controller
             switch (existingUser.Role)
             {
                 case "SuperUser":
-                    return RedirectToAction("HomeForSuperUser", "Home");
+                    return RedirectToAction("ViewBorrowingRequests", "BorrowingRequest");
                 case "NormalUser":
                     return RedirectToAction("Index", "BorrowingRequest");
             }

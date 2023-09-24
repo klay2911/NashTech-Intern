@@ -1,0 +1,29 @@
+@model List<BookViewModel>
+@{
+    ViewData["Title"] = "Details Request Page";
+    Layout = "_SuperUserLayout";
+}
+
+<h1>This is the list of books in request</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.First().Title)</th>
+        <th>@Html.DisplayNameFor(model => model.First().Author)</th>
+        <th>@Html.DisplayNameFor(model => model.First().ISBN)</th>
+        <th>@Html.DisplayNameFor(model => model.First().Status)</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>@Html.DisplayFor(modelItem => item.Author)</td>
+            <td>@Html.DisplayFor(modelItem => item.ISBN)</td>
+            <td>@Html.DisplayFor(modelItem => item.Status)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<a asp-action="ViewBorrowingRequests">Back to Borrowing Requests</a>

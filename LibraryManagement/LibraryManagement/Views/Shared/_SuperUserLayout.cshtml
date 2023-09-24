@@ -12,7 +12,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand"  asp-controller="Home" asp-action="HomeForSuperUser">LibraryManagement</a>
+            <a class="navbar-brand"  asp-controller="BorrowingRequest" asp-action="ViewBorrowingRequests">LibraryManagement</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -20,15 +20,18 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Book" asp-action="Index">Book</a>
+                        <a class="nav-link text-dark" asp-controller="Book" asp-action="Index">Book</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
+                        <a class="nav-link text-dark" asp-controller="Category" asp-action="Index">Category</a>
                     </li>
+                    @* <li class="nav-item"> *@
+                    @*     <a class="nav-link text-dark" asp-controller="BorrowingRequest" asp-action="ViewBorrowingRequests">Category</a> *@
+                    @* </li> *@
                 </ul>
             </div>
             <form asp-action="Logout" asp-controller="Account" method="post">
-                <input type="submit" value="Logout" />
+                <input type="submit" value="Logout" style="border: 1px; border-radius:5px; padding: 10px; padding-left: 20px; padding-right: 20px;background-color: #0d6efd;" />
             </form>
         </div>
     </nav>
