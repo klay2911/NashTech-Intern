@@ -96,7 +96,7 @@ public class BorrowingRequestController : Controller
     public async Task<IActionResult> CreateBorrowingRequest()
     {
         var userId = HttpContext.Session.GetString("UserId");
-        var userRequestsThisMonth = await _borrowingRequestService.GetRequestsByUserThisMonth(Convert.ToInt32(userId));
+        var userRequestsThisMonth = await _borrowingRequestService.GetNumberRequests(Convert.ToInt32(userId));
 
         if (userRequestsThisMonth >= 3)
         {
@@ -111,7 +111,7 @@ public class BorrowingRequestController : Controller
             Status = "Pending"
         };
 
-        await _borrowingRequestService.CreateAsync(borrowingRequest);
+        await _borrowingRequestService.CreateBorrowingRequestAsync(borrowingRequest);
 
         var bookIdsInRequestJson = HttpContext.Session.GetString("BookIdsInRequest");
         if (string.IsNullOrEmpty(bookIdsInRequestJson))
@@ -123,6 +123,13 @@ public class BorrowingRequestController : Controller
         var bookIdsInRequest = JsonConvert.DeserializeObject<List<int>>(bookIdsInRequestJson);
         foreach (var bookId in bookIdsInRequest)
         {
+            var existingRequestDetail = await _borrowingRequestDetailsService.GetRequestDetail(bookId);
+            if (existingRequestDetail != null && existingRequestDetail.RequestId == borrowingRequest.RequestId)
+            {
+                TempData["Warning"] = $"You have already requested the book with ID {bookId}.";
+                continue;
+            }
+
             var requestDetail = new BookBorrowingRequestDetails
             {
                 RequestId = borrowingRequest.RequestId,
@@ -143,4 +150,62 @@ public class BorrowingRequestController : Controller
 
         return RedirectToAction("Index");
     }
+        
+    [Authorize(Roles = "NormalUser")]
+    [HttpGet]
+    public async Task<IActionResult> GetBorrowedBooks(int? page, string searchTerm)
+    {
+        var userId = HttpContext.Session.GetString("UserId");
+        var borrowingRequests = await _borrowingRequestService.GetRequests(Convert.ToInt32(userId));
+
+        var borrowedBooks = new List<BookViewModel>();
+
+        foreach (var request in borrowingRequests)
+        {
+            foreach (var detail in request.BookBorrowingRequestDetails)
+            {
+                var book = await _bookService.GetBookByIdAsync(detail.BookId);
+                if (!string.IsNullOrEmpty(searchTerm) && !book.Title.Contains(searchTerm))
+                {
+                    continue;
+                }
+                borrowedBooks.Add(new BookViewModel
+                {
+                    BookId = book.BookId,
+                    Title = book.Title,
+                    Author = book.Author,
+                    ISBN = book.ISBN,
+                    CategoryId = book.CategoryId,
+                    Status = request.Status
+                });
+            }
+        }
+
+        int pageSize = 5;
+        int pageNumber = (page ?? 1);
+        return View(borrowedBooks.ToPagedList(pageNumber, pageSize));
+    }
+    /*[HttpGet]
+    public async Task<IActionResult> ViewBorrowingRequests()
+    {
+        var borrowingRequests = await _borrowingRequestService.GetAllBorrowingRequests();
+        return View(borrowingRequests);
+    }
+
+    [Authorize(Roles = "SuperUser")]
+    [HttpPost]
+    public async Task<IActionResult> ApproveRequest(int requestId)
+    {
+        var librarianId = HttpContext.Session.GetString("UserId");
+        await _borrowingRequestService.UpdateRequestStatus(requestId, "Approved", Convert.ToInt32(librarianId));
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> RejectRequest(int requestId)
+    {
+        await _borrowingRequestService.UpdateRequestStatus(requestId, "Rejected");
+        return RedirectToAction("Index");
+    }*/
+
 }

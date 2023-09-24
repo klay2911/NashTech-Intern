@@ -23,14 +23,13 @@ public class BookBorrowingRequestDetailsRepository : IBookBorrowingRequestDetail
         return (await _context.BookBorrowingRequestDetails.FirstOrDefaultAsync(b => b.RequestId == requestId && b.BookId == bookId))!;
     }
 
-    public async Task AddBookToRequest(BookBorrowingRequestDetails details)
+    public async Task Add(BookBorrowingRequestDetails details)
     {
         _context.BookBorrowingRequestDetails.Add(details);
          await _context.SaveChangesAsync();
     }
-    
 
-    public async Task RemoveBookFromRequest(int requestId, int bookId)
+    public async Task Remove(int requestId, int bookId)
     {
         var details = GetBookByRequestId(requestId, bookId);
         if (details != null)
@@ -38,5 +37,12 @@ public class BookBorrowingRequestDetailsRepository : IBookBorrowingRequestDetail
             _context.BookBorrowingRequestDetails.Remove(await details);
            await _context.SaveChangesAsync();
         }
+    }
+    public async Task<BookBorrowingRequestDetails> GetRequestDetailByBookId(int bookId)
+    {
+        return await _context.BookBorrowingRequestDetails
+            .Include(r => r.BookBorrowingRequest)
+            .Where(r => r.BookId == bookId && (r.BookBorrowingRequest.Status == "Pending" || r.BookBorrowingRequest.Status == "Approved"))
+            .FirstOrDefaultAsync();
     }
 }
