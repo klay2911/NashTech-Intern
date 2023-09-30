@@ -1,6 +1,7 @@
 @using X.PagedList.Mvc.Core
 @using X.PagedList
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using X.PagedList.Web.Common
 
 @model IPagedList<BookViewModel>
 
@@ -8,7 +9,22 @@
     Layout = "_NormalUserLayout";
     ViewData["Title"] = "Borrowed Books Page";
 }
-<h1>This is the list of books you have borrowed</h1>
+<head>
+    <style>
+    .pagination li a {
+        border: 1px solid #ddd; /* Gray */
+        margin: 0 4px;
+        padding: 10px 12px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+    
+    .pagination li.active a {
+        background-color: #4CAF50; /* Green */
+        color: white;
+    }
+        </style>
+</head>
 <form asp-action="GetBorrowedBooks" method="get">
     <input type="text" name="searchTerm" placeholder="Search books by title or author..." />
     <input type="submit" value="Search" />
@@ -34,5 +50,18 @@
     }
     </tbody>
 </table>
-
-@Html.PagedListPager(Model, page => Url.Action("GetBorrowedBooks", new { page })) 
+<div class="text-center mt-3">
+    <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
+</div>
+@Html.PagedListPager(Model, page => Url.Action("GetBorrowedBooks", new { page }), 
+    new PagedListRenderOptions 
+    { 
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always, 
+        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        LinkToFirstPageFormat = "<< First",
+        LinkToPreviousPageFormat = "< Previous",
+        LinkToNextPageFormat = "Next >",
+        LinkToLastPageFormat = "Last >>",
+        MaximumPageNumbersToDisplay = 5,
+        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+    })

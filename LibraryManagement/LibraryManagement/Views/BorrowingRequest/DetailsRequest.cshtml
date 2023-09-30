@@ -4,7 +4,6 @@
     Layout = "_SuperUserLayout";
 }
 
-<h1>This is the list of books in request</h1>
 <table class="table">
     <thead>
     <tr>
@@ -26,4 +25,6 @@
     }
     </tbody>
 </table>
-<a asp-action="ViewBorrowingRequests">Back to Borrowing Requests</a>
+<div class="text-center mt-3">
+    <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
+</div>

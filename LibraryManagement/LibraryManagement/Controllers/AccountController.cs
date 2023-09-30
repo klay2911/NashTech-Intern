@@ -77,18 +77,23 @@ public class AccountController : Controller
     {
         // Clear the authentication cookie
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
+        HttpContext.Session.Remove("BookIdsInRequest");
         // Optionally, you can also clear the JWT token cookie:
         Response.Cookies.Delete("JwtToken");
-
+        
         return RedirectToAction("Login", "Account");
     }
 
+    public string HashPassword(string password)
+    {
+        var hashedBytes = SHA256.HashData(Encoding.UTF8.GetBytes(password));
+        return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+    }
 
     public string GenerateJwtToken(User user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes("fc746b61cde4f6665d3f9791446cd5395661860c0075a905ed9810b7391af467"); // replace with your secret key
+        var key = Encoding.ASCII.GetBytes("fc746b61cde4f6665d3f9791446cd5395661860c0075a905ed9810b7391af467");
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new Claim[] 
@@ -102,11 +107,11 @@ public class AccountController : Controller
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
     }
-
-    public ClaimsPrincipal ValidateToken(string token)
+    
+    public ClaimsPrincipal? ValidateToken(string token)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes("fc746b61cde4f6665d3f9791446cd5395661860c0075a905ed9810b7391af467"); // replace with your secret key
+        var key = Encoding.ASCII.GetBytes("fc746b61cde4f6665d3f9791446cd5395661860c0075a905ed9810b7391af467"); 
         try
         {
             var claimsPrincipal = tokenHandler.ValidateToken(token, new TokenValidationParameters
@@ -117,7 +122,7 @@ public class AccountController : Controller
                 ValidateAudience = false,
                 ClockSkew = TimeSpan.Zero
             }, out SecurityToken validatedToken);
-
+    
             return claimsPrincipal;
         }
         catch
@@ -125,10 +130,48 @@ public class AccountController : Controller
             return null;
         }
     }
+    // public string GenerateJwtToken(User user)
+    // {
+    //     var tokenHandler = new JwtSecurityTokenHandler();
+    //     var key = Encoding.ASCII.GetBytes("fc746b61cde4f6665d3f9791446cd5395661860c0075a905ed9810b7391af467");
+    //
+    //     // Create a claim for each role
+    //     var roleClaim = new Claim(ClaimTypes.Role, user.Role);
+    //     var tokenDescriptor = new SecurityTokenDescriptor
+    //     {
+    //         Subject = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, user.UserName) }.Concat(roleClaim)),
+    //         Expires = DateTime.UtcNow.AddDays(7),
+    //         SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+    //     };
+    //
+    //     var token = tokenHandler.CreateToken(tokenDescriptor);
+    //     return tokenHandler.WriteToken(token);
+    // }
+    //
+    // public ClaimsPrincipal? ValidateToken(string token)
+    // {
+    //     var tokenHandler = new JwtSecurityTokenHandler();
+    //     var key = Encoding.ASCII.GetBytes("fc746b61cde4f6665d3f9791446cd5395661860c0075a905ed9810b7391af467");
+    //
+    //     try
+    //     {
+    //         var claimsPrincipal = tokenHandler.ValidateToken(token, new TokenValidationParameters
+    //         {
+    //             ValidateIssuerSigningKey = true,
+    //             IssuerSigningKey = new SymmetricSecurityKey(key),
+    //             ValidateIssuer = false,
+    //             ValidateAudience = false,
+    //             ClockSkew = TimeSpan.Zero
+    //         }, out SecurityToken validatedToken);
+    //
+    //         return claimsPrincipal;
+    //     }
+    //     catch
+    //     {
+    //         return null;
+    //     }
+    // }
 
-    public string HashPassword(string password)
-    {
-        var hashedBytes = SHA256.HashData(Encoding.UTF8.GetBytes(password));
-        return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
-    }
+    
+    
 }

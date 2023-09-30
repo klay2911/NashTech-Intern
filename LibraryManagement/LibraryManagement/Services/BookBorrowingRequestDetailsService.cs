@@ -33,15 +33,9 @@ public class BookBorrowingRequestDetailsService : IBookBorrowingRequestDetailsSe
 
         await _unitOfWork.BookBorrowingRequestDetailsRepository.Add(details);
     }
-
-    // public async Task RemoveBookFromRequest(int requestId, int bookId)
-    // {
-    //     await _unitOfWork.BookBorrowingRequestDetailsRepository.Remove(requestId, bookId);
-    // }
-
-    public async Task<BookBorrowingRequestDetails> GetRequestDetail(int bookId)
+    public async Task<BookBorrowingRequestDetails> GetRequestDetail(int bookId, int userId)
     {
-       return await _unitOfWork.BookBorrowingRequestDetailsRepository.GetRequestDetailByBookId(bookId);
+       return await _unitOfWork.BookBorrowingRequestDetailsRepository.GetRequestDetailByBookIdAndUserId(bookId, userId);
     }
 }
 

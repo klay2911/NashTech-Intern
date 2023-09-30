@@ -1,6 +1,7 @@
 @using X.PagedList.Mvc.Core
 @using X.PagedList
 @using Microsoft.AspNetCore.Mvc.TagHelpers
+@using X.PagedList.Web.Common
 
 @model IPagedList<Category>
 
@@ -9,15 +10,29 @@
     ViewData["Title"] = "Category Page";
 
 }
-
-<h1>This is list of category</h1>
+<head>
+    <style>
+    .pagination li a {
+        border: 1px solid #ddd; /* Gray */
+        margin: 0 4px;
+        padding: 10px 12px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+    
+    .pagination li.active a {
+        background-color: #4CAF50; /* Green */
+        color: white;
+    }
+        </style>
+</head>
 <form asp-action="Index" method="get">
-    <input type="text" name="searchTerm" placeholder="Search books..." />
+    <input type="text" name="searchTerm" placeholder="Search Category..." />
     <input type="submit" value="Search" />
 </form>
-<p>
-    <a asp-action="Create">Add new category</a>
-</p>
+<form asp-action="Create" method="get">
+    <input type="submit" value="Add new category" class="btn btn-success" />
+</form>
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success">@TempData["Message"]</div>
@@ -42,7 +57,18 @@
     }
     </tbody>
 </table>
-<div>
-    <a asp-action="Index">Back to Home Page</a>
+<div class="text-center mt-3">
+    <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest"  class="btn btn-primary">Back to Home Page</a>
 </div>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page })) 
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), 
+    new PagedListRenderOptions 
+    { 
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always, 
+        DisplayLinkToLastPage = PagedListDisplayMode.Always,
+        LinkToFirstPageFormat = "<< First",
+        LinkToPreviousPageFormat = "< Previous",
+        LinkToNextPageFormat = "Next >",
+        LinkToLastPageFormat = "Last >>",
+        MaximumPageNumbersToDisplay = 5,
+        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+    })

@@ -15,7 +15,7 @@ namespace LibraryManagement.Repositories;
 
         public IQueryable<BookBorrowingRequest> GetAll()
         {
-            return _context.BorrowingRequests;
+            return _context.BorrowingRequests.Include(r => r.User);
         }
 
         public async Task<BookBorrowingRequest> GetByIdAsync(int requestId)

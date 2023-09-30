@@ -7,6 +7,5 @@ public interface IBookBorrowingRequestDetailsRepository
     IQueryable<BookBorrowingRequestDetails> GetAll();
     Task<BookBorrowingRequestDetails> GetBookByRequestId(int requestId, int bookId);
     Task Add(BookBorrowingRequestDetails details);
-    Task Remove(int requestId, int bookId);
-    Task<BookBorrowingRequestDetails> GetRequestDetailByBookId(int bookId);
+    Task<BookBorrowingRequestDetails> GetRequestDetailByBookIdAndUserId(int bookId, int userId);
 }

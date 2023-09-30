@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace LibraryManagement.Models;
@@ -5,6 +6,7 @@ namespace LibraryManagement.Models;
 public class UserLogin
 {
     [Required]
+    [DisplayName("Username")]
     public string UserName { get; set; }
     [Required]
     [DataType(DataType.Password)]

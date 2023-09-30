@@ -4,8 +4,6 @@
     ViewBag.Title = "Create Category";
     Layout = "_SuperUserLayout";
 }
-<h1>This is create new category page</h1>
-<hr/>
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success">@TempData["Message"]</div>
@@ -24,7 +22,7 @@
             </div>
         </form>
     </div>
-    <div>
-            <a asp-action="Index">Back to List</a>
-        </div>
+    <div class="text-center mt-3">
+        <a asp-action="Index"  class="btn btn-primary">Back to Home Page</a>
+    </div>
 </div>

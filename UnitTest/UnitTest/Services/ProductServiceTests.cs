@@ -198,7 +198,7 @@ public class ProductServiceTests
     }
 
     [Test]
-    public async Task DeleteProduct_ProductDoesNotExist_NotDeleteAnyProduct()
+    public Task DeleteProduct_ProductDoesNotExist_NotDeleteAnyProduct()
     {
         // Arrange
         var id = 2;
@@ -208,6 +208,7 @@ public class ProductServiceTests
         
         // Act and assert
         _mockUnitOfWork.Verify(u => u.ProductRepository.DeleteAsync(It.IsAny<int>()), Times.Never);
+        return Task.CompletedTask;
     }
 }
 /*

@@ -13,17 +13,20 @@ public class BookService: IBookService
     {
         _unitOfWork = unitOfWork;
     }
+    // public async Task<IEnumerable<Book>> GetAllBooksAsync(bool includeCategory = false)
+    // {
+    //     if (includeCategory)
+    //     {
+    //         return await _unitOfWork.BookRepository.GetAll().Include(b => b.Category).OrderBy(b =>b.Title).ToListAsync();
+    //     }
+    //     return await _unitOfWork.BookRepository.GetAll().ToListAsync();
+    // }
     public async Task<IEnumerable<Book>> GetAllBooksAsync(bool includeCategory = false)
     {
-        if (includeCategory)
-        {
-            return await _unitOfWork.BookRepository.GetAll().Include(b => b.Category).OrderBy(b =>b.Title).ToListAsync();
-        }
-        else
-        {
-            return await _unitOfWork.BookRepository.GetAll().ToListAsync();
-        }
+        return await _unitOfWork.BookRepository.GetAllAsync(includeCategory);
     }
+
+
 
     public async Task<Book> GetBookByIdAsync(int id)
     {

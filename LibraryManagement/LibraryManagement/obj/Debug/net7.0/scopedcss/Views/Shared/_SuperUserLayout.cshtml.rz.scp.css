@@ -46,3 +46,17 @@ button.accept-policy[b-5jz7w3tq96] {
   white-space: nowrap;
   line-height: 60px;
 }
+ .pagination a[b-5jz7w3tq96] {
+   border: 1px solid #ddd; /* Gray */
+   margin: 0 4px;
+   padding: 10px 12px;
+   text-decoration: none;
+   transition: background-color .3s;
+ }
+
+.pagination a.active[b-5jz7w3tq96] {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.pagination a:hover:not(.active)[b-5jz7w3tq96] {background-color: #ddd;} /* Gray */

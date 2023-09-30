@@ -28,21 +28,11 @@ public class BookBorrowingRequestDetailsRepository : IBookBorrowingRequestDetail
         _context.BookBorrowingRequestDetails.Add(details);
          await _context.SaveChangesAsync();
     }
-
-    public async Task Remove(int requestId, int bookId)
-    {
-        var details = GetBookByRequestId(requestId, bookId);
-        if (details != null)
-        {
-            _context.BookBorrowingRequestDetails.Remove(await details);
-           await _context.SaveChangesAsync();
-        }
-    }
-    public async Task<BookBorrowingRequestDetails> GetRequestDetailByBookId(int bookId)
+    public async Task<BookBorrowingRequestDetails> GetRequestDetailByBookIdAndUserId(int bookId, int userId)
     {
         return await _context.BookBorrowingRequestDetails
             .Include(r => r.BookBorrowingRequest)
-            .Where(r => r.BookId == bookId && (r.BookBorrowingRequest.Status == "Pending" || r.BookBorrowingRequest.Status == "Approved"))
+            .Where(r => r.BookId == bookId && r.BookBorrowingRequest.UserId == userId && (r.BookBorrowingRequest.Status == "Pending" || r.BookBorrowingRequest.Status == "Approved"))
             .FirstOrDefaultAsync();
     }
 }

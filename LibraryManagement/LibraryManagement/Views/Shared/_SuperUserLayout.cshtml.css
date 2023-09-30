@@ -46,3 +46,17 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+ .pagination a {
+   border: 1px solid #ddd; /* Gray */
+   margin: 0 4px;
+   padding: 10px 12px;
+   text-decoration: none;
+   transition: background-color .3s;
+ }
+
+.pagination a.active {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;} /* Gray */

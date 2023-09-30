@@ -4,7 +4,6 @@
     ViewBag.Title = "Create Book";
     Layout = "_SuperUserLayout";
 }
-<h1>This is create new book page</h1>
 <hr/>
 @if (TempData["Message"] != null)
 {
@@ -29,18 +28,18 @@
                 <input asp-for="ISBN" class="form-control"/>
                 <span asp-validation-for="ISBN" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label">CategoryName</label>
-                <select asp-for="CategoryId" asp-items="ViewBag.CategoryId" class="form-control"></select>
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>
+           <div class="form-group">
+               <label asp-for="CategoryId" class="control-label">@Html.DisplayNameFor(model => model.CategoryId)</label>
+               <select asp-for="CategoryId" asp-items="ViewBag.CategoryId" class="form-control"></select>
+               <span asp-validation-for="CategoryId" class="text-danger"></span>
+           </div>
             <div class="form-group">
                 <input type="submit" name="Create" value="Create" class="btn btn-primary"/>
             </div>
         </form>
     </div>
-    <div>
-        <a asp-action="Index">Back to List</a>
+    <div class="text-center mt-3">
+        <a asp-action="Index"  class="btn btn-primary">Back to List</a>
     </div>
 </div>
 

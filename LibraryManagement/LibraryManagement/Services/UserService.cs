@@ -14,13 +14,13 @@ public class UserService : IUserService
     }
 
     public User GetUserById(int id)
-    {
-        return _unitOfWork.UserRepository.GetUserById(id);
-    }
-
-    public User GetUserByUserNameAndPassword(string userName, string password)
-    {
-        return _unitOfWork.UserRepository.GetUserByUserNameAndPassword(userName, password);
-    }
-}
+     {
+         return _unitOfWork.UserRepository.GetUserById(id);
+     }
+ 
+     public User GetUserByUserNameAndPassword(string userName, string password)
+     {
+         return _unitOfWork.UserRepository.GetUserByUserNameAndPassword(userName, password);
+     }
+ }
 

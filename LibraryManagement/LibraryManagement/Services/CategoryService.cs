@@ -16,7 +16,7 @@ public class CategoryService : ICategoryService
 
     public async Task<IEnumerable<Category>> GetAllCategoriesAsync()
     {
-        return await _unitOfWork.CategoryRepository.GetAll().ToListAsync();
+        return await _unitOfWork.CategoryRepository.GetAll();
     }
 
     public async Task<Category> GetCategoryByIdAsync(int id)
