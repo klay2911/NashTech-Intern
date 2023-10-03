@@ -1,2 +1,2 @@
 # NashTech-Intern
-This is my process internship in Nashtech and been training from basic to advance to a fulldone web in folder LibraryManagement clone of how a basic website would write in pratice
+I am currently undergoing an internship at Nashtech, where I am receiving training from basic to advanced levels. The training involves creating a fully functional website, which is stored in the ‘LibraryManagement’ folder. This website serves as a practical example of how a basic website is constructed.
