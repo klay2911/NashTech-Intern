@@ -14,13 +14,19 @@ public class UserService : IUserService
     }
 
     public User GetUserById(int id)
-     {
-         return _unitOfWork.UserRepository.GetUserById(id);
-     }
+    {
+        if (id <= 0)
+        {
+            throw new ArgumentException("Id must be greater than 0", nameof(id));
+        }
+
+        return _unitOfWork.UserRepository.GetUserById(id);
+    }
+
  
-     public User GetUserByUserNameAndPassword(string userName, string password)
-     {
-         return _unitOfWork.UserRepository.GetUserByUserNameAndPassword(userName, password);
-     }
+    public User GetUserByUserNameAndPassword(string userName, string password)
+    {
+     return _unitOfWork.UserRepository.GetUserByUserNameAndPassword(userName, password);
+    }
  }
 

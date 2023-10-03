@@ -22,6 +22,7 @@
     &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.DeleteProduct_ProductDoesNotExist_NotThrowExceptionOrDeleteAnyProduct&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProductAsync_WhenCategoryExists_ShouldCreateProductAndCommitTransaction&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProduct_NullManufacture_SuccessCreate&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::AE300442-9776-45CC-BC71-36BEA6B59ACD::net7.0::UnitTest.Services.ProductServiceTests.CreateProductAsync_NullCategory_ThrowsException&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

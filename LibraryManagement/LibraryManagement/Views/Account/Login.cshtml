@@ -2,6 +2,11 @@
 @{
     ViewBag.Title = "Login";
 }
+<style>
+        .short-alert {
+            height: 60px;  
+        }
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -11,14 +16,19 @@
                 <div class="form-group">
                     @Html.LabelFor(m => m.UserName)
                     @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "User name" })
-                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = " text-danger" })
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Password)
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = " text-danger" })
                 </div>
-                <br>
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger short-alert">
+                             @Html.ValidationSummary(true, "")
+                        </div>
+                    }
                 <div class="form-group">
                     <input type="submit" value="Login" class="btn btn-primary" />
                 </div>
@@ -26,8 +36,3 @@
         </div>
     </div>
 </div>
-
-@* <div class="form-group"> *@
-@*     @Html.CheckBoxFor(m => m.RememberMe) *@
-@*     @Html.LabelFor(m => m.RememberMe) *@
-@* </div> *@

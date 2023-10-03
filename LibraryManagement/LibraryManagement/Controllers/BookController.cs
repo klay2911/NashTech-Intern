@@ -18,17 +18,7 @@ public class BookController : Controller
         _bookService = bookService;
         _categoryService = categoryService;
     }
-
-    // [Authorize(Roles = "SuperUser")]
-    // [HttpGet]
-    // public async Task<IActionResult> Index(int? page)
-    // {
-    //     page ??= 1;
-    //     const int pageSize = 3;
-    //     var pageNumber = (int)page;
-    //     var books = await _bookService.GetAllBooksAsync(includeCategory: true);
-    //     return View(books.ToPagedList(pageNumber, pageSize));
-    // }
+    
     [Authorize(Roles = "SuperUser")]
     [HttpGet]
     public async Task<IActionResult> Index(int? page, string searchTerm)

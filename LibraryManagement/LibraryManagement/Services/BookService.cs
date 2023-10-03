@@ -13,20 +13,11 @@ public class BookService: IBookService
     {
         _unitOfWork = unitOfWork;
     }
-    // public async Task<IEnumerable<Book>> GetAllBooksAsync(bool includeCategory = false)
-    // {
-    //     if (includeCategory)
-    //     {
-    //         return await _unitOfWork.BookRepository.GetAll().Include(b => b.Category).OrderBy(b =>b.Title).ToListAsync();
-    //     }
-    //     return await _unitOfWork.BookRepository.GetAll().ToListAsync();
-    // }
+    
     public async Task<IEnumerable<Book>> GetAllBooksAsync(bool includeCategory = false)
     {
         return await _unitOfWork.BookRepository.GetAllAsync(includeCategory);
     }
-
-
 
     public async Task<Book> GetBookByIdAsync(int id)
     {
@@ -38,18 +29,24 @@ public class BookService: IBookService
         var category = await _unitOfWork.CategoryRepository.GetByIdAsync(book.CategoryId);
         if (category == null)
         {
-            throw new Exception($"The CategoryId {book.CategoryId} does not exist.");
+            throw new Exception($"The Category {book.CategoryId} no longer exists, please refresh the page.");
         }
         await _unitOfWork.BookRepository.CreateAsync(book);
     }
     public async Task UpdateBookAsync(Book book)
     {
         var existingBook = await _unitOfWork.BookRepository.GetByIdAsync(book.BookId);
+        var category = await _unitOfWork.CategoryRepository.GetByIdAsync(book.CategoryId);
         if (existingBook == null)
         {
-            throw new Exception($"The Book with Id {book.BookId} does not exist.");
+            throw new Exception($"The Book with Title {book.Title} does not exist.");
         }
-            
+
+        if (category == null)
+        {
+            throw new Exception($"The Category {book.CategoryId} no longer exists, please refresh the page.");
+        }
+
         existingBook.Title = book.Title;
         existingBook.Author = book.Author;
         existingBook.ISBN = book.ISBN;

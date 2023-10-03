@@ -15,11 +15,7 @@ public class BookRepository : ILibraryRepository<Book>
     {
         _context = context;
     }
-    
-    // public virtual IQueryable<Book> GetAll()
-    // {
-    //     return _context.Books;
-    // }
+  
     public virtual async Task<IEnumerable<Book>> GetAll()
     {
         return await _context.Books.ToListAsync();
@@ -33,10 +29,6 @@ public class BookRepository : ILibraryRepository<Book>
         }
 
         return await _context.Books.ToListAsync();
-
-        // {
-        //     books = books.Include(b => b.Category).OrderBy(b => b.Title);
-        // }
 
     }
 

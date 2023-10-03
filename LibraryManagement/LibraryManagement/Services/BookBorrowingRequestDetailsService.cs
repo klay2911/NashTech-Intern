@@ -13,9 +13,9 @@ public class BookBorrowingRequestDetailsService : IBookBorrowingRequestDetailsSe
         _unitOfWork = unitOfWork;
     }
 
-    public IQueryable<BookBorrowingRequestDetails> GetAll()
+    public async Task<IEnumerable<BookBorrowingRequestDetails>> GetAll()
     {
-        return _unitOfWork.BookBorrowingRequestDetailsRepository.GetAll();
+        return await _unitOfWork.BookBorrowingRequestDetailsRepository.GetAll();
     }
 
     public async Task<BookBorrowingRequestDetails> GetBook(int requestId, int bookId)

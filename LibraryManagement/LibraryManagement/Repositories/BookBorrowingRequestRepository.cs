@@ -8,17 +8,20 @@ namespace LibraryManagement.Repositories;
     {
         private readonly LibraryContext _context;
 
+        public BookBorrowingRequestRepository()
+        {
+        }
         public BookBorrowingRequestRepository(LibraryContext context)
         {
             _context = context;
         }
-
-        public IQueryable<BookBorrowingRequest> GetAll()
+        
+        public virtual async Task<IEnumerable<BookBorrowingRequest>> GetAll()
         {
-            return _context.BorrowingRequests.Include(r => r.User);
+            return await _context.BorrowingRequests.Include(r => r.User).Where(r => r.Status == "Pending").ToListAsync();
         }
 
-        public async Task<BookBorrowingRequest> GetByIdAsync(int requestId)
+        public virtual async Task<BookBorrowingRequest> GetByIdAsync(int requestId)
         {
             // return (await _context.BorrowingRequests.FindAsync(requestId))!;
             return (await _context.BorrowingRequests
@@ -27,14 +30,14 @@ namespace LibraryManagement.Repositories;
                 .FirstOrDefaultAsync(r => r.RequestId == requestId))!;
         }
 
-        public async Task<BookBorrowingRequest> CreateAsync(BookBorrowingRequest borrowingRequest)
+        public virtual async Task<BookBorrowingRequest> CreateAsync(BookBorrowingRequest borrowingRequest)
         {
             _context.BorrowingRequests.Add(borrowingRequest);
             await _context.SaveChangesAsync();
             return borrowingRequest;
         }
 
-        public async Task<int> GetRequestsByUserThisMonth(int userId)
+        public virtual async Task<int> GetRequestsByUserThisMonth(int userId)
         {
             var startOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             var endOfMonth = startOfMonth.AddMonths(1).AddDays(-1);
@@ -44,7 +47,7 @@ namespace LibraryManagement.Repositories;
                 .CountAsync();
         }
 
-        public async Task<List<BookBorrowingRequest>> GetRequestsByUser(int userId)
+        public virtual async Task<List<BookBorrowingRequest>> GetRequestsByUser(int userId)
         {
             return await _context.BorrowingRequests
                 .Include(r => r.BookBorrowingRequestDetails)
@@ -52,7 +55,7 @@ namespace LibraryManagement.Repositories;
                 .Where(r => r.UserId == userId)
                 .ToListAsync();
         }
-        public async Task UpdateRequestStatus(int requestId, string status, int librarianId)
+        public virtual async Task UpdateRequestStatus(int requestId, string status, int librarianId)
         {
             var request = await _context.BorrowingRequests.FindAsync(requestId);
             if (request != null)

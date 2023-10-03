@@ -1,7 +1,6 @@
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using LibraryManagement.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Services;
 
@@ -16,7 +15,7 @@ public class BookBorrowingRequestService : IBookBorrowingRequestService
 
     public async Task<IEnumerable<BookBorrowingRequest>> GetAllBorrowingRequests()
     {
-        return await _unitOfWork.BookBorrowingRequestRepository.GetAll().Where(r => r.Status == "Pending").ToListAsync();
+        return await _unitOfWork.BookBorrowingRequestRepository.GetAll();
     }
 
     public async Task<BookBorrowingRequest> GetRequest(int requestId)

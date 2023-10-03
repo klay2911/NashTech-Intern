@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using LibraryManagement.Models;
 using LibraryManagement.Repositories;
 using LibraryManagement.Services;
@@ -10,7 +9,6 @@ public class BookServiceTests
 {
     private Mock<UnitOfWork> _mockUnitOfWork;
     private Mock<BookRepository> _mockBookRepository;
-    //private Mock<CategoryRepository> _mockCategoryRepository;
     private BookService _bookService;
 
     [SetUp]
@@ -18,7 +16,6 @@ public class BookServiceTests
     {
         _mockUnitOfWork = new Mock<UnitOfWork>();
         _mockBookRepository = new Mock<BookRepository>();
-        //_mockCategoryRepository = new Mock<CategoryRepository>();
         _mockUnitOfWork.Setup(uow => uow.BookRepository).Returns(_mockBookRepository.Object);
         _bookService = new BookService(_mockUnitOfWork.Object);
 
@@ -43,7 +40,7 @@ public class BookServiceTests
         Assert.That(result, Is.EqualTo(books));
     }
     [Test]
-    public async Task GetBookById_ReturnsBookWithGivenId()
+    public async Task GetBookById_BookExists_ReturnsBookWithGivenId()
     {
         // Arrange
         var book = new Book
@@ -57,6 +54,19 @@ public class BookServiceTests
         // compare from count to
         Assert.That(result, Is.EqualTo(book));
     }
+    [Test]
+    public async Task GetBookById_BookDoesNotExist_ReturnsNull()
+    {
+        // Arrange
+        _mockUnitOfWork.Setup(uow => uow.BookRepository.GetByIdAsync(1)).ReturnsAsync((Book)null);
+
+        // Act
+        var result = await _bookService.GetBookByIdAsync(1);
+
+        // Assert
+        Assert.IsNull(result);
+    }
+
     [Test]
     public async Task CreateBookAsync_ValidBook_ReturnsSuccess()
     {
@@ -74,20 +84,18 @@ public class BookServiceTests
         _mockBookRepository.Verify(pr => pr.CreateAsync(book), Times.Once);
     }
     [Test]
-    public Task CreateBookAsync_NullCategory_ThrowsException()
+    public async Task CreateBookAsync_NullCategory_ThrowsException()
     {
         // Arrange
         var book = new Book
             { BookId = 1, Title = "Book 1", Author = "Test", ISBN = "Test1" ,CategoryId = 1};
-        _mockUnitOfWork.Setup(uow => uow.CategoryRepository.GetByIdAsync(book.CategoryId))!
-            .ReturnsAsync(null as Category);
+        _mockUnitOfWork.Setup(uow => uow.CategoryRepository.GetByIdAsync(book.CategoryId)) .ReturnsAsync(null as Category);
 
         // Act & Assert
+        // return Task.CompletedTask;
         var exception = Assert.ThrowsAsync<Exception>(() => _bookService.CreateBookAsync(book));
-        Debug.Assert(exception != null, nameof(exception) + " != null");
-        Assert.That(exception.Message, Is.EqualTo($"The CategoryId {book.CategoryId} does not exist."));
+        Assert.That(exception.Message, Is.EqualTo($"The Category {book.CategoryId} no longer exists, please refresh the page."));
         _mockBookRepository.Verify(pr => pr.CreateAsync(book), Times.Never);
-        return Task.CompletedTask;
     }
     [Test]
     public async Task CreateBook_NullAuthor_SuccessCreate()
@@ -121,29 +129,7 @@ public class BookServiceTests
         // Assert
         _mockBookRepository.Verify(pr => pr.CreateAsync(book), Times.Once);
     }
-    // [Test]
-    // public async Task UpdateBook_ExistBook_UpdateBookAndSaveChanges()
-    // {
-    //     // Arrange
-    //     var book = new Book { BookId = 1, Title = "Test", Author = "Test", CategoryId = 1 };
-    //     var existingBook = new Book { BookId = 1, Title = "Old", Author = "Old", CategoryId = 1 };
-    //
-    //     _mockUnitOfWork.Setup(u => u.BookRepository.GetByIdAsync(book.BookId))
-    //         .ReturnsAsync(existingBook);
-    //
-    //     _mockUnitOfWork.Setup(u => u.SaveAsync())
-    //         .Returns(Task.CompletedTask);
-    //
-    //     // Act
-    //     await _bookService.UpdateBookAsync(book);
-    //
-    //     // Assert
-    //     Assert.That(existingBook.Title, Is.EqualTo(book.Title));
-    //     Assert.That(existingBook.Author, Is.EqualTo(book.Author));
-    //     Assert.That(existingBook.CategoryId, Is.EqualTo(book.CategoryId));
-    //
-    //     _mockUnitOfWork.Verify(u => u.SaveAsync(), Times.Once);
-    // }
+
     [Test]
     public async Task UpdateBookAsync_BookExists_UpdatesSuccessfully()
     {

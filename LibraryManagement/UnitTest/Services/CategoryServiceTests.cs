@@ -9,7 +9,6 @@ public class CategoryServiceTests
 {
     private Mock<UnitOfWork> _mockUnitOfWork;
     private Mock<CategoryRepository> _mockCategoryRepository;
-    //private Mock<CategoryRepository> _mockCategoryRepository;
     private CategoryService _categoryService;
 
     [SetUp]
@@ -17,7 +16,6 @@ public class CategoryServiceTests
     {
         _mockUnitOfWork = new Mock<UnitOfWork>();
         _mockCategoryRepository = new Mock<CategoryRepository>();
-        //_mockCategoryRepository = new Mock<CategoryRepository>();
         _mockUnitOfWork.Setup(uow => uow.CategoryRepository).Returns(_mockCategoryRepository.Object);
         _categoryService = new CategoryService(_mockUnitOfWork.Object);
     }

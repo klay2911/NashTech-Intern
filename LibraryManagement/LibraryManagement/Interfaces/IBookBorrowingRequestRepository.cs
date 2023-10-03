@@ -4,7 +4,7 @@ namespace LibraryManagement.Interfaces;
 
 public interface IBookBorrowingRequestRepository
 {
-    IQueryable<BookBorrowingRequest> GetAll();
+    Task<IEnumerable<BookBorrowingRequest>> GetAll();
     Task<BookBorrowingRequest> GetByIdAsync(int requestId);
     Task<BookBorrowingRequest> CreateAsync(BookBorrowingRequest borrowingRequest);
     Task<int> GetRequestsByUserThisMonth(int userId);

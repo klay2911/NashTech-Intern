@@ -7,6 +7,8 @@
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.CategoryServiceTests.GetAllCategoriesAsync_CategoriesExist_ReturnsAllCategories&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.CategoryServiceTests.GetAllCategoriesAsync_ShouldReturnAllCategories&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=148f686d_002De66c_002D4b7c_002Da66f_002D537625a5424d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetBookById_ReturnsBookWithGivenId #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
@@ -40,6 +42,8 @@
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests.GetUserById_UserExists_ReturnsUser&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.CategoryServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

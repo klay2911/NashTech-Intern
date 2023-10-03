@@ -4,31 +4,48 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManagement.Repositories;
 
-public class BookBorrowingRequestDetailsRepository : IBookBorrowingRequestDetailsRepository
+public class BookBorrowingRequestDetailsRepository : ILibraryRepository<BookBorrowingRequestDetails>
 {
     private readonly LibraryContext _context;
-
+    public BookBorrowingRequestDetailsRepository()
+    {
+    }
     public BookBorrowingRequestDetailsRepository(LibraryContext context)
     {
         _context = context;
     }
 
-    public IQueryable<BookBorrowingRequestDetails> GetAll()
+    public virtual async Task<IEnumerable<BookBorrowingRequestDetails>> GetAll()
     {
-        return _context.BookBorrowingRequestDetails;
+        return await _context.BookBorrowingRequestDetails.ToListAsync();
     }
 
-    public async Task<BookBorrowingRequestDetails> GetBookByRequestId(int requestId, int bookId)
+    public Task<BookBorrowingRequestDetails> GetByIdAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<BookBorrowingRequestDetails> CreateAsync(BookBorrowingRequestDetails entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public virtual async Task<BookBorrowingRequestDetails> GetBookByRequestId(int requestId, int bookId)
     {
         return (await _context.BookBorrowingRequestDetails.FirstOrDefaultAsync(b => b.RequestId == requestId && b.BookId == bookId))!;
     }
 
-    public async Task Add(BookBorrowingRequestDetails details)
+    public virtual async Task Add(BookBorrowingRequestDetails details)
     {
         _context.BookBorrowingRequestDetails.Add(details);
          await _context.SaveChangesAsync();
     }
-    public async Task<BookBorrowingRequestDetails> GetRequestDetailByBookIdAndUserId(int bookId, int userId)
+    public virtual async Task<BookBorrowingRequestDetails> GetRequestDetailByBookIdAndUserId(int bookId, int userId)
     {
         return await _context.BookBorrowingRequestDetails
             .Include(r => r.BookBorrowingRequest)
