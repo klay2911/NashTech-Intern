@@ -2,6 +2,7 @@
 @using X.PagedList
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using X.PagedList.Web.Common
+@using Azure.Core
 
 @model IPagedList<Book>
 
@@ -9,8 +10,7 @@
     Layout = "_SuperUserLayout";
     ViewData["Title"] = "Book Page";
 }
-<head>
-    <style>
+<style>
     .pagination li a {
         border: 1px solid #ddd; /* Gray */
         margin: 0 4px;
@@ -18,13 +18,12 @@
         text-decoration: none;
         transition: background-color .3s;
     }
-    
+
     .pagination li.active a {
         background-color: #4CAF50; /* Green */
         color: white;
     }
         </style>
-</head>
 <form asp-action="Index" method="get">
     <input type="text" name="searchTerm" placeholder="Search books..." />
     <input type="submit" value="Search" />
@@ -43,7 +42,7 @@
         <th>@Html.DisplayNameFor(model => model.First().Author)</th>
         <th>@Html.DisplayNameFor(model => model.First().ISBN)</th>
         <th>@Html.DisplayNameFor(model => model.First().Category.CategoryName)</th>
-        <th>Action</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -62,13 +61,11 @@
     }
     </tbody>
 </table>
-<div class="text-center mt-3">
-    <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
-</div>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), 
-    new PagedListRenderOptions 
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchTerm = ViewBag.SearchTerm }), 
+    new PagedListRenderOptions
     { 
-        DisplayLinkToFirstPage = PagedListDisplayMode.Always, 
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
         DisplayLinkToLastPage = PagedListDisplayMode.Always,
         LinkToFirstPageFormat = "<< First",
         LinkToPreviousPageFormat = "< Previous",
@@ -77,3 +74,22 @@
         MaximumPageNumbersToDisplay = 5,
         DisplayEllipsesWhenNotShowingAllPageNumbers = false
     })
+
+    <div class="text-center mt-3">
+        <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
+    </div>
+@* <div class="text-center mt-3"> *@
+@*     <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a> *@
+@* </div> *@
+@* @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), *@
+@*     new PagedListRenderOptions *@
+@*     { *@
+@*         DisplayLinkToFirstPage = PagedListDisplayMode.Always, *@
+@*         DisplayLinkToLastPage = PagedListDisplayMode.Always, *@
+@*         LinkToFirstPageFormat = "<< First", *@
+@*         LinkToPreviousPageFormat = "< Previous", *@
+@*         LinkToNextPageFormat = "Next >", *@
+@*         LinkToLastPageFormat = "Last >>", *@
+@*         MaximumPageNumbersToDisplay = 5, *@
+@*         DisplayEllipsesWhenNotShowingAllPageNumbers = false *@
+@*       }) *@

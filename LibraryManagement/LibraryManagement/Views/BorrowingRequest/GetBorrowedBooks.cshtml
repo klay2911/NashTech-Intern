@@ -9,8 +9,7 @@
     Layout = "_NormalUserLayout";
     ViewData["Title"] = "Borrowed Books Page";
 }
-<head>
-    <style>
+<style>
     .pagination li a {
         border: 1px solid #ddd; /* Gray */
         margin: 0 4px;
@@ -24,7 +23,6 @@
         color: white;
     }
         </style>
-</head>
 <form asp-action="GetBorrowedBooks" method="get">
     <input type="text" name="searchTerm" placeholder="Search books by title or author..." />
     <input type="submit" value="Search" />
@@ -50,10 +48,7 @@
     }
     </tbody>
 </table>
-<div class="text-center mt-3">
-    <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
-</div>
-@Html.PagedListPager(Model, page => Url.Action("GetBorrowedBooks", new { page }), 
+@Html.PagedListPager(Model, page => Url.Action("GetBorrowedBooks", new { page, searchTerm = ViewBag.SearchTerm }), 
     new PagedListRenderOptions 
     { 
         DisplayLinkToFirstPage = PagedListDisplayMode.Always, 
@@ -65,3 +60,6 @@
         MaximumPageNumbersToDisplay = 5,
         DisplayEllipsesWhenNotShowingAllPageNumbers = false
     })
+<div class="text-center mt-3">
+    <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
+</div>

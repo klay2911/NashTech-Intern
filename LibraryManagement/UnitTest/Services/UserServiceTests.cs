@@ -25,7 +25,7 @@ public class UserServiceTests
     public void GetUserById_UserExists_ReturnsUser()
     {
         var user = new User { UserId = 1 , UserName = "TestUserName", Password = "TestPassWord"};
-        _mockUnitOfWork.Setup(u => u.UserRepository.GetUserById(1)).Returns(user);
+        _mockUnitOfWork.Setup(u => u.UserRepository.GetById(1)).Returns(user);
 
         var result = _userService.GetUserById(1);
 
@@ -35,7 +35,7 @@ public class UserServiceTests
     [Test]
     public void GetUserById_UserDoesNotExist_ReturnsNull()
     {
-        _mockUnitOfWork.Setup(u => u.UserRepository.GetUserById(1)).Returns((User)null);
+        _mockUnitOfWork.Setup(u => u.UserRepository.GetById(1)).Returns((User)null);
 
         var result = _userService.GetUserById(1);
 
@@ -56,7 +56,7 @@ public class UserServiceTests
     public void GetUserById_RepositoryThrowsException_ThrowsException()
     {
         // Arrange
-        _mockUnitOfWork.Setup(u => u.UserRepository.GetUserById(1)).Throws(new Exception());
+        _mockUnitOfWork.Setup(u => u.UserRepository.GetById(1)).Throws(new Exception());
 
         // Act & Assert
         Assert.Throws<Exception>(() => _userService.GetUserById(1));
@@ -67,7 +67,7 @@ public class UserServiceTests
     public void GetUserByUserNameAndPassword_ValidCredentials_ReturnsUser()
     {
         var user = new User { UserName = "test", Password = "password" };
-        _mockUnitOfWork.Setup(u => u.UserRepository.GetUserByUserNameAndPassword("test", "password")).Returns(user);
+        _mockUnitOfWork.Setup(u => u.UserRepository.GetByUserNameAndPassword("test", "password")).Returns(user);
 
         var result = _userService.GetUserByUserNameAndPassword("test", "password");
 
@@ -77,7 +77,7 @@ public class UserServiceTests
     [Test]
     public void GetUserByUserNameAndPassword_InvalidCredentials_ReturnsNull()
     {
-        _mockUnitOfWork.Setup(u => u.UserRepository.GetUserByUserNameAndPassword("test", "wrongpassword")).Returns((User)null);
+        _mockUnitOfWork.Setup(u => u.UserRepository.GetByUserNameAndPassword("test", "wrongpassword")).Returns((User)null);
 
         var result = _userService.GetUserByUserNameAndPassword("test", "wrongpassword");
 
@@ -87,7 +87,7 @@ public class UserServiceTests
     public void GetUserByUserNameAndPassword_RepositoryThrowsException_ThrowsException()
     {
         // Arrange
-        _mockUnitOfWork.Setup(u => u.UserRepository.GetUserByUserNameAndPassword("test", "password")).Throws(new Exception());
+        _mockUnitOfWork.Setup(u => u.UserRepository.GetByUserNameAndPassword("test", "password")).Throws(new Exception());
 
         // Act & Assert
         Assert.Throws<Exception>(() => _userService.GetUserByUserNameAndPassword("test", "password"));

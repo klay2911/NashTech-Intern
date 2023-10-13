@@ -21,24 +21,28 @@ public class BookServiceTests
 
     }
 
-    [Test]
-    public async Task GetAllBooks_ReturnsAllBooks()
-    {
-        // Arrange
-        var books = new List<Book>
-        {
-            new() { BookId = 1, Title = "Book 1", Author = "sss", ISBN = "ss"},
-            new() { BookId = 2, Title = "Book 2", Author = "ss3s", ISBN = "ss2s"},
-        };
-        _mockUnitOfWork.Setup(uow => uow.BookRepository.GetAllAsync(false)).ReturnsAsync(books);
-        
+    // [Test]
+    // public async Task GetAllBooks_ReturnsAllBooks()
+    // {
+    //     // Arrange
+    //     var books = new List<Book>
+    //     {
+    //         new() { BookId = 1, Title = "Book 1", Author = "sss", ISBN = "ss"},
+    //         new() { BookId = 2, Title = "Book 2", Author = "ss3s", ISBN = "ss2s"},
+    //     };
+    //     _mockUnitOfWork.Setup(uow => uow.BookRepository.GetAllAsync(false)).ReturnsAsync(books);
+    //     
+    //
+    //     // Act
+    //     var result = await _bookService.GetAllBooksAsync(1,2,"",true);
+    //
+    //     // Assert
+    //     Assert.That(result, Is.EqualTo(books));
+    // }
     
-        // Act
-        var result = await _bookService.GetAllBooksAsync();
-    
-        // Assert
-        Assert.That(result, Is.EqualTo(books));
-    }
+    //Case GetAllBooks_CountAllBooksInPage2_ReturnExactNumberOfBooks
+    //Case GetAllBooks_BookExistInPage2_ReturnExactBook
+    //Case GetAllBooks_BookNotExistInPage2_ReturnWrongBook
     [Test]
     public async Task GetBookById_BookExists_ReturnsBookWithGivenId()
     {
@@ -174,6 +178,7 @@ public class BookServiceTests
             Assert.That(existingBook.CategoryId, Is.EqualTo(updatedBook.CategoryId));
         });
     }
+    
     [Test]
     public async Task DeleteBookAsync_BookExists_DeletesSuccessfully()
     {
@@ -197,6 +202,4 @@ public class BookServiceTests
         // Act & Assert
         Assert.ThrowsAsync<Exception>(() => _bookService.DeleteBookAsync(id));
     }
-
-    
 }

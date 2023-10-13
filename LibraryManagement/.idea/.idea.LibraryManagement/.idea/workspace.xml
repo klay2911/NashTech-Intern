@@ -10,65 +10,78 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7e6d6096-57b5-4369-864d-cce8d3051dab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/UnitTest/Services/BookBorrowingRequestDetailsTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LibraryManagement/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LibraryManagement/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement.sln.DotSettings.user" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Controllers/AccountController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/Controllers/BookController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Controllers/BookController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibraryManagement/Interfaces/IBookBorrowingRequestDetailsRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Controllers/BorrowingRequestController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Controllers/BorrowingRequestController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Controllers/CategoryController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/Interfaces/IBookBorrowingRequestDetailsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Interfaces/IBookBorrowingRequestDetailsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibraryManagement/Interfaces/IBookBorrowingRequestRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Interfaces/IBookBorrowingRequestRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibraryManagement/Models/UserLogin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Models/UserLogin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Interfaces/IBookBorrowingRequestService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Interfaces/IBookBorrowingRequestService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Interfaces/IBookService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Interfaces/IBookService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Interfaces/ICategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Interfaces/ICategoryService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Interfaces/IUserRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/LibraryManagement.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/LibraryManagement.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Models/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Models/Book.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibraryManagement/Repositories/BookBorrowingRequestDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Repositories/BookBorrowingRequestDetailsRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/Repositories/BookBorrowingRequestRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Repositories/BookBorrowingRequestRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibraryManagement/Repositories/BookRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Repositories/BookRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Repositories/UserRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/Services/BookBorrowingRequestDetailsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Services/BookBorrowingRequestDetailsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/Services/BookBorrowingRequestService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Services/BookBorrowingRequestService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/Services/BookService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Services/BookService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Services/CategoryService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Services/CategoryService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Services/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibraryManagement/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Views/Account/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Views/Book/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Views/Book/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Views/BorrowingRequest/GetBorrowedBooks.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Views/BorrowingRequest/GetBorrowedBooks.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Views/BorrowingRequest/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Views/BorrowingRequest/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Views/BorrowingRequest/ViewBorrowingRequests.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Views/BorrowingRequest/ViewBorrowingRequests.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Views/Category/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Views/Category/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Views/Shared/_NormalUserLayout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Views/Shared/_NormalUserLayout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/Views/Shared/_SuperUserLayout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/Views/Shared/_SuperUserLayout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/bin/Debug/net7.0/LibraryManagement.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/bin/Debug/net7.0/LibraryManagement.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/bin/Debug/net7.0/LibraryManagement.dll" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/bin/Debug/net7.0/LibraryManagement.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/bin/Debug/net7.0/LibraryManagement.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/bin/Debug/net7.0/LibraryManagement.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.dll" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/LibraryManagement.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/ref/LibraryManagement.dll" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/ref/LibraryManagement.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/refint/LibraryManagement.dll" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/Debug/net7.0/refint/LibraryManagement.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UnitTest/Services/BookBorrowingRequestTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/Services/BookBorrowingRequestTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/LibraryManagement.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/LibraryManagement.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/LibraryManagement.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/LibraryManagement.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagement/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagement/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/Services/BookBorrowingRequestDetailsTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/Services/BookBorrowingRequestDetailsServiceTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/Services/BookBorrowingRequestTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/Services/BookBorrowingRequestServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/Services/BookServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/Services/BookServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/Services/CategoryServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/Services/CategoryServiceTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/Services/UserServiceTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/Services/UserServiceTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UnitTest/UnitTest1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/UnitTest.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/UnitTest.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/LibraryManagement.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/LibraryManagement.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/LibraryManagement.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/LibraryManagement.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/LibraryManagement.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/LibraryManagement.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/UnitTest.deps.json" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/UnitTest.deps.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/UnitTest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/UnitTest.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/UnitTest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/bin/Debug/net7.0/UnitTest.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/UnitTest.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/ref/UnitTest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/ref/UnitTest.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/refint/UnitTest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/Debug/net7.0/refint/UnitTest.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/EFCore2/bin/Debug/net7.0/EFCore2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/EFCore2/bin/Debug/net7.0/EFCore2.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/EFCore2/bin/Debug/net7.0/EFCore2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/EFCore2/bin/Debug/net7.0/EFCore2.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/EFCore2/obj/Debug/net7.0/EFCore2.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/EFCore2/obj/Debug/net7.0/EFCore2.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/EFCore2/obj/Debug/net7.0/EFCore2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/EFCore2/obj/Debug/net7.0/EFCore2.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/EFCore2/obj/Debug/net7.0/EFCore2.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/EFCore2/obj/Debug/net7.0/EFCore2.genruntimeconfig.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/EFCore2/obj/Debug/net7.0/EFCore2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/EFCore2/obj/Debug/net7.0/EFCore2.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/bin/Debug/net7.0/EFCore2.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/bin/Debug/net7.0/EFCore2.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/bin/Debug/net7.0/EFCore2.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/bin/Debug/net7.0/EFCore2.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/bin/Debug/net7.0/UnitTest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/bin/Debug/net7.0/UnitTest.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/bin/Debug/net7.0/UnitTest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/bin/Debug/net7.0/UnitTest.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.genruntimeconfig.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/UnitTest.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/ref/UnitTest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/ref/UnitTest.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/refint/UnitTest.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../UnitTest/UnitTest/obj/Debug/net7.0/refint/UnitTest.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/obj/UnitTest.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/UnitTest.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/obj/UnitTest.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/UnitTest.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,11 +96,14 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d37e01f6358343d6ab1337de45727a848000/ef/26850822/PagedListDisplayMode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/19ba5a289f2afd3f4d5e862cb3f3efee6181683a31ee31b86c2298b1f51114b/ServiceProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1e8feaadf5c3fa14d36ea2a638c432a2e1a47b7837d8b83d88303c5d9c15cf/AsyncValueTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/459b5cba13fc65ba87d9a46ab276a2a9b3c1125ef6bac57b7ca4b7ac70c0ad4c/TargetInvocationException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/8aeca8dfcec95a81b42a28e5c138e1c321e89def3fed605511172a8beaec/AsyncTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e74356f198b598e97eaeea83e8b7b1f2bfe27c0a39fedf86bb7dc44827fbda/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Repositories/BookBorrowingRequestDetailsRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f9749fe3576a687c3c42f3794cefe8f8d91e62f939c66c0a32dbb3f74255/ManualResetEventSlim.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectId" id="2VNmx5uzWGt5g2iW7T36uvbe9PS" />
@@ -191,6 +207,24 @@
       <workItem from="1696176979348" duration="5920000" />
       <workItem from="1696216005353" duration="6018000" />
       <workItem from="1696238724910" duration="2664000" />
+      <workItem from="1696311755117" duration="4126000" />
+      <workItem from="1696317093315" duration="518000" />
+      <workItem from="1696487214113" duration="1231000" />
+      <workItem from="1696493373648" duration="808000" />
+      <workItem from="1696494435378" duration="68000" />
+      <workItem from="1696494717572" duration="75000" />
+      <workItem from="1696573235602" duration="11739000" />
+      <workItem from="1696609188958" duration="790000" />
+      <workItem from="1696646701126" duration="6489000" />
+      <workItem from="1696782053110" duration="2367000" />
+      <workItem from="1696854263356" duration="353000" />
+      <workItem from="1696906625522" duration="4893000" />
+      <workItem from="1697004222763" duration="17120000" />
+      <workItem from="1697048279621" duration="1312000" />
+      <workItem from="1697089448018" duration="14362000" />
+      <workItem from="1697104214705" duration="877000" />
+      <workItem from="1697130575945" duration="4201000" />
+      <workItem from="1697164516810" duration="1417000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,3 @@
-
-using LibraryManagement.Controllers;
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using LibraryManagement.Repositories;
@@ -14,7 +12,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<UnitOfWork>();
 builder.Services.AddScoped<ILibraryRepository<Book>, BookRepository>();
 builder.Services.AddScoped<ILibraryRepository<Category>, CategoryRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ILibraryRepository<User>, UserRepository>();
 builder.Services.AddScoped<IBookBorrowingRequestRepository, BookBorrowingRequestRepository>();
 builder.Services.AddScoped<ILibraryRepository<BookBorrowingRequestDetails>, BookBorrowingRequestDetailsRepository>();
 builder.Services.AddScoped<IBookService, BookService>();
@@ -47,7 +45,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-// app.UseMiddleware<JwtMiddleware>();
 app.UseAuthentication();
 
 app.UseAuthorization();
@@ -57,32 +54,3 @@ app.MapControllerRoute(
     pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();
-
-// public class JwtMiddleware
-// {
-//     private readonly RequestDelegate _next;
-//     private readonly AccountController _yourService; // replace with your actual service that has the ValidateToken method
-//
-//     public JwtMiddleware(RequestDelegate next, AccountController yourService)
-//     {
-//         _next = next;
-//         _yourService = yourService;
-//     }
-//
-//     public async Task Invoke(HttpContext context)
-//     {
-//         var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-//
-//         if (token != null)
-//         {
-//             var claimsPrincipal = _yourService.ValidateToken(token);
-//
-//             if (claimsPrincipal != null)
-//             {
-//                 context.User = claimsPrincipal;
-//             }
-//         }
-//
-//         await _next(context);
-//     }
-// }

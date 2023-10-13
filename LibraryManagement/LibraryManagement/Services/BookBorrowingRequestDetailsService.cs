@@ -7,7 +7,6 @@ namespace LibraryManagement.Services;
 public class BookBorrowingRequestDetailsService : IBookBorrowingRequestDetailsService
 {
     private readonly UnitOfWork _unitOfWork;
-
     public BookBorrowingRequestDetailsService(UnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
@@ -33,9 +32,17 @@ public class BookBorrowingRequestDetailsService : IBookBorrowingRequestDetailsSe
 
         await _unitOfWork.BookBorrowingRequestDetailsRepository.Add(details);
     }
-    public async Task<BookBorrowingRequestDetails> GetRequestDetail(int bookId, int userId)
+    public async Task<Book> CheckExistingRequest(int userId, List<int> bookIds)
     {
-       return await _unitOfWork.BookBorrowingRequestDetailsRepository.GetRequestDetailByBookIdAndUserId(bookId, userId);
+        foreach (var bookId in bookIds)
+        {
+            var existingRequestDetail = await _unitOfWork.BookBorrowingRequestDetailsRepository.GetRequestDetailByBookIdAndUserId(bookId, userId);
+            if (existingRequestDetail != null)
+            {
+                return await _unitOfWork.BookRepository.GetByIdAsync(bookId);
+            }
+        }
+        return null;
     }
 }
 

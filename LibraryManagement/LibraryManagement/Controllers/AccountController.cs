@@ -15,12 +15,10 @@ namespace LibraryManagement.Controllers;
 public class AccountController : Controller
 {
     private readonly IUserService _userService;
-    private readonly IConfiguration _configuration;
 
-    public AccountController(IUserService userService,IConfiguration configuration)
+    public AccountController(IUserService userService)
     {
         _userService = userService;
-        _configuration = configuration;
     }
 
     [HttpGet]
@@ -46,11 +44,9 @@ public class AccountController : Controller
         {
             var token = GenerateJwtToken(existingUser);
         
-            // Validate the generated token
             var claimsPrincipal = ValidateToken(token);
             if (claimsPrincipal == null)
             {
-                // Handle invalid token scenario
                 ModelState.AddModelError("", "Invalid token, please try again");
                 return View(userLogin);
             }

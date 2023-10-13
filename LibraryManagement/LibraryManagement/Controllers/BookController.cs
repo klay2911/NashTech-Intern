@@ -3,7 +3,6 @@ using LibraryManagement.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using X.PagedList;
 
 namespace LibraryManagement.Controllers;
 
@@ -23,18 +22,16 @@ public class BookController : Controller
     [HttpGet]
     public async Task<IActionResult> Index(int? page, string searchTerm)
     {
-        page ??= 1;
-        const int pageSize = 3;
-        var pageNumber = (int)page;
-        var books = await _bookService.GetAllBooksAsync(includeCategory: true);
-
-        if (!string.IsNullOrEmpty(searchTerm))
-        {
-            books = books.Where(b => b.Title.Contains(searchTerm));
-        }
-
-        return View(books.ToPagedList(pageNumber, pageSize));
+        int pageNumber = (page ?? 1);
+        int pageSize = 5;
+    
+        var books = await _bookService.GetAllBooksAsync(pageNumber, pageSize, searchTerm, includeCategory: true);
+        
+        ViewBag.SearchTerm = searchTerm;
+    
+        return View(books);
     }
+
     [HttpGet]
     public async Task<IActionResult> Create()    
     {
@@ -44,11 +41,38 @@ public class BookController : Controller
     }
     
     [HttpPost]
-    public async Task<IActionResult> Create(Book book)
+    public async Task<IActionResult> Create(Book book, IFormFile pdfFile)
     {
+        var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs");
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+
+        var filePath = Path.Combine(directoryPath, pdfFile.FileName);
+        await using (var stream = new FileStream(filePath, FileMode.Create))
+        {
+            await pdfFile.CopyToAsync(stream);
+        }
+        // var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs", pdfFile.FileName);
+        // await using (var stream = new FileStream(filePath, FileMode.Create))
+        // {
+        //     await pdfFile.CopyToAsync(stream);
+        // }
+
+        book.PdfFilePath = $"/pdfs/{pdfFile.FileName}";
+    
         await _bookService.CreateBookAsync(book);
         return RedirectToAction("Index");
     }
+
+    
+    // [HttpPost]
+    // public async Task<IActionResult> Create(Book book)
+    // {
+    //     await _bookService.CreateBookAsync(book);
+    //     return RedirectToAction("Index");
+    // }
     
     [HttpGet]
     public async Task<IActionResult> Update(int id)
@@ -60,15 +84,33 @@ public class BookController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Update(int id, Book book)
+    public async Task<IActionResult> Update(int id, Book book, IFormFile pdfFile)
     {
         if (id != book.BookId)
             return NotFound();
-        if (!ModelState.IsValid) return View(book);
+        // if (!ModelState.IsValid) return View(book);
+
+        if (pdfFile != null && pdfFile.Length > 0)
+        {
+            var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs");
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            var filePath = Path.Combine(directoryPath, pdfFile.FileName);
+            await using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await pdfFile.CopyToAsync(stream);
+            }
+
+            book.PdfFilePath = $"/pdfs/{pdfFile.FileName}";
+        }
+
         await _bookService.UpdateBookAsync(book);
         return RedirectToAction("Index");
     }
-   
+
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
@@ -86,11 +128,3 @@ public class BookController : Controller
         return RedirectToAction("Index");
     }
 } 
-/*[HttpGet]
- public async Task<IActionResult> Details(int id)
- {
-     var book = await _bookService.GetBookByIdAsync(id);
-     if (book == null)
-         return NotFound();
-     return View(book);
- }*/

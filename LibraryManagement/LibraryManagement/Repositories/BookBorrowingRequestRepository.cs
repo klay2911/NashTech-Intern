@@ -23,7 +23,6 @@ namespace LibraryManagement.Repositories;
 
         public virtual async Task<BookBorrowingRequest> GetByIdAsync(int requestId)
         {
-            // return (await _context.BorrowingRequests.FindAsync(requestId))!;
             return (await _context.BorrowingRequests
                 .Include(r => r.BookBorrowingRequestDetails)
                 .ThenInclude(d => d.Book)

@@ -20,13 +20,13 @@ public class UserService : IUserService
             throw new ArgumentException("Id must be greater than 0", nameof(id));
         }
 
-        return _unitOfWork.UserRepository.GetUserById(id);
+        return _unitOfWork.UserRepository.GetById(id);
     }
 
  
     public User GetUserByUserNameAndPassword(string userName, string password)
     {
-     return _unitOfWork.UserRepository.GetUserByUserNameAndPassword(userName, password);
+     return _unitOfWork.UserRepository.GetByUserNameAndPassword(userName, password);
     }
  }
 

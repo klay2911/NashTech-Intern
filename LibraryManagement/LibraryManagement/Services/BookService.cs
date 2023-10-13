@@ -1,7 +1,7 @@
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using LibraryManagement.Repositories;
-using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace LibraryManagement.Services;
 
@@ -14,11 +14,21 @@ public class BookService: IBookService
         _unitOfWork = unitOfWork;
     }
     
-    public async Task<IEnumerable<Book>> GetAllBooksAsync(bool includeCategory = false)
+    public async Task<IPagedList<Book>> GetAllBooksAsync(int pageNumber, int pageSize, string searchTerm = "", bool includeCategory = false)
     {
-        return await _unitOfWork.BookRepository.GetAllAsync(includeCategory);
-    }
+        var books = await _unitOfWork.BookRepository.GetAllAsync(includeCategory);
 
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            books = books.Where(b => b.Title.Contains(searchTerm));
+        }
+
+        int totalCount = books.Count();
+
+        var pagedBooks = books.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+        return new StaticPagedList<Book>(pagedBooks, pageNumber, pageSize, totalCount);
+    }
     public async Task<Book> GetBookByIdAsync(int id)
     {
         return await _unitOfWork.BookRepository.GetByIdAsync(id);
@@ -36,15 +46,9 @@ public class BookService: IBookService
     public async Task UpdateBookAsync(Book book)
     {
         var existingBook = await _unitOfWork.BookRepository.GetByIdAsync(book.BookId);
-        var category = await _unitOfWork.CategoryRepository.GetByIdAsync(book.CategoryId);
         if (existingBook == null)
         {
-            throw new Exception($"The Book with Title {book.Title} does not exist.");
-        }
-
-        if (category == null)
-        {
-            throw new Exception($"The Category {book.CategoryId} no longer exists, please refresh the page.");
+            throw new Exception($"The Book with Id {book.BookId} does not exist.");
         }
 
         existingBook.Title = book.Title;

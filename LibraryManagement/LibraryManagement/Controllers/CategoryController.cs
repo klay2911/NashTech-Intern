@@ -19,15 +19,14 @@ public class CategoryController : Controller
     [HttpGet]
     public async Task<IActionResult> Index(int? page, string searchTerm)
     {
-        page ??= 1;
-        const int pageSize = 3;
-        var pageNumber = (int)page;
-        var categories = await _categoryService.GetAllCategoriesAsync();
-        if (!string.IsNullOrEmpty(searchTerm))
-        {
-            categories = categories.Where(b => b.CategoryName.Contains(searchTerm));
-        }
-        return View(categories.ToPagedList(pageNumber, pageSize));
+        int pageNumber = (page ?? 1);
+        int pageSize = 5;
+        
+        var categories = await _categoryService.GetAllCategoriesAsync(pageNumber, pageSize, searchTerm);
+        
+        ViewBag.SearchTerm = searchTerm;
+        
+        return View(categories);
     }
 
     [HttpGet]
@@ -63,14 +62,6 @@ public class CategoryController : Controller
         }
         return View(category);
     }
-    /*[HttpGet]
-    public async Task<IActionResult> Details(int id)
-    {
-        var category = await _categoryService.GetCategoryByIdAsync(id);
-        if (category == null)
-            return NotFound();
-        return View(category);
-    }*/
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {

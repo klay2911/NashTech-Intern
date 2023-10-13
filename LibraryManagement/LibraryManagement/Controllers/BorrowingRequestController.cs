@@ -1,9 +1,12 @@
+using System.Drawing.Imaging;
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using X.PagedList;
 using Newtonsoft.Json;
+// using PdfiumViewer;
+using Spire.Pdf;
+using X.PagedList;
 
 namespace LibraryManagement.Controllers;
 
@@ -27,22 +30,33 @@ public class BorrowingRequestController : Controller
     [HttpGet]
     public async Task<IActionResult> Index(int? page, string searchTerm)
     {
-        page ??= 1;
+        int pageNumber = (page ?? 1);
         const int pageSize = 5;
-        var pageNumber = (int)page;
-        var books = await _bookService.GetAllBooksAsync(includeCategory: true);
-        if (!string.IsNullOrEmpty(searchTerm))
+        var books = await _bookService.GetAllBooksAsync(pageNumber, pageSize, searchTerm, includeCategory: true);
+        var bookIdsInRequest = HttpContext.Session.GetString("BookIdsInRequest");
+        ViewBag.SearchTerm = searchTerm;
+        ViewBag.BookIdsInRequest = (bookIdsInRequest != null ? JsonConvert.DeserializeObject<List<int>>(bookIdsInRequest) : new List<int>())!;
+
+        var bookImages = new Dictionary<int, string>();
+        foreach (var book in books)
         {
-            books = books.Where(b => b.Title.Contains(searchTerm));
+            var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.PdfFilePath.TrimStart('/'));
+            await using var pdfStream = System.IO.File.OpenRead(pdfPath);
+            var pdf = new PdfDocument();
+            pdf.LoadFromStream(pdfStream);
+
+            var image = pdf.SaveAsImage(0);
+
+            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\{book.BookId}Page1.png");
+            image.Save(imagePath, ImageFormat.Png);
+
+            bookImages.Add(book.BookId, $"/images/{book.BookId}Page1.png");
         }
 
-        var bookIdsInRequest = HttpContext.Session.GetString("BookIdsInRequest");
-        ViewBag.BookIdsInRequest = (bookIdsInRequest != null
-            ? JsonConvert.DeserializeObject<List<int>>(bookIdsInRequest)
-            : new List<int>())!;
+        ViewBag.BookImages = bookImages;
+
         return View(books.ToPagedList(pageNumber, pageSize));
     }
-
     [Authorize(Roles = "NormalUser")]
     [HttpPost]
     public IActionResult AddBookToRequest(int bookId)
@@ -86,119 +100,78 @@ public class BorrowingRequestController : Controller
         return RedirectToAction("Index");
     }
 
-[Authorize(Roles = "NormalUser")]
-[HttpPost]
-public async Task<IActionResult> CreateBorrowingRequest()
-{
-    var userId = int.Parse(HttpContext.Session.GetString("UserId"));
-    var userRequestsThisMonth = await _borrowingRequestService.GetNumberRequests(userId);
-
-    if (userRequestsThisMonth >= 3)
+    [Authorize(Roles = "NormalUser")]
+    [HttpPost]
+    public async Task<IActionResult> CreateBorrowingRequest()
     {
-        TempData["Warning"] = "You have requested 3 times this month, you can request later next month.";
-        return RedirectToAction("Index");
-    }
-
-    var bookIdsInRequestJson = HttpContext.Session.GetString("BookIdsInRequest");
-    if (string.IsNullOrEmpty(bookIdsInRequestJson))
-    {
-        TempData["Warning"] = "You have not added any book to the request.";
-        return RedirectToAction("Index");
-    }
-
-    var bookIdsInRequest = JsonConvert.DeserializeObject<List<int>>(bookIdsInRequestJson);
-    if (bookIdsInRequest == null || !bookIdsInRequest.Any())
-    {
-        TempData["Warning"] = "You have not added any book to the request.";
-        return RedirectToAction("Index");
-    }
-
-    foreach (var bookId in bookIdsInRequest)
-    {
-        var existingRequestDetail = await _borrowingRequestDetailsService.GetRequestDetail(bookId,userId);
-        if (existingRequestDetail != null)
+        var userId = int.Parse(HttpContext.Session.GetString("UserId"));
+        if (await _borrowingRequestService.CheckUserRequestLimit(userId))
         {
-            var book = await _bookService.GetBookByIdAsync(bookId);
+            TempData["Warning"] = "You have requested 3 times this month, you can request later next month.";
+            return RedirectToAction("Index");
+        }
+        
+        var bookIdsInRequestJson = HttpContext.Session.GetString("BookIdsInRequest");
+        List<int> bookIdsInRequest = string.IsNullOrEmpty(bookIdsInRequestJson) ? new List<int>() : JsonConvert.DeserializeObject<List<int>>(bookIdsInRequestJson);
+        // var bookIdsInRequest = JsonConvert.DeserializeObject<List<int>>(bookIdsInRequestJson);
+        var book = await _borrowingRequestDetailsService.CheckExistingRequest(userId, bookIdsInRequest);
+        if (book != null)
+        {
             TempData["Warning"] = $"You have already requested the book {book.Title}.";
             return RedirectToAction("Index");
         }
-    }
+        
+        var borrowingRequest = new BookBorrowingRequest
+        {
+            UserId = userId,
+            DateRequested = DateTime.Now,
+            Status = "Pending"
+        };
 
-    var borrowingRequest = new BookBorrowingRequest
-    {
-        UserId = userId,
-        DateRequested = DateTime.Now,
-        Status = "Pending"
-    };
-
-    await _borrowingRequestService.CreateBorrowingRequestAsync(borrowingRequest);
-
-    foreach (var requestDetail in bookIdsInRequest.Select(bookId => new BookBorrowingRequestDetails
-             {
-                 RequestId = borrowingRequest.RequestId,
-                 BookId = bookId
-             }))
-    {
         try
         {
-            await _borrowingRequestDetailsService.AddBookToRequest(requestDetail);
+            await _borrowingRequestService.CreateBorrowingRequestAsync(borrowingRequest, bookIdsInRequestJson);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Failed to add books to request.");
+            TempData["Warning"] = ex.Message;
+            return RedirectToAction("Index");
         }
+
+        foreach (var requestDetail in bookIdsInRequest.Select(bookId => new BookBorrowingRequestDetails
+                 {
+                     RequestId = borrowingRequest.RequestId,
+                     BookId = bookId
+                 }))
+            await _borrowingRequestDetailsService.AddBookToRequest(requestDetail);
+        HttpContext.Session.Remove("BookIdsInRequest");
+
+        return RedirectToAction("Index");
     }
-
-    HttpContext.Session.Remove("BookIdsInRequest");
-
-    return RedirectToAction("Index");
-}
-
-
-        
+    
     [Authorize(Roles = "NormalUser")]
     [HttpGet]
     public async Task<IActionResult> GetBorrowedBooks(int? page, string searchTerm)
     {
         var userId = HttpContext.Session.GetString("UserId");
-        var borrowingRequests = await _borrowingRequestService.GetUserRequests(Convert.ToInt32(userId));
+        const int pageSize = 5;
+        var pageNumber = (page ?? 1);
+        var borrowedBooks = await _borrowingRequestService.GetUserBorrowedBooks(Convert.ToInt32(userId), pageNumber, pageSize, searchTerm);
 
-        var borrowedBooks = new List<BookViewModel>();
-
-        foreach (var request in borrowingRequests)
-        {
-            foreach (var detail in request.BookBorrowingRequestDetails)
-            {
-                var book = await _bookService.GetBookByIdAsync(detail.BookId);
-                if (!string.IsNullOrEmpty(searchTerm) && !book.Title.Contains(searchTerm))
-                {
-                    continue;
-                }
-                borrowedBooks.Add(new BookViewModel
-                {
-                    BookId = book.BookId,
-                    Title = book.Title,
-                    Author = book.Author,
-                    ISBN = book.ISBN,
-                    CategoryId = book.CategoryId,
-                    Status = request.Status
-                });
-            }
-        }
-
-        int pageSize = 5;
-        int pageNumber = (page ?? 1);
-        return View(borrowedBooks.ToPagedList(pageNumber, pageSize));
+        ViewBag.SearchTerm = searchTerm;
+        return View(borrowedBooks);
     }
     
     [Authorize(Roles = "SuperUser")]
     [HttpGet]
-    public async Task<IActionResult> ViewBorrowingRequests(int? page)
-    {
-        const int pageSize = 5;
-        var pageNumber = (page ?? 1);
-        var borrowingRequests = await _borrowingRequestService.GetAllBorrowingRequests();
-        return View(borrowingRequests.ToPagedList(pageNumber, pageSize));
+    public async Task<IActionResult> ViewBorrowingRequests(int? page, string searchTerm = "")  
+    {  
+        const int pageSize = 5;  
+        var pageNumber = (page ?? 1);  
+
+        var borrowingRequests = await _borrowingRequestService.GetAllBorrowingRequests(pageNumber, pageSize, searchTerm);  
+
+        return View(borrowingRequests);
     }
     
     [Authorize(Roles = "SuperUser")]

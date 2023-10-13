@@ -47,7 +47,7 @@
         <th>@Html.DisplayNameFor(model => model.First().Author)</th>
         <th>@Html.DisplayNameFor(model => model.First().ISBN)</th>
         <th>@Html.DisplayNameFor(model => model.First().Category.CategoryName)</th>
-        <th>Action</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -82,7 +82,7 @@
     <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
 </div>
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), 
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchTerm = ViewBag.SearchTerm }), 
     new PagedListRenderOptions 
     { 
         DisplayLinkToFirstPage = PagedListDisplayMode.Always, 
@@ -94,3 +94,4 @@
         MaximumPageNumbersToDisplay = 5,
         DisplayEllipsesWhenNotShowingAllPageNumbers = false
     })
+

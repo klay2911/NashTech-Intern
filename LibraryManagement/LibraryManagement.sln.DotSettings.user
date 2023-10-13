@@ -1,49 +1,17 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=004a55ad_002D1ece_002D49c2_002D91bc_002De6c8fd71fe06/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetAllBooksAsync_WithoutCategory_ReturnsAllBooks" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	
+	
+	
+	
+	
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8ecabc51_002D846e_002D463e_002Dbf4c_002D092fafc416cb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetProductById_ReturnsProductWithGivenId" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests.GetUserById_UserExists_ReturnsUser&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests.GetUserById_UserDoesNotExist_ReturnsNull&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.CategoryServiceTests.GetAllCategoriesAsync_CategoriesExist_ReturnsAllCategories&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.CategoryServiceTests.GetAllCategoriesAsync_ShouldReturnAllCategories&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=148f686d_002De66c_002D4b7c_002Da66f_002D537625a5424d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetBookById_ReturnsBookWithGivenId #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests.GetBookById_ReturnsBookWithGivenId&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1b6aad48_002Df09c_002D4ff7_002D840a_002D56a1f2fc9f96/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetProductById_ReturnsProductWithGivenId #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests.GetProductById_ReturnsProductWithGivenId&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=22cf7baa_002D23fa_002D4d34_002D82b3_002D58fe10e09068/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetBookById_ReturnsBookWithGivenId #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests.GetBookById_ReturnsBookWithGivenId&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4fcf9104_002D933d_002D404d_002Da512_002D40ca54e3f351/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetProductById_ReturnsProductWithGivenId #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests.GetProductById_ReturnsProductWithGivenId&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8ecabc51_002D846e_002D463e_002Dbf4c_002D092fafc416cb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetProductById_ReturnsProductWithGivenId" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests.GetProductById_ReturnsProductWithGivenId&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b700f573_002D5d46_002D4461_002D818c_002Dbd4a520d0872/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetBookById_ReturnsBookWithGivenId" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests.GetUserById_UserExists_ReturnsUser&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.CategoryServiceTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
+	
 	</wpf:ResourceDictionary>

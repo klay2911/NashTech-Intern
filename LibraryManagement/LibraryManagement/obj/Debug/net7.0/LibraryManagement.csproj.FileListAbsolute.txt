@@ -165,3 +165,11 @@ F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\ob
 F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\obj\Debug\net7.0\LibraryManagement.pdb
 F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\obj\Debug\net7.0\LibraryManagement.genruntimeconfig.cache
 F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\obj\Debug\net7.0\ref\LibraryManagement.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\bin\Debug\net7.0\Spire.Pdf.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\bin\Debug\net7.0\PdfiumViewer.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\bin\Debug\net7.0\PdfSharpCore.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\bin\Debug\net7.0\ICSharpCode.SharpZipLib.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\bin\Debug\net7.0\SixLabors.Fonts.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\bin\Debug\net7.0\SixLabors.ImageSharp.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\bin\Debug\net7.0\nl\PdfiumViewer.resources.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement\bin\Debug\net7.0\de\PdfSharpCore.resources.dll

@@ -9,9 +9,19 @@
 {
     <div class="alert alert-success">@TempData["Message"]</div>
 }
+@* <div class="row"> *@
+@*     <div class="col-md-4"> *@
+@*         <form asp-action="Create"> *@
+@*              *@
+@*             <div class="form-group"> *@
+@*                 <input type="submit" name="Create" value="Create" class="btn btn-primary"/> *@
+@*             </div> *@
+@*         </form> *@
+@*     </div> *@
+@* </div> *@
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
             <input asp-for="BookId" type="hidden" class="form-control"/>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -33,6 +43,10 @@
                <select asp-for="CategoryId" asp-items="ViewBag.CategoryId" class="form-control"></select>
                <span asp-validation-for="CategoryId" class="text-danger"></span>
            </div>
+            <div class="form-group">
+                <label for="pdfFile" class="control-label">PDF File</label>
+                <input type="file" id="pdfFile" name="pdfFile" class="form-control"/>
+            </div>
             <div class="form-group">
                 <input type="submit" name="Create" value="Create" class="btn btn-primary"/>
             </div>

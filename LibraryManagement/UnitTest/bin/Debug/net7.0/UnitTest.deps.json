@@ -87,6 +87,18 @@
           }
         }
       },
+      "FreeSpire.PDF/8.6.0": {
+        "dependencies": {
+          "System.Drawing.Common": "6.0.0",
+          "System.Text.Encoding.CodePages": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Spire.Pdf.dll": {
+            "assemblyVersion": "8.6.1.0",
+            "fileVersion": "8.6.1.1360"
+          }
+        }
+      },
       "JetBrains.Annotations/2022.3.1": {
         "runtime": {
           "lib/netstandard2.0/JetBrains.Annotations.dll": {
@@ -897,6 +909,7 @@
       },
       "LibraryManagement/1.0.0": {
         "dependencies": {
+          "FreeSpire.PDF": "8.6.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.11",
           "Microsoft.EntityFrameworkCore": "7.0.11",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.11",
@@ -951,6 +964,13 @@
       "sha512": "sha512-Xzty6uXwqiRunWVNE0K7Ufhd/vFOYX4Dsjp/rPmdzjkthL3y2mTxumLjQf8HUYu9QeGP9J4ONWkb1Ft8ulSkZQ==",
       "path": "entityframeworkcore.testing.moq/5.0.0",
       "hashPath": "entityframeworkcore.testing.moq.5.0.0.nupkg.sha512"
+    },
+    "FreeSpire.PDF/8.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wXMAuriDaNcQWLZhg6cRGE+qE7rdeEIrSq8bePreuUl2pZDvt+yQ1YeSQEGFndekbLhff6lAd8Zd3uou7TvnEA==",
+      "path": "freespire.pdf/8.6.0",
+      "hashPath": "freespire.pdf.8.6.0.nupkg.sha512"
     },
     "JetBrains.Annotations/2022.3.1": {
       "type": "package",

@@ -1,6 +1,8 @@
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using LibraryManagement.Repositories;
+using Newtonsoft.Json;
+using X.PagedList;
 
 namespace LibraryManagement.Services;
 
@@ -12,31 +14,84 @@ public class BookBorrowingRequestService : IBookBorrowingRequestService
     {
         _unitOfWork = unitOfWork;
     }
-
-    public async Task<IEnumerable<BookBorrowingRequest>> GetAllBorrowingRequests()
+    public async Task<IPagedList<BookBorrowingRequest>> GetAllBorrowingRequests(int pageNumber, int pageSize, string searchTerm = "")
     {
-        return await _unitOfWork.BookBorrowingRequestRepository.GetAll();
+        var requests = await _unitOfWork.BookBorrowingRequestRepository.GetAll();
+
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            requests = requests.Where(r => r.BookBorrowingRequestDetails.Any(d => d.Book.Title.Contains(searchTerm)));
+        }
+
+        int totalCount = requests.Count();
+
+        var pagedRequests = requests.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+        return new StaticPagedList<BookBorrowingRequest>(pagedRequests, pageNumber, pageSize, totalCount);
     }
+
 
     public async Task<BookBorrowingRequest> GetRequest(int requestId)
     {
         return await _unitOfWork.BookBorrowingRequestRepository.GetByIdAsync(requestId);
     }
-    public async Task<List<BookBorrowingRequest>> GetUserRequests(int userId)
+    public async Task<IPagedList<BookViewModel>> GetUserBorrowedBooks(int userId, int pageNumber, int pageSize, string searchTerm)
     {
-       return await _unitOfWork.BookBorrowingRequestRepository.GetRequestsByUser(userId);
+        var borrowingRequests = await _unitOfWork.BookBorrowingRequestRepository.GetRequestsByUser(userId);
+
+        var borrowedBooks = new List<BookViewModel>();
+
+        foreach (var request in borrowingRequests)
+        {
+            foreach (var detail in request.BookBorrowingRequestDetails)
+            {
+                var book = await _unitOfWork.BookRepository.GetByIdAsync(detail.BookId);
+                borrowedBooks.Add(new BookViewModel
+                {
+                    BookId = book.BookId,
+                    Title = book.Title,
+                    Author = book.Author,
+                    ISBN = book.ISBN,
+                    CategoryId = book.CategoryId,
+                    Status = request.Status
+                });
+            }
+        }
+
+        if (!string.IsNullOrEmpty(searchTerm))
+        {
+            borrowedBooks = borrowedBooks.Where(b => b.Title.Contains(searchTerm)).ToList();
+        }
+
+        int totalCount = borrowedBooks.Count();
+
+        var pagedBooks = borrowedBooks.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+        return new StaticPagedList<BookViewModel>(pagedBooks, pageNumber, pageSize, totalCount);
     }
-    public async Task CreateBorrowingRequestAsync(BookBorrowingRequest borrowingRequest)
-    { 
+
+    public async Task CreateBorrowingRequestAsync(BookBorrowingRequest borrowingRequest, string bookIdsInRequestJson)
+    {
+        if (string.IsNullOrEmpty(bookIdsInRequestJson))
+        {
+            throw new Exception("You have not added any book to the request.");
+        }
+
+        var bookIdsInRequest = JsonConvert.DeserializeObject<List<int>>(bookIdsInRequestJson);
+        if (bookIdsInRequest == null || !bookIdsInRequest.Any())
+        {
+            throw new Exception("You have not added any book to the request.");
+        }
+
         await _unitOfWork.BookBorrowingRequestRepository.CreateAsync(borrowingRequest);
     }
-    public async Task<int> GetNumberRequests(int userId)
+    public async Task<bool> CheckUserRequestLimit(int userId)
     {
-        return await _unitOfWork.BookBorrowingRequestRepository.GetRequestsByUserThisMonth(userId);
+        var userRequestsThisMonth = await _unitOfWork.BookBorrowingRequestRepository.GetRequestsByUserThisMonth(userId);
+        return userRequestsThisMonth >= 3;
     }
     public async Task UpdateRequestStatus(int requestId, string status, int librarianId)
     {
         await _unitOfWork.BookBorrowingRequestRepository.UpdateRequestStatus(requestId, status, librarianId);
     }
 }
-

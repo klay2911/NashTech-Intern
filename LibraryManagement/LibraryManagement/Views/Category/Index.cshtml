@@ -41,7 +41,7 @@
     <thead>
     <tr>
         <th>@Html.DisplayNameFor(model => model.First().CategoryName)</th>
-        <th>Action</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -60,7 +60,7 @@
 <div class="text-center mt-3">
     <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest"  class="btn btn-primary">Back to Home Page</a>
 </div>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), 
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchTerm = ViewBag.SearchTerm }), 
     new PagedListRenderOptions 
     { 
         DisplayLinkToFirstPage = PagedListDisplayMode.Always, 
