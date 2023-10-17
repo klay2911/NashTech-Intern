@@ -1,0 +1,51 @@
+@model Book
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "_NormalUserLayout";
+}
+<style>
+    .book-details {
+        display: flex;
+    }
+    
+    .book-image img {
+        width: 100%;
+        max-width: 200px; /* Adjust as needed */
+        height: auto;
+    }
+    
+    .book-info {
+        flex-grow: 1;
+        margin-left: 20px;
+    }
+</style>
+<div class="book-details">
+    <div class="book-image">
+        <img src="@ViewBag.BookImage" alt="First page of @Model.Title" />
+    </div>
+    <div class="book-info">
+        <p><strong>Title:</strong> @Html.DisplayFor(model => model.Title)</p>
+        <p><strong>Author:</strong> @Html.DisplayFor(model => model.Author)</p>
+        <p><strong>ISBN:</strong> @Html.DisplayFor(model => model.ISBN)</p>
+        <p><strong>Category:</strong> @Html.DisplayFor(model => model.Category.CategoryName)</p>
+    </div>
+</div>
+
+@if (ViewBag.BookIdsInRequest.Contains(Model.BookId)) 
+{
+    <form asp-action="RemoveBookFromRequest" asp-controller="BorrowingRequest" method="post">
+        <input type="hidden" name="bookId" value="@Model.BookId" />
+        <input type="submit" value="Remove from request" class="btn btn-danger" />
+    </form>
+}
+else
+{
+    <form asp-action="AddBookToRequest" asp-controller="BorrowingRequest" method="post">
+        <input type="hidden" name="bookId" value="@Model.BookId" />
+        <input type="submit" value="Add to request" class="btn btn-success" />
+    </form>
+}
+<div class="text-center mt-3">
+    <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
+</div>

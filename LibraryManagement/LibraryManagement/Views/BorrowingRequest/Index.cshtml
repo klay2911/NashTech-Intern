@@ -8,8 +8,7 @@
     Layout = "_NormalUserLayout";
     ViewData["Title"] = "Viewing Book Page";
 }
-<head>
-    <style>
+<style>
     .pagination li a {
         border: 1px solid #ddd; /* Gray */
         margin: 0 4px;
@@ -22,8 +21,35 @@
         background-color: #4CAF50; /* Green */
         color: white;
     }
-        </style>
-</head>
+    .pagination li a {
+        border: 1px solid #ddd; /* Gray */
+        margin: 0 4px;
+        padding: 10px 12px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+    
+    .pagination li.active a {
+        background-color: #4CAF50; /* Green */
+        color: white;
+    }
+    .book-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .book-item {
+        flex: 1 0 20%; /* This will create 5 items per row */
+        margin: 10px;
+        box-sizing: border-box;
+    }
+    .book-item img {
+        width: 100%;
+        max-width: 200px; /* Adjust as needed */
+        height: auto;
+    }
+</style>
 <form asp-action="Index" method="get">
     <input type="text" name="searchTerm" placeholder="Search books..." />
     <input type="submit" value="Search" />
@@ -40,44 +66,59 @@
 {
     <div class="alert alert-danger">@TempData["Warning"]</div>
 }
-<table class="table">
-    <thead>
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.First().Title)</th>
-        <th>@Html.DisplayNameFor(model => model.First().Author)</th>
-        <th>@Html.DisplayNameFor(model => model.First().ISBN)</th>
-        <th>@Html.DisplayNameFor(model => model.First().Category.CategoryName)</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="book-container">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.Title)</td>
-            <td>@Html.DisplayFor(modelItem => item.Author)</td>
-            <td>@Html.DisplayFor(modelItem => item.ISBN)</td>
-            <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
-            <td>
-                @if (ViewBag.BookIdsInRequest.Contains(item.BookId))
-                {
-                    <form asp-action="RemoveBookFromRequest" asp-controller="BorrowingRequest" method="post">
-                        <input type="hidden" name="bookId" value="@item.BookId" />
-                        <input type="submit" value="Remove from request" class="btn btn-danger" />
-                    </form>
-                } 
-                else
-                {
-                    <form asp-action="AddBookToRequest" asp-controller="BorrowingRequest" method="post">
-                        <input type="hidden" name="bookId" value="@item.BookId" />
-                        <input type="submit" value="Add to request" class="btn btn-success" />
-                    </form>
-                }
-            </td>
-        </tr>
+        <div class="book-item">
+            <a href="@Url.Action("Details", "Book", new { id = item.BookId })" method ="get">
+                <div class="book-item">
+                    <img src="@ViewBag.BookImages[item.BookId]" alt="First page of @item.Title" />
+                    <div>@item.Title</div>
+                </div>
+            </a>
+        </div>
     }
-    </tbody>
-</table>
+</div>
+@* <table class="table"> *@
+@*     <thead> *@
+@*     <tr> *@
+@*         <th>Image</th> <!-- Add this column --> *@
+@*         <th>@Html.DisplayNameFor(model => model.First().Title)</th> *@
+@*         <th>@Html.DisplayNameFor(model => model.First().Author)</th> *@
+@*         <th>@Html.DisplayNameFor(model => model.First().ISBN)</th> *@
+@*         <th>@Html.DisplayNameFor(model => model.First().Category.CategoryName)</th> *@
+@*         <th>Actions</th> *@
+@*     </tr> *@
+@*     </thead> *@
+@*     <tbody> *@
+@*     @foreach (var item in Model) *@
+@*     { *@
+@*         <tr> *@
+@*             <td><img src="@ViewBag.BookImages[item.BookId]" alt="First page of @item.Title" width="100" height="150" /></td> <!-- Add this cell --> *@
+@*             <td>@Html.DisplayFor(modelItem => item.Title)</td> *@
+@*             <td>@Html.DisplayFor(modelItem => item.Author)</td> *@
+@*             <td>@Html.DisplayFor(modelItem => item.ISBN)</td> *@
+@*             <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td> *@
+@*             <td> *@
+@*                 @if (ViewBag.BookIdsInRequest.Contains(item.BookId)) *@
+@*                 { *@
+@*                     <form asp-action="RemoveBookFromRequest" asp-controller="BorrowingRequest" method="post"> *@
+@*                         <input type="hidden" name="bookId" value="@item.BookId" /> *@
+@*                         <input type="submit" value="Remove from request" class="btn btn-danger" /> *@
+@*                     </form> *@
+@*                 }  *@
+@*                 else *@
+@*                 { *@
+@*                     <form asp-action="AddBookToRequest" asp-controller="BorrowingRequest" method="post"> *@
+@*                         <input type="hidden" name="bookId" value="@item.BookId" /> *@
+@*                         <input type="submit" value="Add to request" class="btn btn-success" /> *@
+@*                     </form> *@
+@*                 } *@
+@*             </td> *@
+@*         </tr> *@
+@*     } *@
+@*     </tbody> *@
+@* </table> *@
 <div class="text-center mt-3">
     <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
 </div>

@@ -35,7 +35,10 @@ namespace LibraryManagement.Repositories;
             await _context.SaveChangesAsync();
             return borrowingRequest;
         }
-
+        public virtual void Update(BookBorrowingRequest entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+        }
         public virtual async Task<int> GetRequestsByUserThisMonth(int userId)
         {
             var startOfMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
@@ -51,8 +54,9 @@ namespace LibraryManagement.Repositories;
             return await _context.BorrowingRequests
                 .Include(r => r.BookBorrowingRequestDetails)
                 .ThenInclude(d => d.Book)
-                .Where(r => r.UserId == userId)
+                .Where(r => r.UserId == userId )
                 .ToListAsync();
+                // && r.ExpiryDate > DateTime.Now
         }
         public virtual async Task UpdateRequestStatus(int requestId, string status, int librarianId)
         {

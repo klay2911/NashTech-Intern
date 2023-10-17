@@ -8,4 +8,6 @@ public class BookViewModel
     public string ISBN { get; set; }
     public int CategoryId { get; set; }
     public string Status { get; set; }
+    public string PdfFilePath { get; set; }
+    public DateTime? ExpiryDate { get; set; }
 }

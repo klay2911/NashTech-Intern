@@ -18,31 +18,64 @@ public class BookServiceTests
         _mockBookRepository = new Mock<BookRepository>();
         _mockUnitOfWork.Setup(uow => uow.BookRepository).Returns(_mockBookRepository.Object);
         _bookService = new BookService(_mockUnitOfWork.Object);
-
     }
 
-    // [Test]
-    // public async Task GetAllBooks_ReturnsAllBooks()
-    // {
-    //     // Arrange
-    //     var books = new List<Book>
-    //     {
-    //         new() { BookId = 1, Title = "Book 1", Author = "sss", ISBN = "ss"},
-    //         new() { BookId = 2, Title = "Book 2", Author = "ss3s", ISBN = "ss2s"},
-    //     };
-    //     _mockUnitOfWork.Setup(uow => uow.BookRepository.GetAllAsync(false)).ReturnsAsync(books);
-    //     
-    //
-    //     // Act
-    //     var result = await _bookService.GetAllBooksAsync(1,2,"",true);
-    //
-    //     // Assert
-    //     Assert.That(result, Is.EqualTo(books));
-    // }
+    [Test]
+    public async Task GetAllBooks_ReturnsAllBooks()
+    {
+        // Arrange
+        var books = new List<Book> { new Book(), new Book() };
+        _mockBookRepository.Setup(repo => repo.GetAllAsync(false)).ReturnsAsync(books);
+
+        // Act
+        var result = await _bookService.GetAllBooksAsync(1, 2);
+
+        // Assert
+        Assert.That(result.TotalItemCount, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task GetAllBooks_CountAllBooksInPage2_ReturnExactNumberOfBooks()
+    {
+        // Arrange
+        var books = new List<Book> { new Book(), new Book(), new Book(), new Book() };
+        _mockBookRepository.Setup(repo => repo.GetAllAsync(false)).ReturnsAsync(books);
+
+        // Act
+        var result = await _bookService.GetAllBooksAsync(2, 2);
+
+        // Assert
+        Assert.That(result.Count, Is.EqualTo(2));
+    }
+
+    [Test]
+    public async Task GetAllBooks_BookExistInPage2_ReturnExactBook()
+    {
+        // Arrange
+        var books = new List<Book> { new Book { Title = "Book1" }, new Book { Title = "Book2" }, new Book { Title = "Book3" }, new Book { Title = "Book4" } };
+        _mockBookRepository.Setup(repo => repo.GetAllAsync(false)).ReturnsAsync(books);
+
+        // Act
+        var result = await _bookService.GetAllBooksAsync(2, 2);
+
+        // Assert
+        Assert.That(result[0].Title, Is.EqualTo("Book3"));
+    }
+
+    [Test]
+    public async Task GetAllBooks_BookNotExistInPage2_ReturnWrongBook()
+    {
+        // Arrange
+        var books = new List<Book> { new Book { Title = "Book1" }, new Book { Title = "Book2" }, new Book { Title = "Book3" }, new Book { Title = "Book4" } };
+        _mockBookRepository.Setup(repo => repo.GetAllAsync(false)).ReturnsAsync(books);
+
+        // Act
+        var result = await _bookService.GetAllBooksAsync(2, 2);
+
+        // Assert
+        Assert.That(result[0].Title, Is.Not.EqualTo("Book1"));
+    }
     
-    //Case GetAllBooks_CountAllBooksInPage2_ReturnExactNumberOfBooks
-    //Case GetAllBooks_BookExistInPage2_ReturnExactBook
-    //Case GetAllBooks_BookNotExistInPage2_ReturnWrongBook
     [Test]
     public async Task GetBookById_BookExists_ReturnsBookWithGivenId()
     {

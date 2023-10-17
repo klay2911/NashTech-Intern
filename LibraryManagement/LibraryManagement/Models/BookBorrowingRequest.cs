@@ -10,6 +10,7 @@ public class BookBorrowingRequest
     public DateTime DateRequested { get; set; }
     public string Status { get; set; }
     public int LibrarianId { get; set; }
+    public DateTime? ExpiryDate { get; set; }
     public User? User { get; set; }
     public ICollection<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; } = new List<BookBorrowingRequestDetails>();
 }

@@ -36,7 +36,7 @@ public class BorrowingRequestController : Controller
         var bookIdsInRequest = HttpContext.Session.GetString("BookIdsInRequest");
         ViewBag.SearchTerm = searchTerm;
         ViewBag.BookIdsInRequest = (bookIdsInRequest != null ? JsonConvert.DeserializeObject<List<int>>(bookIdsInRequest) : new List<int>())!;
-
+        
         var bookImages = new Dictionary<int, string>();
         foreach (var book in books)
         {
@@ -44,19 +44,21 @@ public class BorrowingRequestController : Controller
             await using var pdfStream = System.IO.File.OpenRead(pdfPath);
             var pdf = new PdfDocument();
             pdf.LoadFromStream(pdfStream);
-
             var image = pdf.SaveAsImage(0);
-
             var imagePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\{book.BookId}Page1.png");
-            image.Save(imagePath, ImageFormat.Png);
-
             bookImages.Add(book.BookId, $"/images/{book.BookId}Page1.png");
+            var directoryPath = Path.GetDirectoryName(imagePath);
+            if (!Directory.Exists(directoryPath))
+            {
+             Directory.CreateDirectory(directoryPath);
+            }
+            image.Save(imagePath, ImageFormat.Png);
         }
-
         ViewBag.BookImages = bookImages;
 
         return View(books.ToPagedList(pageNumber, pageSize));
     }
+
     [Authorize(Roles = "NormalUser")]
     [HttpPost]
     public IActionResult AddBookToRequest(int bookId)
@@ -113,7 +115,6 @@ public class BorrowingRequestController : Controller
         
         var bookIdsInRequestJson = HttpContext.Session.GetString("BookIdsInRequest");
         List<int> bookIdsInRequest = string.IsNullOrEmpty(bookIdsInRequestJson) ? new List<int>() : JsonConvert.DeserializeObject<List<int>>(bookIdsInRequestJson);
-        // var bookIdsInRequest = JsonConvert.DeserializeObject<List<int>>(bookIdsInRequestJson);
         var book = await _borrowingRequestDetailsService.CheckExistingRequest(userId, bookIdsInRequest);
         if (book != null)
         {
@@ -167,8 +168,7 @@ public class BorrowingRequestController : Controller
     public async Task<IActionResult> ViewBorrowingRequests(int? page, string searchTerm = "")  
     {  
         const int pageSize = 5;  
-        var pageNumber = (page ?? 1);  
-
+        var pageNumber = (page ?? 1);
         var borrowingRequests = await _borrowingRequestService.GetAllBorrowingRequests(pageNumber, pageSize, searchTerm);  
 
         return View(borrowingRequests);
@@ -179,12 +179,6 @@ public class BorrowingRequestController : Controller
     public async Task<IActionResult> DetailsRequest(int requestId)
     {
         var borrowingRequest = await _borrowingRequestService.GetRequest(requestId);
-
-        if (borrowingRequest == null)
-        {
-            return NotFound();
-        }
-
         var requestDetails = new List<BookViewModel>();
 
         foreach (var detail in borrowingRequest.BookBorrowingRequestDetails)

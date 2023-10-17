@@ -19,13 +19,13 @@ public class CategoryServiceTests
         _mockUnitOfWork.Setup(uow => uow.CategoryRepository).Returns(_mockCategoryRepository.Object);
         _categoryService = new CategoryService(_mockUnitOfWork.Object);
     }
-    /*[Test]
+    [Test]
     public async Task GetAllCategoriesAsync_CategoriesExist_ReturnsAllCategories()
     {
         var categories = new List<Category> { new Category(), new Category() };
         _mockUnitOfWork.Setup(u => u.CategoryRepository.GetAll()).ReturnsAsync(categories);
     
-        var result = await _categoryService.GetAllCategoriesAsync();
+        var result = await _categoryService.GetAllCategoriesAsync(1,2);
     
         Assert.That(result.Count(), Is.EqualTo(2));
     }
@@ -70,5 +70,5 @@ public class CategoryServiceTests
         await _categoryService.DeleteCategoryAsync(1);
 
         _mockUnitOfWork.Verify(u => u.CategoryRepository.DeleteAsync(1), Times.Once);
-    }*/
+    }
 }

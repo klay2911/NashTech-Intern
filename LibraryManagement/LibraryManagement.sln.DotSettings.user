@@ -4,13 +4,45 @@
 	
 	
 	
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8ecabc51_002D846e_002D463e_002Dbf4c_002D092fafc416cb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetProductById_ReturnsProductWithGivenId" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8ecabc51_002D846e_002D463e_002Dbf4c_002D092fafc416cb/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetProductById_ReturnsProductWithGivenId" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.CategoryServiceTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsServiceTests.CheckExistingRequest_IfBookRequestedWasAcceptedOrPending_ReturnException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsServiceTests.GetAll_ReturnWhichBookBelongToWhatRequest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsServiceTests.CheckExistingRequest_IfBookRequestedWasRejected_ReturnRequestedSuccessful&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.CheckUserRequestLimit_RequestLessThan4_ReturnTrue&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9cd7f372_002D4917_002D4356_002D992f_002Df2b92f77ddd5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetAllBorrowingRequests_RequestsExistInPage2_ReturnExactRequests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.GetAllBorrowingRequests_RequestsExistInPage2_ReturnExactRequests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.GetAllBorrowingRequests_RequestNotExistInPage2_ReturnEmpty&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.UpdateRequestStatus_UpdatesCorrectly&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.GetRequest_ReturnsCorrectRequest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.GetUserBorrowedBooks_GetNumberOfBooksInPage2_ReturnWrongNumber&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cc4245f2_002D5c41_002D402c_002D97e4_002D63f0025d0cc5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CheckUserRequestLimit_RequestWasNotReachLimit_ReturnFalse" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.CheckUserRequestLimit_RequestWasNotReachLimit_ReturnTrue&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e55436f9_002D632c_002D4069_002D9568_002D716ab58bfbe7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CheckUserRequestLimit_RequestLessThan4_ReturnFalse" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.CheckUserRequestLimit_RequestLessThan4_ReturnFalse&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.CheckUserRequestLimit_RequestWasNotReachLimit_ReturnTrue&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.UpdateRequestStatus_ApprovedRequest_ReturnStatusApproved&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.UpdateRequestStatus_RejectedRequest_ReturnStatusRejected&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.UpdateRequestStatus_LibraryApprovedOrRejected_SetLibrarianId&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.GetUserBorrowedBooks_GetNumberOfBooksInPage2_ReturnCorrectNumber&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.GetAllBorrowingRequests_ReturnsAllRequests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.GetAllBorrowingRequests_GetNumberOfRequestsInPage2_ReturnWrongNumber&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.GetAllBorrowingRequests_GetNumberOfRequestsInPage2_ReturnCorrectNumber&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests.GetAllBorrowingRequests_RequestNotExistInPage2_ReturnEmpty&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	

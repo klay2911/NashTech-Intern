@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\2010Page1.png",
+      "PackagePath": "staticwebassets\\images\\2010Page1.png"
+    },
+    {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\2011Page1.png",
+      "PackagePath": "staticwebassets\\images\\2011Page1.png"
+    },
+    {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\2012Page1.png",
+      "PackagePath": "staticwebassets\\images\\2012Page1.png"
+    },
+    {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\3013Page1.png",
+      "PackagePath": "staticwebassets\\images\\3013Page1.png"
+    },
+    {
       "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -247,6 +263,18 @@
     {
       "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\00. LT .NET-Gioi thieu.pdf",
       "PackagePath": "staticwebassets\\pdfs\\00. LT .NET-Gioi thieu.pdf"
+    },
+    {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\18 Thuc hanh du lieu Nguyen Vong Thi Sinh.pdf",
+      "PackagePath": "staticwebassets\\pdfs\\18 Thuc hanh du lieu Nguyen Vong Thi Sinh.pdf"
+    },
+    {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\21 Huong dan thuc hanh OOP.pdf",
+      "PackagePath": "staticwebassets\\pdfs\\21 Huong dan thuc hanh OOP.pdf"
+    },
+    {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\60 Crystal Report.pdf",
+      "PackagePath": "staticwebassets\\pdfs\\60 Crystal Report.pdf"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.LibraryManagement.Microsoft.AspNetCore.StaticWebAssets.props",

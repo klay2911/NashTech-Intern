@@ -156,3 +156,10 @@ F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\n
 F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\rgvlee.Core.Common.dll
 F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\System.Linq.Async.dll
 F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\Spire.Pdf.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\PdfiumViewer.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\PdfSharpCore.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\ICSharpCode.SharpZipLib.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\SixLabors.Fonts.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\SixLabors.ImageSharp.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\nl\PdfiumViewer.resources.dll
+F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\UnitTest\bin\Debug\net7.0\de\PdfSharpCore.resources.dll
