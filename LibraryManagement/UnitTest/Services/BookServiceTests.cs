@@ -24,14 +24,14 @@ public class BookServiceTests
     public async Task GetAllBooks_ReturnsAllBooks()
     {
         // Arrange
-        var books = new List<Book> { new Book(), new Book() };
+        var books = new List<Book> { new Book(), new Book(), new Book(), new Book() };
         _mockBookRepository.Setup(repo => repo.GetAllAsync(false)).ReturnsAsync(books);
 
         // Act
         var result = await _bookService.GetAllBooksAsync(1, 2);
 
         // Assert
-        Assert.That(result.TotalItemCount, Is.EqualTo(2));
+        Assert.That(result.TotalItemCount, Is.EqualTo(4));
     }
 
     [Test]
@@ -49,10 +49,10 @@ public class BookServiceTests
     }
 
     [Test]
-    public async Task GetAllBooks_BookExistInPage2_ReturnExactBook()
+    public async Task GetAllBooks_TitleOfBookExistInPage2_ReturnExactBook()
     {
         // Arrange
-        var books = new List<Book> { new Book { Title = "Book1" }, new Book { Title = "Book2" }, new Book { Title = "Book3" }, new Book { Title = "Book4" } };
+        var books = new List<Book> { new() { Title = "Book1" }, new Book { Title = "Book2" }, new Book { Title = "Book3" }, new Book { Title = "Book4" } };
         _mockBookRepository.Setup(repo => repo.GetAllAsync(false)).ReturnsAsync(books);
 
         // Act
@@ -66,7 +66,7 @@ public class BookServiceTests
     public async Task GetAllBooks_BookNotExistInPage2_ReturnWrongBook()
     {
         // Arrange
-        var books = new List<Book> { new Book { Title = "Book1" }, new Book { Title = "Book2" }, new Book { Title = "Book3" }, new Book { Title = "Book4" } };
+        var books = new List<Book> { new() { Title = "Book1" }, new() { Title = "Book2" }, new() { Title = "Book3" }, new() { Title = "Book4" } };
         _mockBookRepository.Setup(repo => repo.GetAllAsync(false)).ReturnsAsync(books);
 
         // Act
@@ -88,7 +88,6 @@ public class BookServiceTests
         var result = await _bookService.GetBookByIdAsync(1);
 
         // Assert
-        // compare from count to
         Assert.That(result, Is.EqualTo(book));
     }
     [Test]

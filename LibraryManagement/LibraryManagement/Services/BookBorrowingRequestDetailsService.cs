@@ -32,6 +32,7 @@ public class BookBorrowingRequestDetailsService : IBookBorrowingRequestDetailsSe
 
         await _unitOfWork.BookBorrowingRequestDetailsRepository.Add(details);
     }
+
     public async Task<Book> CheckExistingRequest(int userId, List<int> bookIds)
     {
         foreach (var bookId in bookIds)
@@ -39,7 +40,11 @@ public class BookBorrowingRequestDetailsService : IBookBorrowingRequestDetailsSe
             var existingRequestDetail = await _unitOfWork.BookBorrowingRequestDetailsRepository.GetRequestDetailByBookIdAndUserId(bookId, userId);
             if (existingRequestDetail != null)
             {
-                return await _unitOfWork.BookRepository.GetByIdAsync(bookId);
+                var book = await _unitOfWork.BookRepository.GetByIdAsync(bookId);
+                if (book != null)
+                {
+                    return book;
+                }
             }
         }
         return null;

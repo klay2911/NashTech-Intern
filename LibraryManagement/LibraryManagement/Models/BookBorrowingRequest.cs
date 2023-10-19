@@ -12,5 +12,5 @@ public class BookBorrowingRequest
     public int LibrarianId { get; set; }
     public DateTime? ExpiryDate { get; set; }
     public User? User { get; set; }
-    public ICollection<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; } = new List<BookBorrowingRequestDetails>();
+    public ICollection<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; set; } = new List<BookBorrowingRequestDetails>();
 }

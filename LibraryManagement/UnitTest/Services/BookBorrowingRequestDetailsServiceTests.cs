@@ -8,6 +8,7 @@ namespace UnitTest.Services;
 public class BookBorrowingRequestDetailsServiceTests
 {
     private Mock<UnitOfWork> _mockUnitOfWork;
+    private Mock<BookRepository> _mockBookRepository;
     private Mock<BookBorrowingRequestDetailsRepository> _mockRequestDetailsRepository;
     private BookBorrowingRequestDetailsService _requestDetailsService;
 
@@ -15,39 +16,13 @@ public class BookBorrowingRequestDetailsServiceTests
     public void Setup()
     {
         _mockUnitOfWork = new Mock<UnitOfWork>();
+        _mockBookRepository = new Mock<BookRepository>();
         _mockRequestDetailsRepository = new Mock<BookBorrowingRequestDetailsRepository>();
         _mockUnitOfWork.Setup(uow => uow.BookBorrowingRequestDetailsRepository).Returns(_mockRequestDetailsRepository.Object);
+        _mockUnitOfWork.Setup(uow => uow.BookRepository).Returns(_mockBookRepository.Object);
+
         _requestDetailsService = new BookBorrowingRequestDetailsService(_mockUnitOfWork.Object);
     }
-    //Case CheckExistingRequest_IfBookRequestedWasAcceptedOrPending_ReturnException
-    //Case CheckExistingRequest_IfBookRequestedWasRejected_ReturnRequestedSuccessful
-    // [Test]
-    // public async Task CheckExistingRequest_IfBookRequestedWasAcceptedOrPending_ReturnException()
-    // {
-    //     // Arrange
-    //     var userId = 1;
-    //     var bookIds = new List<int> { 1, 2 };
-    //     _mockRequestDetailsRepository.Setup(repo => repo.GetRequestDetailByBookIdAndUserId(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync(new BookBorrowingRequestDetails());
-    //
-    //     // Act & Assert
-    //     Assert.ThrowsAsync<Exception>(async () => await _requestDetailsService.CheckExistingRequest(userId, bookIds));
-    // }
-    //
-    // [Test]
-    // public async Task CheckExistingRequest_IfBookRequestedWasRejected_ReturnRequestedSuccessful()
-    // {
-    //     // Arrange
-    //     var userId = 1;
-    //     var bookIds = new List<int> { 1, 2 };
-    //     _mockRequestDetailsRepository.Setup(repo => repo.GetRequestDetailByBookIdAndUserId(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync((BookBorrowingRequestDetails)null);
-    //     _mockUnitOfWork.Setup(uow => uow.BookRepository.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(new Book());
-    //
-    //     // Act
-    //     var result = await _requestDetailsService.CheckExistingRequest(userId, bookIds);
-    //
-    //     // Assert
-    //     Assert.That(result, Is.Not.Null);
-    // }
 
     [Test]
     public async Task GetAll_ReturnWhichBookBelongToWhatRequest()
@@ -108,19 +83,53 @@ public class BookBorrowingRequestDetailsServiceTests
         _mockUnitOfWork.Verify(u => u.BookBorrowingRequestDetailsRepository.Add(details), Times.Once);
     }
 
-    // [Test]
-    // public async Task GetRequestDetail_ReturnDetail()
-    // {
-    //     // Arrange
-    //     var expectedDetail = new BookBorrowingRequestDetails();
-    //     int bookId = 1;
-    //     int userId = 1;
-    //     _mockUnitOfWork.Setup(u => u.BookBorrowingRequestDetailsRepository.GetRequestDetailByBookIdAndUserId(bookId, userId)).ReturnsAsync(expectedDetail);
-    //
-    //     // Act
-    //     var result = await _requestDetailsService.GetRequestDetail(bookId, userId);
-    //
-    //     // Assert
-    //     Assert.That(result, Is.EqualTo(expectedDetail));
-    // }
+    [Test]
+    public async Task CheckExistingRequest_BookHasRequestedBefore_ReturnsBook()
+    {
+        // Arrange
+        var bookIds = new List<int> { 1 };
+        var book = new Book() { BookId = 1};
+    
+        var request = new BookBorrowingRequest
+        {
+            Status = "Pending"
+        };
+    
+        var userId = 1;
+        var bookId = 1;
+    
+        _mockUnitOfWork.Setup(repo => repo.BookBorrowingRequestDetailsRepository.GetRequestDetailByBookIdAndUserId(userId, bookId))
+            .ReturnsAsync(new BookBorrowingRequestDetails
+            {
+                BookBorrowingRequest = request,
+                BookId = book.BookId,
+                Book = book,
+            });
+        _mockUnitOfWork.Setup(repo => repo.BookRepository.GetByIdAsync(1)).ReturnsAsync(new Book()
+        {
+            BookId = 1
+        });
+    
+        // Act
+        var result = await _requestDetailsService.CheckExistingRequest(userId, bookIds);
+    
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.That(result.BookId, Is.EqualTo(book.BookId));
+    }
+    
+    [Test]
+    public async Task CheckExistingRequest_RequestDoesNotExist_ReturnsNull()
+    {
+        // Arrange
+        var userId = 1;
+        var bookIds = new List<int> { 1, 2 };
+        _mockUnitOfWork.Setup(uow => uow.BookBorrowingRequestDetailsRepository.GetRequestDetailByBookIdAndUserId(It.IsAny<int>(), It.IsAny<int>())).ReturnsAsync((BookBorrowingRequestDetails)null);
+
+        // Act
+        var result = await _requestDetailsService.CheckExistingRequest(userId, bookIds);
+
+        // Assert
+        Assert.IsNull(result);
+    }
 }

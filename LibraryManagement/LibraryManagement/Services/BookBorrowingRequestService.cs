@@ -81,39 +81,6 @@ public class BookBorrowingRequestService : IBookBorrowingRequestService
 
         return new StaticPagedList<BookViewModel>(pagedBooks, pageNumber, pageSize, totalCount);
     }
-// if (request.Status == "Approved" && book.PdfFilePath != null)
-    // {
-    //     var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.PdfFilePath.TrimStart('/'));
-    //     await using var pdfStream = System.IO.File.OpenRead(pdfPath);
-    //     var pdf = new PdfDocument();
-    //     pdf.LoadFromStream(pdfStream);
-    //
-    //     var totalHeight = 0;
-    //     for (var i = 0; i < pdf.Pages.Count; i++)
-    //     {
-    //         totalHeight += Convert.ToInt32(pdf.Pages[i].Size.Height);
-    //     }
-    //     var combinedImage = new Bitmap(1100, totalHeight);
-    //
-    //     using (var g = Graphics.FromImage(combinedImage))
-    //     {
-    //         int currentHeight = 0;
-    //         for (int i = 0; i < pdf.Pages.Count; i++)
-    //         {
-    //             var pageImage = pdf.SaveAsImage(i);
-    //             g.DrawImage(pageImage, 0, currentHeight);
-    //             currentHeight += pageImage.Height;
-    //         }
-    //     }
-    //
-    //     using var msImage = new MemoryStream();
-    //     combinedImage.Save(msImage, ImageFormat.Png);
-    //     var base64Image = Convert.ToBase64String(msImage.ToArray());
-    //
-    //     bookViewModel.ImagesBase64 = base64Image;
-    //
-    //     bookViewModel.ExpiryDate = DateTime.Now.AddDays(10); 
-    // }
 
     public async Task CreateBorrowingRequestAsync(BookBorrowingRequest borrowingRequest, string bookIdsInRequestJson)
     {

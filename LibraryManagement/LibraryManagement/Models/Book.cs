@@ -9,5 +9,5 @@ public class Book
     public int CategoryId { get; set; }
     public string PdfFilePath { get; set; }
     public Category? Category { get; set; }
-    public ICollection<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; } = new List<BookBorrowingRequestDetails>();
+    public ICollection<BookBorrowingRequestDetails> BookBorrowingRequestDetails { get; set; } = new List<BookBorrowingRequestDetails>();
 }

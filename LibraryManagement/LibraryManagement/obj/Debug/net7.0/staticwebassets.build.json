@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kPIRnZ3wp9MT75DaMzap4FtUNsKoi7hAPgYwIVIwFIw=",
+  "Hash": "a29qp9X3w3gENNLZrqSCjKBVCggrd25WVoQewHw7FFA=",
   "Source": "LibraryManagement",
   "BasePath": "_content/LibraryManagement",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\3013Page1.png"
+    },
+    {
+      "Identity": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\3014Page1.png",
+      "SourceId": "LibraryManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\",
+      "BasePath": "_content/LibraryManagement",
+      "RelativePath": "images/3014Page1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\3014Page1.png"
     },
     {
       "Identity": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\js\\site.js",
