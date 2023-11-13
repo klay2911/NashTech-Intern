@@ -10,8 +10,7 @@
     ViewData["Title"] = "Category Page";
 
 }
-<head>
-    <style>
+<style>
     .pagination li a {
         border: 1px solid #ddd; /* Gray */
         margin: 0 4px;
@@ -24,15 +23,23 @@
         background-color: #4CAF50; /* Green */
         color: white;
     }
-        </style>
-</head>
-<form asp-action="Index" method="get">
-    <input type="text" name="searchTerm" placeholder="Search Category..." />
-    <input type="submit" value="Search" />
-</form>
-<form asp-action="Create" method="get">
-    <input type="submit" value="Add new category" class="btn btn-success" />
-</form>
+    </style>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Index" method="get">
+            <input type="text" name="searchTerm" placeholder="Search books..." />
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+    <div class="col-md-6 d-flex" style="left: 62px">
+            <form asp-action="Create" method="get">
+                <button type="submit" class="btn btn-success" style="width: 100px">
+                <i class="bi bi-plus-square-fill"></i>
+            </button>
+        </form>
+    </div>
+</div>
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success">@TempData["Message"]</div>
@@ -50,8 +57,12 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
             <td>
-                @Html.ActionLink("Edit", "Update", new { id = item.CategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CategoryId }) |
+                <a href="@Url.Action("Update", "Book", new { id = item.CategoryId })" class="btn btn-warning">
+                    <i class="bi bi-pencil-fill"></i>
+                </a>
+                <a href="@Url.Action("Delete", "Book", new { id = item.CategoryId })" class="btn btn-danger">
+                    <i class="bi bi-x-lg"></i>
+                </a>
             </td>
         </tr>
     }

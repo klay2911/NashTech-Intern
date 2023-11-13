@@ -98,6 +98,9 @@ namespace LibraryManagement.Migrations
                     b.Property<int>("BookId")
                         .HasColumnType("int");
 
+                    b.Property<int>("LastReadPageNumber")
+                        .HasColumnType("int");
+
                     b.HasKey("RequestId", "BookId");
 
                     b.HasIndex("BookId");

@@ -1,10 +1,7 @@
-using System.Drawing;
-using System.Drawing.Imaging;
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using LibraryManagement.Repositories;
 using Newtonsoft.Json;
-using Spire.Pdf;
 using X.PagedList;
 
 namespace LibraryManagement.Services;
@@ -58,7 +55,8 @@ public class BookBorrowingRequestService : IBookBorrowingRequestService
                     CategoryId = book.CategoryId,
                     Status = request.Status,
                     ExpiryDate = request.ExpiryDate,
-                    PdfFilePath = book.PdfFilePath
+                    PdfFilePath = book.PdfFilePath,
+                    LastReadPageNumber = detail.LastReadPageNumber
                 };
                 if (request.Status == "Approved")
                 {
@@ -69,7 +67,7 @@ public class BookBorrowingRequestService : IBookBorrowingRequestService
                 borrowedBooks.Add(bookViewModel);
             }
         }
-
+        borrowedBooks = borrowedBooks.OrderByDescending(b => b.ExpiryDate).ToList();
         if (!string.IsNullOrEmpty(searchTerm))
         {
             borrowedBooks = borrowedBooks.Where(b => b.Title.Contains(searchTerm)).ToList();

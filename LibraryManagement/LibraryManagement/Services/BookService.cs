@@ -63,4 +63,14 @@ public class BookService: IBookService
     {
         await _unitOfWork.BookRepository.DeleteAsync(id);
     }
+
+    public async Task<List<Book>> GetTopReadBooksInMonth(int year, int month)
+    {
+        return await _unitOfWork.BookRepository.GetTopReadBooksInMonth(year, month);
+    }
+
+    public async Task<int> GetNumberOfBooks()
+    {
+        return await _unitOfWork.BookRepository.GetNumberOfBooks();
+    }
 }

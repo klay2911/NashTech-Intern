@@ -7,20 +7,18 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<UnitOfWork>();
 builder.Services.AddScoped<ILibraryRepository<Book>, BookRepository>();
 builder.Services.AddScoped<ILibraryRepository<Category>, CategoryRepository>();
 builder.Services.AddScoped<ILibraryRepository<User>, UserRepository>();
 builder.Services.AddScoped<IBookBorrowingRequestRepository, BookBorrowingRequestRepository>();
 builder.Services.AddScoped<ILibraryRepository<BookBorrowingRequestDetails>, BookBorrowingRequestDetailsRepository>();
+builder.Services.AddScoped<UnitOfWork>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBookBorrowingRequestService, BookBorrowingRequestService>();
 builder.Services.AddScoped<IBookBorrowingRequestDetailsService, BookBorrowingRequestDetailsService>();
-
 builder.Services.AddDbContext<LibraryContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"));
@@ -33,7 +31,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 builder.Services.AddSession();
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request  pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

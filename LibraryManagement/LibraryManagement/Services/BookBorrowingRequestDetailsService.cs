@@ -33,6 +33,18 @@ public class BookBorrowingRequestDetailsService : IBookBorrowingRequestDetailsSe
         await _unitOfWork.BookBorrowingRequestDetailsRepository.Add(details);
     }
 
+    public async Task SaveLastReadPageNumber(int bookId, int userId, int pageNumber)
+    {
+        var detail = await _unitOfWork.BookBorrowingRequestDetailsRepository.GetRequestDetailByBookIdAndUserId(bookId, userId);
+
+        if (detail != null)
+        {
+            detail.LastReadPageNumber = pageNumber;
+            // await _unitOfWork.CommitAsync();
+            await _unitOfWork.SaveAsync();
+        }
+    }
+
     public async Task<Book> CheckExistingRequest(int userId, List<int> bookIds)
     {
         foreach (var bookId in bookIds)
@@ -48,6 +60,25 @@ public class BookBorrowingRequestDetailsService : IBookBorrowingRequestDetailsSe
             }
         }
         return null;
+    }
+
+    public async Task<IEnumerable<Book>> GetBooksBorrowedInPeriod(DateTime startDate, DateTime endDate)
+    {
+        return await _unitOfWork.BookBorrowingRequestDetailsRepository.GetBooksBorrowedInPeriod(startDate, endDate);
+    }
+
+    public async Task<IEnumerable<Book>> GetBooksNotBorrowedInPeriod(DateTime startDate, DateTime endDate)
+    {
+        return await _unitOfWork.BookBorrowingRequestDetailsRepository.GetBooksNotBorrowedInPeriod(startDate, endDate);
+    }
+    public async Task<Dictionary<int, (string, int)>> GetNumberOfReadersPerBook(DateTime startDate, DateTime endDate)
+    {
+        return await _unitOfWork.BookBorrowingRequestDetailsRepository.GetNumberOfReadersPerBook(startDate, endDate);
+    }
+
+    public async Task<List<User>> GetUsersBorrowingBook(int bookId)
+    {
+        return await _unitOfWork.BookBorrowingRequestDetailsRepository.GetUsersBorrowingBook(bookId);
     }
 }
 

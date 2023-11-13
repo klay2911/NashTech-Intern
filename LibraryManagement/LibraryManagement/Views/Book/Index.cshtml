@@ -2,7 +2,6 @@
 @using X.PagedList
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using X.PagedList.Web.Common
-@using Azure.Core
 
 @model IPagedList<Book>
 
@@ -23,14 +22,24 @@
         background-color: #4CAF50; /* Green */
         color: white;
     }
-        </style>
-<form asp-action="Index" method="get">
-    <input type="text" name="searchTerm" placeholder="Search books..." />
-    <input type="submit" value="Search" />
-</form>
-<form asp-action="Create" method="get">
-    <input type="submit" value="Add new book" class="btn btn-success" />
-</form>
+</style>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Index" method="get">
+            <input type="text" name="searchTerm" placeholder="Search books..." />
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+    <div class="col-md-6" style="left: 295px; width: 200px">
+            <form asp-action="Create" method="get">
+                <button type="submit" class="btn btn-success" style="width: 100px">
+                <i class="bi bi-plus-square-fill"></i>
+            </button>
+        </form>
+    </div>
+</div>
+
 @if (TempData["Message"] != null)
 {
     <div class="alert alert-success">@TempData["Message"]</div>
@@ -54,8 +63,15 @@
             <td>@Html.DisplayFor(modelItem => item.ISBN)</td>
             <td>@Html.DisplayFor(modelItem => item.Category.CategoryName)</td>
             <td>
-                @Html.ActionLink("Edit", "Update", new { id = item.BookId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.BookId }) |
+                <a href="@Url.Action("ShowBorrowers", "BorrowingRequest", new { id = item.BookId })" class="btn btn-primary">
+                    <i class="bi bi-eye-fill"></i> 
+                </a>
+                <a href="@Url.Action("Update", "Book", new { id = item.BookId })" class="btn btn-warning">
+                    <i class="bi bi-pencil-fill"></i>
+                </a>
+                <a href="@Url.Action("Delete", "Book", new { id = item.BookId })" class="btn btn-danger">
+                    <i class="bi bi-x-lg"></i>
+                </a>
             </td>
         </tr>
     }
@@ -78,18 +94,3 @@
     <div class="text-center mt-3">
         <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
     </div>
-@* <div class="text-center mt-3"> *@
-@*     <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a> *@
-@* </div> *@
-@* @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), *@
-@*     new PagedListRenderOptions *@
-@*     { *@
-@*         DisplayLinkToFirstPage = PagedListDisplayMode.Always, *@
-@*         DisplayLinkToLastPage = PagedListDisplayMode.Always, *@
-@*         LinkToFirstPageFormat = "<< First", *@
-@*         LinkToPreviousPageFormat = "< Previous", *@
-@*         LinkToNextPageFormat = "Next >", *@
-@*         LinkToLastPageFormat = "Last >>", *@
-@*         MaximumPageNumbersToDisplay = 5, *@
-@*         DisplayEllipsesWhenNotShowingAllPageNumbers = false *@
-@*       }) *@

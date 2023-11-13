@@ -68,4 +68,12 @@ namespace LibraryManagement.Repositories;
                 await _context.SaveChangesAsync();
             }
         }
+        // public virtual async Task<List<BookBorrowingRequest>> GetCurrentBorrowingsForBook(int bookId)
+        // {
+        //     return await _context.BorrowingRequests
+        //         .Include(b => b.BookBorrowingRequestDetails)
+        //         .ThenInclude(d => d.Book)
+        //         .Where(b => b.BookBorrowingRequestDetails.Any(d => d.BookId == bookId))
+        //         .ToListAsync();
+        // }
     }

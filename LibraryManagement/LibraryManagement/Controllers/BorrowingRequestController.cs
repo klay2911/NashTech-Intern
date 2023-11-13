@@ -4,7 +4,6 @@ using LibraryManagement.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-// using PdfiumViewer;
 using Spire.Pdf;
 using X.PagedList;
 
@@ -163,6 +162,17 @@ public class BorrowingRequestController : Controller
         return View(borrowedBooks);
     }
     
+    [Authorize(Roles = "NormalUser")]
+    [HttpPost]
+    public async Task<IActionResult> SaveLastReadPageNumber(int bookId, int pageNumber)
+    {
+        var userId = HttpContext.Session.GetString("UserId");
+
+        await _borrowingRequestDetailsService.SaveLastReadPageNumber(bookId, Convert.ToInt32(userId), pageNumber);
+        return Ok();
+    }
+
+    
     [Authorize(Roles = "SuperUser")]
     [HttpGet]
     public async Task<IActionResult> ViewBorrowingRequests(int? page, string searchTerm = "")  
@@ -214,5 +224,32 @@ public class BorrowingRequestController : Controller
         var librarianId = HttpContext.Session.GetString("UserId");
         await _borrowingRequestService.UpdateRequestStatus(requestId, "Rejected",Convert.ToInt32(librarianId));
         return RedirectToAction("ViewBorrowingRequests");
+    }
+    [Authorize(Roles = "SuperUser")]
+    [HttpGet]
+    public async Task<IActionResult> ShowBorrowers(int id)
+    {
+        var users = await _borrowingRequestDetailsService.GetUsersBorrowingBook(id);
+        return View(users);
+    }
+    [Authorize(Roles = "SuperUser")]
+    [HttpGet]
+    public IActionResult Report()
+    {
+        return View();
+    }
+
+    [Authorize(Roles = "SuperUser")]
+    [HttpPost]
+    public async Task<IActionResult> Report([FromForm] ReportViewModel model)
+    {
+        ViewBag.ReportData = model.ReportType switch
+        {
+            "NumberOfReadersPerBook" => await _borrowingRequestDetailsService.GetNumberOfReadersPerBook(model.StartDate.Value, model.EndDate.Value),
+            "TopReadBooksInMonth" => await _bookService.GetTopReadBooksInMonth(model.StartDate.Value.Year, model.StartDate.Value.Month),
+            "BooksNotBorrowedInPeriod" => await _borrowingRequestDetailsService.GetBooksNotBorrowedInPeriod(model.StartDate.Value, model.EndDate.Value),
+            "NumberOfBooks" => await _bookService.GetNumberOfBooks(), _ => ViewBag.ReportData
+        };
+        return View(model);
     }
 }

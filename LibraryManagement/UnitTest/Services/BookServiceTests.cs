@@ -21,7 +21,7 @@ public class BookServiceTests
     }
 
     [Test]
-    public async Task GetAllBooks_ReturnsAllBooks()
+    public virtual async Task GetAllBooks_ReturnsAllBooks()
     {
         // Arrange
         var books = new List<Book> { new Book(), new Book(), new Book(), new Book() };

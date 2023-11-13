@@ -40,12 +40,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93aW5nUmVxdWVzdFxEZXRhaWxzUmVxdWVzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/ExportData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93aW5nUmVxdWVzdFxFeHBvcnREYXRhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/GetBorrowedBooks.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93aW5nUmVxdWVzdFxHZXRCb3Jyb3dlZEJvb2tzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93aW5nUmVxdWVzdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/Report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93aW5nUmVxdWVzdFxSZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/ShowBorrowers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93aW5nUmVxdWVzdFxTaG93Qm9ycm93ZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/ViewBorrowingRequests.cshtml]

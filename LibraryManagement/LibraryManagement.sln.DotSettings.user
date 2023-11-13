@@ -1,4 +1,10 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=820f7e38_002Ddc56_002D4667_002Da479_002D787cecce5c68/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="BookBorrowingRequestServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests.GetAllBooks_ReturnsAllBooks&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e675ff23_002Dfc9b_002D4a72_002Db0b8_002D4341be118e6b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetUserBorrowedBooks_ReturnsPagedList" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;

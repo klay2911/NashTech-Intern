@@ -22,7 +22,8 @@
         background-color: #4CAF50; /* Green */
         color: white;
     }
-        </style>
+    </style>
+
 <form asp-action="GetBorrowedBooks" method="get">
     <input type="text" name="searchTerm" placeholder="Search books by title or author..." />
     <input type="submit" value="Search" />
@@ -46,11 +47,10 @@
             <td>@Html.DisplayFor(modelItem => item.ISBN)</td>
             <td>@Html.DisplayFor(modelItem => item.Status)</td>
             <td>
-                @* && DateTime.Now <= item.ExpiryDate *@
                 @if (item.Status == "Approved" && DateTime.Now <= item.ExpiryDate)
                 {
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pdfModal-@item.BookId">
-                        View Book
+                        <i class="bi bi-eye-fill"></i> 
                     </button>
                     <div class="modal fade" id="pdfModal-@item.BookId" tabindex="-1" role="dialog" aria-labelledby="pdfModalLabel-@item.BookId" aria-hidden="true">
                         <div class="modal-dialog modal-lg " style="max-width: 95%; max-height: 520px;">
@@ -63,7 +63,6 @@
                                 </div>
                                 <div class="modal-body">
                                     <div style="position:absolute; top:0; left:0; width:95%; height:100%; z-index:9999;"></div>
-                                    @* <iframe src="@Url.Content(item.PdfFilePath)" style="width:100%; height:550px;" frameborder="0"></iframe> *@
                                     <embed id="@("pdfEmbed-" + item.BookId)" src="@Url.Content(item.PdfFilePath + "#toolbar=0&navpanes=0")" type="application/pdf" style="width:100%; height:570px;" frameborder="0"/>
                                 </div>
                             </div>
@@ -72,7 +71,9 @@
                 }
                 else
                 {
-                    <button type="button" class="btn btn-primary disabled">View Book</button>
+                    <button type="button" class="btn btn-primary disabled">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
                 }
             </td>
         </tr>
@@ -94,7 +95,34 @@
 <div class="text-center mt-3">
     <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
 </div>
+<script>
+$(window).on('unload', function() {
+    var pdfEmbed = $('.modal.show embed');
 
+    if (pdfEmbed.length > 0) {
+        var pageNumber = PDFViewerApplication.page;
+
+        var bookId = pdfEmbed.attr('id').split('-')[1];
+
+        $.ajax({
+            url: '/BorrowingRequestController/SaveLastReadPageNumber',
+            type: 'POST',
+            data: {
+                bookId: bookId, // The ID of the current book
+                pageNumber: pageNumber  // The last read page number
+            },
+            success: function() {
+                // Handle successful response from server
+                console.log('Page number saved successfully');
+            },
+            error: function(xhr, status, error) {
+                // Handle error response from server
+                console.error('Error saving page number: ' + error);
+            }
+        });
+    }
+});
+</script>
 @* <script> *@
 @* *@
 @* // When the book is closed or the page is changed *@

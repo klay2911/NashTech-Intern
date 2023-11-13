@@ -10,4 +10,6 @@ public class BookViewModel
     public string Status { get; set; }
     public string PdfFilePath { get; set; }
     public DateTime? ExpiryDate { get; set; }
+    public int LastReadPageNumber { get; set; }
+
 }

@@ -21,7 +21,7 @@ public class BookRepository : ILibraryRepository<Book>
         return await _context.Books.ToListAsync();
     }
 
-    public virtual async Task<IEnumerable<Book>> GetAllAsync(bool includeCategory = false)
+    public async Task<IEnumerable<Book>> GetAllAsync(bool includeCategory = false)
     {
         if (includeCategory)
         {
@@ -57,11 +57,37 @@ public class BookRepository : ILibraryRepository<Book>
             await _context.SaveChangesAsync();
         }
     }
+
+    // public virtual async Task<List<Book>> GetCurrentlyBorrowedBooks()
+    // {
+    //     return await _context.BookBorrowingRequestDetails
+    //         .Include(d => d.Book)
+    //         .Where(d => d.BookBorrowingRequest.Status == "Approved" && DateTime.Now <= d.BookBorrowingRequest.ExpiryDate)
+    //         .Select(d => d.Book)
+    //         .ToListAsync();
+    // }
+    //
+    // public virtual async Task<List<Book>> GetBorrowedBooks(DateTime startTime, DateTime endTime)
+    // {
+    //     return await _context.BookBorrowingRequestDetails
+    //         .Include(d => d.Book)
+    //         .Where(d => d.BookBorrowingRequest.DateRequested >= startTime && d.BookBorrowingRequest.DateRequested <= endTime)
+    //         .Select(d => d.Book)
+    //         .ToListAsync();
+    // }
+    public virtual async Task<int> GetNumberOfBooks()
+    {
+        return await _context.Books.CountAsync();
+    }
+    public virtual async Task<List<Book>> GetTopReadBooksInMonth(int year, int month)
+    {
+        return await _context.BookBorrowingRequestDetails
+            .Include(d => d.Book)  
+            .Where(d => d.BookBorrowingRequest.DateRequested.Year == year && d.BookBorrowingRequest.DateRequested.Month == month)
+            .GroupBy(d => new { d.BookId, d.Book }) 
+            .OrderByDescending(g => g.Count())
+            .Take(5)
+            .Select(g => g.Key.Book)
+            .ToListAsync();
+    }
 }
-// public async Task<List<ICollection<Book>>> GetBooksForUserAsync(int userId)
-// {
-//     return await _context.BookBorrowingRequestDetails
-//         .Where(b => b.RequestId == userId && b.BookBorrowingRequestRepository.Status == "Approved")
-//         .Select(b => b.Books)
-//         .ToListAsync();
-// }

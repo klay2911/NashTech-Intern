@@ -1,0 +1,28 @@
+@model IEnumerable<User>
+
+@{
+    ViewBag.Title = "Users Borrowing Book";
+    Layout = "_SuperUserLayout";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().UserName)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Age)</th>
+            <th>@Html.DisplayNameFor(model => model.First().BookBorrowingRequests.FirstOrDefault().DateRequested)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => user.Email)</td>
+                <td>@Html.DisplayFor(modelItem => user.Age)</td>
+                <td>@Html.DisplayFor(modelItem => user.BookBorrowingRequests.FirstOrDefault().DateRequested)</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,232 @@
+@model ReportViewModel
+
+@{
+    ViewBag.Title = "Reports";
+    Layout = "_SuperUserLayout";
+}
+
+
+<form asp-action="Report" method="post">
+    <div class="form-group">
+        <label for="ReportType">Report Type</label>
+        <select id="ReportType" name="ReportType" class="form-control" onchange="handleReportTypeChange(this)">
+            <option value="">Select a report type</option>
+            <option value="NumberOfReadersPerBook">Number of Readers Per Book</option>
+            <option value="TopReadBooksInMonth">Top Read Books In Month</option>
+            <option value="BooksBorrowedInPeriod">Books Borrowed In Period</option>
+            <option value="NumberOfBooks">Number Of Books</option>
+        </select>
+    </div>
+
+    <div id="dateRangeGroup" class="form-group row" style=" display: none; border: 2px solid #25cff2; border-radius: 5px; background-color: lightblue; padding: 5px 5px 30px;">
+        <div class="col-5">
+            <label for="StartDate">Start Date</label>
+            <input id="StartDate" name="StartDate" width="200px" type="date" class="form-control" />
+        </div>
+    
+        <div class="col-5">
+            <label for="EndDate" >End Date</label>
+            <input id="EndDate" name="EndDate" width="200px" type="date" class="form-control" />
+        </div>
+    </div>
+    
+    <div id="monthYearGroup" class="form-group" style="display: none; border: 2px solid #25cff2; border-radius: 4px; background-color: lightblue; padding: 5px 5px 20px;">
+        <label for="MonthYear">Month and Year</label>
+        <input id="MonthYear" name="MonthYear" type="month" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate Report</button>
+    <button onclick="exportTableToCSV('report.csv')" class="btn btn-primary">Export Report</button>
+</form>
+@if (Model == null)
+{
+}
+else if (ViewBag.ReportData == null)
+{
+}
+else
+    switch (Model.ReportType)
+    {
+        case "NumberOfReadersPerBook":
+        {
+            var reportData = ViewBag.ReportData as Dictionary<int, (string, int)>;
+            <h2>Number of Readers Per Book</h2>
+
+            <table class="table reportTable" id="readersPerBookTable">
+                <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Book Title</th>
+                    <th>Number of Readers</th>
+                </tr>
+                </thead>
+                <tbody>
+                @{
+                        var order = 1;
+                        foreach (var item in reportData)
+                        {
+                            <tr>
+                                <td>@order</td>
+                                <td>@item.Value.Item1</td>
+                                <td>@item.Value.Item2</td>
+                            </tr>
+                            order++;
+                        }
+                    }
+                </tbody>
+            </table>
+            break;
+        }
+        case "TopReadBooksInMonth":
+        {
+            var reportData = ViewBag.ReportData as List<Book>;
+
+            <h2>Top Read Books In Month</h2>
+
+            <table class="table reportTable" id="topReadBooksTable">
+                <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var book in reportData)
+                {
+                    <tr>
+                        <td>@book.BookId</td>
+                        <td>@book.Title</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            break;
+        }
+        case "BooksBorrowedInPeriod":
+        {
+            var reportData = ViewBag.ReportData as IEnumerable<Book>;
+
+            <h2>Books Borrowed In Period</h2>
+
+            <table class="table reportTable" id="booksBorrowedInPeriod">
+                <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var book in reportData)
+                {
+                    <tr>
+                        <td>@book.BookId</td>
+                        <td>@book.Title</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            break;
+        }
+        case "NumberOfBooks":
+        {
+            var reportData = (int)ViewBag.ReportData;
+
+            <h2>Number Of Books</h2>
+            <table class="table reportTable" id="numberOfBooks">
+                <thead>
+                <tr><th>Total number of books</th></tr>
+                </thead>
+                <tbody><tr><td>@reportData</td></tr></tbody>
+            </table>
+
+            break;
+        }
+    }
+<script>
+function handleReportTypeChange(selectElement) {
+    var reportType = selectElement.value;
+    if (reportType === 'TopReadBooksInMonth') {
+        document.getElementById('dateRangeGroup').style.display = 'none';
+        document.getElementById('monthYearGroup').style.display = 'block';
+    } else if (reportType === 'NumberOfReadersPerBook' || reportType === 'BooksBorrowedInPeriod') {
+        document.getElementById('dateRangeGroup').style.display = 'block';
+        document.getElementById('monthYearGroup').style.display = 'none';
+    } else {
+        document.getElementById('dateRangeGroup').style.display = 'none';
+        document.getElementById('monthYearGroup').style.display = 'none';
+    }
+}
+function generateReport() {
+    var reportOption = document.querySelector('input[name="format"]:checked').value;
+    if (reportOption === 'excel') {
+        var fileName = prompt("Please enter a file name:");
+        if (fileName) {
+            var form = document.querySelector('form');
+            form.appendChild(createHiddenInput('fileName', fileName));
+            form.appendChild(createHiddenInput('format', reportOption));
+        }
+    }
+    document.querySelector('form').submit();
+}
+function exportTableToCSV(filename) {
+    const csv = [];
+    var tables = document.querySelectorAll(".reportTable");    
+    var currentTable;
+        for (var i = 0; i < tables.length; i++) {
+            if (tables[i].style.display !== "none") {
+                currentTable = tables[i];
+                break;
+            }
+        }
+    
+        if (!currentTable) return;
+    
+    var rows = currentTable.querySelectorAll("tr");
+    for (let i = 0; i < rows.length; i++) {
+            const row = [], cols = rows[i].querySelectorAll("td, th");
+            
+            for (let j = 0; j < cols.length; j++) 
+                row.push(cols[j].innerText);
+            
+            csv.push(row.join(","));        
+        }
+    
+        const csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
+        const downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click()
+}
+
+
+</script>
+@* <input type="hidden" id="formatInput" name="format" value="" /> *@
+@* function generateReport() { *@
+@* const reportOption = document.querySelector('input[name="reportOption"]:checked').id; *@
+@* *@
+@* if (reportOption === 'displayScreenCheck') { *@
+@* document.getElementById('formatInput').value = 'view'; *@
+@* document.querySelector('form').submit(); *@
+@* } else if (reportOption === 'exportFileCheck') { *@
+@* const format = document.getElementById('formatSelect').value; *@
+@* document.getElementById('formatInput').value = format; *@
+@* document.querySelector('form').submit(); *@
+@* } *@
+@* } *@
+@* <fieldset style=" border: 2px solid #25cff2; border-radius: 10px; background-color: lightblue"> *@
+@*     <legend>Display Report</legend> *@
+@*     <div class="form-group row"> *@
+@*         <div class="col-auto form-check"> *@
+@*             <label class="form-check-label" for="displayScreenCheck">Screen</label> *@
+@*             <input asp-for="Format" class="form-check-input" type="radio"  id="displayScreenCheck" value="Screen" style="margin-left: 10px;"> *@
+@*         </div> *@
+@*     </div> *@
+@*     <div class="form-group row"> *@
+@*         <div class="col-auto form-check"> *@
+@*             <label class="form-check-label" for="exportFileCheck">Export Excel File</label> *@
+@*             <input asp-for="Format" class="form-check-input" type="radio" name="format" id="exportFileCheck" value="Excel" style="margin-left: 10px;">            *@
+@*         </div> *@
+@*     </div> *@
+@* </fieldset> *@

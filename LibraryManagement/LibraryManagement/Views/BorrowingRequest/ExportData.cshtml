@@ -1,0 +1,112 @@
+@model ReportViewModel
+
+@{
+    ViewBag.Title = "ExportReports";
+    Layout = "_SuperUserLayout";
+}
+
+@if (Model == null)
+{
+}
+else if (ViewBag.ReportData == null)
+{
+}
+else
+    switch (Model.ReportType)
+    {
+        case "NumberOfReadersPerBook":
+        {
+            var reportData = ViewBag.ReportData as Dictionary<int, (string, int)>;
+
+            <h2>Number of Readers Per Book</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Book Title</th>
+                    <th>Number of Readers</th>
+                </tr>
+                </thead>
+                <tbody>
+                @{
+                        var order = 1;
+                        foreach (var item in reportData)
+                        {
+                            <tr>
+                                <td>@order</td>
+                                <td>@item.Value.Item1</td>
+                                <td>@item.Value.Item2</td> 
+                            </tr>
+                            order++;
+                        }
+                    }
+                </tbody>
+            </table>
+            break;
+        }
+        case "TopReadBooksInMonth":
+        {
+            var reportData = ViewBag.ReportData as List<Book>;
+
+            <h2>Top Read Books In Month</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var book in reportData)
+                {
+                    <tr>
+                        <td>@book.BookId</td>
+                        <td>@book.Title</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            break;
+        }
+        case "BooksBorrowedInPeriod":
+        {
+            var reportData = ViewBag.ReportData as IEnumerable<Book>;
+
+            <h2>Books Borrowed In Period</h2>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Title</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var book in reportData)
+                {
+                    <tr>
+                        <td>@book.BookId</td>
+                        <td>@book.Title</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            break;
+        }
+        case "NumberOfBooks":
+        {
+            var reportData = (int)ViewBag.ReportData;
+
+            <h2>Number Of Books</h2>
+            <table class="table">
+                <thead>
+                <tr><th>Total number of books</th></tr>
+                </thead>
+                <tbody><tr><td>@reportData</td></tr></tbody>
+            </table>
+
+            break;
+        }
+    }
