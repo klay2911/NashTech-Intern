@@ -36,30 +36,19 @@ public class BookController : Controller
 
     [Authorize(Roles = "NormalUser")]
     [HttpGet]
-    public async Task<IActionResult> Details(int id)
-    {
-        var book = await _bookService.GetBookByIdAsync(id);
-        var categories = await _categoryService.GetAllCategoriesAsync();
-        var bookIdsInRequest = HttpContext.Session.GetString("BookIdsInRequest");
-        ViewBag.BookIdsInRequest = (bookIdsInRequest != null
-            ? JsonConvert.DeserializeObject<List<int>>(bookIdsInRequest)
-            : new List<int>())!;
-        var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.PdfFilePath.TrimStart('/'));
-        await using var pdfStream = System.IO.File.OpenRead(pdfPath);
-        var pdf = new PdfDocument();
-        pdf.LoadFromStream(pdfStream);
+    public async Task<IActionResult> Details(int id)  
+    {  
+        var book = await _bookService.GetBookByIdAsync(id);  
+        var categories = await _categoryService.GetAllCategoriesAsync();  
+        var bookIdsInRequest = HttpContext.Session.GetString("BookIdsInRequest");  
+        ViewBag.BookIdsInRequest = (bookIdsInRequest != null  
+            ? JsonConvert.DeserializeObject<List<int>>(bookIdsInRequest)  
+            : new List<int>())!;  
+        ViewBag.CategoryId = new SelectList(categories, "CategoryId", "CategoryName");  
 
-        var image = pdf.SaveAsImage(0);
-
-        var imagePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\{book.BookId}Page1.png");
-
-        image.Save(imagePath, ImageFormat.Png);
-
-        ViewBag.BookImage = $"/images/{book.BookId}Page1.png";
-        ViewBag.CategoryId = new SelectList(categories, "CategoryId", "CategoryName");
-
-        return View(book);
+        return View(book);  
     }
+
     [Authorize(Roles = "SuperUser")]
     [HttpGet]
     public async Task<IActionResult> Create()    
@@ -71,12 +60,17 @@ public class BookController : Controller
     
     [Authorize(Roles = "SuperUser")]
     [HttpPost]
-    public async Task<IActionResult> Create(Book book, IFormFile pdfFile)
+    public async Task<IActionResult> Create(Book book, IFormFile pdfFile, IFormFile coverFile)
     {
         var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs");
+        var coverDirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "covers");
         if (!Directory.Exists(directoryPath))
         {
             Directory.CreateDirectory(directoryPath);
+        }
+        if (!Directory.Exists(coverDirectoryPath))
+        {
+            Directory.CreateDirectory(coverDirectoryPath);
         }
 
         var filePath = Path.Combine(directoryPath, pdfFile.FileName);
@@ -85,7 +79,14 @@ public class BookController : Controller
             await pdfFile.CopyToAsync(stream);
         }
         book.PdfFilePath = $"/pdfs/{pdfFile.FileName}";
-    
+
+        var coverFilePath = Path.Combine(coverDirectoryPath, coverFile.FileName);
+        await using (var stream = new FileStream(coverFilePath, FileMode.Create))
+        {
+            await coverFile.CopyToAsync(stream);
+        }
+        book.Cover = $"/covers/{coverFile.FileName}";
+
         await _bookService.CreateBookAsync(book);
         return RedirectToAction("Index");
     }
@@ -107,8 +108,19 @@ public class BookController : Controller
         if (id != book.BookId)
             return NotFound();
 
+        var oldBook = await _bookService.GetBookByIdAsync(id);
+
         if (pdfFile is { Length: > 0 })
         {
+            if (!string.IsNullOrEmpty(oldBook.PdfFilePath))
+            {
+                var oldPdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", oldBook.PdfFilePath.TrimStart('/'));
+                if (System.IO.File.Exists(oldPdfPath))
+                {
+                    System.IO.File.Delete(oldPdfPath);
+                }
+            }
+
             var directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "pdfs");
             if (!Directory.Exists(directoryPath))
             {
@@ -142,6 +154,25 @@ public class BookController : Controller
     [HttpPost, ActionName("Delete")]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
+        var book = await _bookService.GetBookByIdAsync(id);
+
+        if (!string.IsNullOrEmpty(book.PdfFilePath))
+        {
+            var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.PdfFilePath.TrimStart('/'));
+            if (System.IO.File.Exists(pdfPath))
+            {
+                System.IO.File.Delete(pdfPath);
+            }
+        }
+        if (!string.IsNullOrEmpty(book.Cover))
+        {
+            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.Cover.TrimStart('/'));
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+        }
+
         await _bookService.DeleteBookAsync(id);
         return RedirectToAction("Index");
     }

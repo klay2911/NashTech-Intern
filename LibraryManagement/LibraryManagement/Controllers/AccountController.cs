@@ -140,4 +140,89 @@ public class AccountController : Controller
             return null;
         }
     }
+    // public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10, string searchTerm = "")
+    // {
+    //     var users = await _userService.GetAllUsersAsync(pageNumber, pageSize, searchTerm);
+    //     return View(users);
+    // }
+
+    // [HttpPost]
+    // public async Task<IActionResult> Create(User user)
+    // {
+    //     if (ModelState.IsValid)
+    //     {
+    //         await _userService.CreateUser(user);
+    //         return RedirectToAction(nameof(Index));
+    //     }
+    //     return View(user);
+    // }
+    [Authorize(Roles = "NormalUser")]
+    [HttpGet]
+    public IActionResult ChangeInformation()
+    {
+        var userId = int.Parse(HttpContext.Session.GetString("UserId"));
+        var user = _userService.GetUserById(userId);
+        return View(user);
+    }
+    [Authorize(Roles = "NormalUser")]
+    [HttpPost]
+    public async Task<IActionResult> ChangeInformation(User user)
+    {
+        await _userService.UpdateUser(user);
+            return RedirectToAction("Index","BorrowingRequest");
+    }
+
+    // [HttpGet]
+    // public Task<IActionResult> Delete(int id)
+    // {
+    //     var user = _userService.GetUserById(id);
+    //     return View(user);
+    // }
+    //
+    // [HttpPost, ActionName("Delete")]
+    // public async Task<IActionResult> DeleteConfirmed(int id)
+    // {
+    //     await _userService.DeleteUser(id);
+    //     return RedirectToAction(nameof(Index));
+    // }
+    [Authorize(Roles = "NormalUser")]
+    [HttpGet]
+    public IActionResult ChangePassword()
+    {
+        return View();
+    }
+    [Authorize(Roles = "NormalUser")]
+    [HttpPost]
+    public async Task<IActionResult> ChangePassword(UserLogin model)
+    {
+        var userId = int.Parse(HttpContext.Session.GetString("UserId"));
+        var user = _userService.GetUserById(userId);
+        var oldPasswordHash = HashPassword(model.OldPassword);
+
+        if (oldPasswordHash != user.ToString())
+        {
+            TempData["Warning"] = "The old password is incorrect.";
+            model.RememberMe = false;
+            return View(model);
+        }
+        else
+        {
+            var newPasswordHash = HashPassword(model.Password);
+            await _userService.ChangePassword(userId, newPasswordHash);
+            TempData["Message"] = "Your Password changed successful.";
+            return RedirectToAction("Index","BorrowingRequest");
+        }
+    }
+
+    // [Authorize(Roles = "SuperUser")]
+    // [HttpPost]
+    // public async Task<IActionResult> ChangeAdminPassword(int id, string newPassword)
+    // {
+    //     if (ModelState.IsValid)
+    //     {
+    //         await _userService.ChangePassword(id, newPassword);
+    //         return RedirectToAction(nameof(Index));
+    //     }
+    //     return View();
+    // }
 }

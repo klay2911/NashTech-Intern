@@ -14,7 +14,7 @@
             <option value="NumberOfReadersPerBook">Number of Readers Per Book</option>
             <option value="TopReadBooksInMonth">Top Read Books In Month</option>
             <option value="BooksBorrowedInPeriod">Books Borrowed In Period</option>
-            <option value="NumberOfBooks">Number Of Books</option>
+            <option value="NumberOfBooks">Total Of Books</option>
         </select>
     </div>
 
@@ -102,13 +102,13 @@ else
             </table>
             break;
         }
-        case "BooksBorrowedInPeriod":
+        case "BooksNotBorrowedInPeriod":
         {
             var reportData = ViewBag.ReportData as IEnumerable<Book>;
 
-            <h2>Books Borrowed In Period</h2>
+            <h2>Books Not Borrowed In Period</h2>
 
-            <table class="table reportTable" id="booksBorrowedInPeriod">
+            <table class="table reportTable" id="booksNotBorrowedInPeriod">
                 <thead>
                 <tr>
                     <th>Book ID</th>

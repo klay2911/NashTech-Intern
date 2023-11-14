@@ -1,0 +1,35 @@
+@model User
+
+@{
+    ViewBag.Title = "Change Information";
+    Layout = "_NormalUserLayout";
+}
+
+<form asp-action="ChangeInformation" method="post">
+    <input type="hidden" asp-for="UserId" class="form-control"/>
+    <input type="hidden" asp-for="UserName" class="form-control"/>
+    <input type="hidden" asp-for="Password" class="form-control"/>
+    <input type="hidden" asp-for="Role" class="form-control"/>
+    <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input type="text" class="form-control" id="FirstName" asp-for="FirstName" placeholder="Enter first name">
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input type="text" class="form-control" id="LastName" asp-for="LastName" placeholder="Enter last name">
+    </div>
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" asp-for="Email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="Dob">Date of Birth</label>
+        <input type="date" class="form-control" id="Dob" asp-for="Dob">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<div class="text-center mt-3">
+    <a asp-action="Index" asp-controller="BorrowingRequest"  class="btn btn-primary">Back to Home Page</a>
+</div>
+
+

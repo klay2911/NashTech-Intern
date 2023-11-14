@@ -28,4 +28,8 @@
       <_ContentIncludedByDefault Remove="Views\Home\HomeForSuperUser.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\images\" />
+    </ItemGroup>
+
 </Project>

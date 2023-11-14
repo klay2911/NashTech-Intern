@@ -36,23 +36,7 @@ public class BorrowingRequestController : Controller
         ViewBag.SearchTerm = searchTerm;
         ViewBag.BookIdsInRequest = (bookIdsInRequest != null ? JsonConvert.DeserializeObject<List<int>>(bookIdsInRequest) : new List<int>())!;
         
-        var bookImages = new Dictionary<int, string>();
-        foreach (var book in books)
-        {
-            var pdfPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.PdfFilePath.TrimStart('/'));
-            await using var pdfStream = System.IO.File.OpenRead(pdfPath);
-            var pdf = new PdfDocument();
-            pdf.LoadFromStream(pdfStream);
-            var image = pdf.SaveAsImage(0);
-            var imagePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot\\images\\{book.BookId}Page1.png");
-            bookImages.Add(book.BookId, $"/images/{book.BookId}Page1.png");
-            var directoryPath = Path.GetDirectoryName(imagePath);
-            if (!Directory.Exists(directoryPath))
-            {
-             Directory.CreateDirectory(directoryPath);
-            }
-            image.Save(imagePath, ImageFormat.Png);
-        }
+        var bookImages = (from book in books let coverPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", book.Cover.TrimStart('/')) select book).ToDictionary(book => book.BookId, book => $"/images/{book.BookId}Cover.png");
         ViewBag.BookImages = bookImages;
 
         return View(books.ToPagedList(pageNumber, pageSize));

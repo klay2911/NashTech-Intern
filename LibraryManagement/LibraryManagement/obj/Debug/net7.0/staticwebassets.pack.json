@@ -5,32 +5,16 @@
       "PackagePath": "staticwebassets\\LibraryManagement.bundle.scp.css"
     },
     {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\covers\\Cover.PNG",
+      "PackagePath": "staticwebassets\\covers\\Cover.PNG"
+    },
+    {
       "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
-    },
-    {
-      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\2010Page1.png",
-      "PackagePath": "staticwebassets\\images\\2010Page1.png"
-    },
-    {
-      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\2011Page1.png",
-      "PackagePath": "staticwebassets\\images\\2011Page1.png"
-    },
-    {
-      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\2012Page1.png",
-      "PackagePath": "staticwebassets\\images\\2012Page1.png"
-    },
-    {
-      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\3013Page1.png",
-      "PackagePath": "staticwebassets\\images\\3013Page1.png"
-    },
-    {
-      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\images\\3014Page1.png",
-      "PackagePath": "staticwebassets\\images\\3014Page1.png"
     },
     {
       "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\js\\site.js",
@@ -275,6 +259,10 @@
     {
       "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\21 Huong dan thuc hanh OOP.pdf",
       "PackagePath": "staticwebassets\\pdfs\\21 Huong dan thuc hanh OOP.pdf"
+    },
+    {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\50 CREATE WINDOWS FORMS APP NET FRAMEWORK.pdf",
+      "PackagePath": "staticwebassets\\pdfs\\50 CREATE WINDOWS FORMS APP NET FRAMEWORK.pdf"
     },
     {
       "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\60 Crystal Report.pdf",

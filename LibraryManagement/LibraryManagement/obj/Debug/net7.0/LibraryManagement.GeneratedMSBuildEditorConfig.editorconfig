@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = F:\NashTech Intern\Intern\NashTech-Intern\LibraryManagement\LibraryManagement
 build_property._RazorSourceGeneratorDebug = 
 
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Account/ChangeInformation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VJbmZvcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Account/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/Book/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -38,10 +46,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/DetailsRequest.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93aW5nUmVxdWVzdFxEZXRhaWxzUmVxdWVzdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/ExportData.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9ycm93aW5nUmVxdWVzdFxFeHBvcnREYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/NashTech Intern/Intern/NashTech-Intern/LibraryManagement/LibraryManagement/Views/BorrowingRequest/GetBorrowedBooks.cshtml]

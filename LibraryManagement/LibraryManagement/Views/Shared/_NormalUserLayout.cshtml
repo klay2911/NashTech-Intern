@@ -30,11 +30,28 @@
                     </li>
                 </ul>
             </div>
-            <form asp-action="Logout" asp-controller="Account" method="post">
-                <button type="submit" class="btn btn-danger" >
-                        <i class="bi bi-box-arrow-right"></i>
-                    </button>
-            </form>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Welcome, @User.Identity.Name
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="@Url.Action("ChangeInformation", "Account")">Information</a></li>
+                    <li><a class="dropdown-item" href="@Url.Action("ChangePassword", "Account")">Change Password</a></li>
+                    <li>
+                        <form asp-action="Logout" asp-controller="Account" method="post">
+                            <button type="submit" class="btn btn-danger dropdown-item" style="color: #bb2d3b;">
+                                Logout <i class="bi bi-box-arrow-right"></i> 
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+
+            @* <form asp-action="Logout" asp-controller="Account" method="post"> *@
+            @*     <button type="submit" class="btn btn-danger" > *@
+            @*             <i class="bi bi-box-arrow-right"></i> *@
+            @*         </button> *@
+            @* </form> *@
         </div>
     </nav>
 </header>

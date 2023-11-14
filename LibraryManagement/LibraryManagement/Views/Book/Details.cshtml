@@ -11,7 +11,7 @@
     
     .book-image img {
         width: 100%;
-        max-width: 200px; /* Adjust as needed */
+        max-width: 200px; 
         height: auto;
     }
     
@@ -22,13 +22,14 @@
 </style>
 <div class="book-details">
     <div class="book-image">
-        <img src="@ViewBag.BookImage" alt="First page of @Model.Title" />
+        <img src="@Model.Cover" alt="Cover of @Model.Title" />    
     </div>
     <div class="book-info">
         <p><strong>Title:</strong> @Html.DisplayFor(model => model.Title)</p>
         <p><strong>Author:</strong> @Html.DisplayFor(model => model.Author)</p>
         <p><strong>ISBN:</strong> @Html.DisplayFor(model => model.ISBN)</p>
         <p><strong>Category:</strong> @Html.DisplayFor(model => model.Category.CategoryName)</p>
+        <p><strong>Description:</strong> @Html.DisplayFor(model => model.Description)</p>
     </div>
 </div>
 

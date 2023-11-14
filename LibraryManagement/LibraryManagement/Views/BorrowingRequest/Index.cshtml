@@ -10,7 +10,7 @@
 }
 <style>
     .pagination li a {
-        border: 1px solid #ddd; /* Gray */
+        border: 1px solid #ddd; 
         margin: 0 4px;
         padding: 10px 12px;
         text-decoration: none;
@@ -18,11 +18,11 @@
     }
     
     .pagination li.active a {
-        background-color: #4CAF50; /* Green */
+        background-color: #4CAF50; 
         color: white;
     }
     .pagination li a {
-        border: 1px solid #ddd; /* Gray */
+        border: 1px solid #ddd; 
         margin: 0 4px;
         padding: 10px 12px;
         text-decoration: none;
@@ -30,7 +30,7 @@
     }
     
     .pagination li.active a {
-        background-color: #4CAF50; /* Green */
+        background-color: #4CAF50; 
         color: white;
     }
     .book-container {
@@ -40,19 +40,18 @@
     }
     
     .book-item {
-        flex: 1 0 20%; /* This will create 5 items per row */
+        flex: 1 0 20%; 
         margin: 10px;
         box-sizing: border-box;
     }
     .book-item img {
         width: 100%;
-        max-width: 200px; /* Adjust as needed */
+        max-width: 200px; 
         height: 150px;
     }
 </style>
 <form asp-action="Index" method="get">
     <input type="text" name="searchTerm" placeholder="Search books..." />
-    @* <input type="submit" value="Search" /> *@
 </form>
 <br/>
 <form asp-action="CreateBorrowingRequest" asp-controller="BorrowingRequest" method="post">
@@ -72,7 +71,7 @@
         <div class="book-item">
             <a href="@Url.Action("Details", "Book", new { id = item.BookId })" method ="get">
                 <div class="book-item">
-                    <img src="@ViewBag.BookImages[item.BookId]" alt="First page of @item.Title" />
+                    <img src="@item.Cover" alt="Cover of @item.Title" />  
                     <div>@item.Title</div>
                 </div>
             </a>
