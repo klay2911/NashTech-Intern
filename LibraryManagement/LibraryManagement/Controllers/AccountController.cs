@@ -156,21 +156,6 @@ public class AccountController : Controller
     //     }
     //     return View(user);
     // }
-    [Authorize(Roles = "NormalUser")]
-    [HttpGet]
-    public IActionResult ChangeInformation()
-    {
-        var userId = int.Parse(HttpContext.Session.GetString("UserId"));
-        var user = _userService.GetUserById(userId);
-        return View(user);
-    }
-    [Authorize(Roles = "NormalUser")]
-    [HttpPost]
-    public async Task<IActionResult> ChangeInformation(User user)
-    {
-        await _userService.UpdateUser(user);
-            return RedirectToAction("Index","BorrowingRequest");
-    }
 
     // [HttpGet]
     // public Task<IActionResult> Delete(int id)
@@ -185,21 +170,53 @@ public class AccountController : Controller
     //     await _userService.DeleteUser(id);
     //     return RedirectToAction(nameof(Index));
     // }
-    [Authorize(Roles = "NormalUser")]
+    [Authorize(Roles = "NormalUser,SuperUser")]
+    [HttpGet]
+    public IActionResult ChangeInformation()
+    {
+        var userId = int.Parse(HttpContext.Session.GetString("UserId"));
+        var user = _userService.GetUserById(userId);
+        var userRole = _userService.GetUserRole(user); 
+        ViewBag.UserRole = userRole;
+        return View(user);
+    }
+
+    [Authorize(Roles = "NormalUser,SuperUser")]
+    [HttpPost]
+    public async Task<IActionResult> ChangeInformation(User user)
+    {
+        await _userService.UpdateUser(user);
+        TempData["Message"] = "User information updated successfully.";
+        var userRole = _userService.GetUserRole(user);
+        
+        return userRole switch
+        {
+            "NormalUser" => RedirectToAction("Index", "BorrowingRequest"),
+            "SuperUser" => RedirectToAction("ViewBorrowingRequests", "BorrowingRequest"),
+            _ => RedirectToAction("Index", "BorrowingRequest")
+        };
+    }
+
+    [Authorize(Roles = "NormalUser,SuperUser")]
     [HttpGet]
     public IActionResult ChangePassword()
     {
+        var userId = int.Parse(HttpContext.Session.GetString("UserId"));
+        var user = _userService.GetUserById(userId);
+        var userRole = _userService.GetUserRole(user); 
+        ViewBag.UserRole = userRole;
         return View();
     }
-    [Authorize(Roles = "NormalUser")]
+    [Authorize(Roles = "NormalUser,SuperUser")]
     [HttpPost]
     public async Task<IActionResult> ChangePassword(UserLogin model)
     {
         var userId = int.Parse(HttpContext.Session.GetString("UserId"));
         var user = _userService.GetUserById(userId);
+        var userRole = _userService.GetUserRole(user);
         var oldPasswordHash = HashPassword(model.OldPassword);
 
-        if (oldPasswordHash != user.ToString())
+        if (oldPasswordHash != user.Password)
         {
             TempData["Warning"] = "The old password is incorrect.";
             model.RememberMe = false;
@@ -210,7 +227,12 @@ public class AccountController : Controller
             var newPasswordHash = HashPassword(model.Password);
             await _userService.ChangePassword(userId, newPasswordHash);
             TempData["Message"] = "Your Password changed successful.";
-            return RedirectToAction("Index","BorrowingRequest");
+            return userRole switch
+            {
+                "NormalUser" => RedirectToAction("Index", "BorrowingRequest"),
+                "SuperUser" => RedirectToAction("ViewBorrowingRequests", "BorrowingRequest"),
+                _ => RedirectToAction("Index", "BorrowingRequest")
+            };
         }
     }
 

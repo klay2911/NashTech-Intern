@@ -9,25 +9,8 @@
     Layout = "_NormalUserLayout";
     ViewData["Title"] = "Borrowed Books Page";
 }
-<style>
-    .pagination li a {
-        border: 1px solid #ddd; /* Gray */
-        margin: 0 4px;
-        padding: 10px 12px;
-        text-decoration: none;
-        transition: background-color .3s;
-    }
-    
-    .pagination li.active a {
-        background-color: #4CAF50; /* Green */
-        color: white;
-    }
-    </style>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 
-<form asp-action="GetBorrowedBooks" method="get">
-    <input type="text" name="searchTerm" placeholder="Search books by title or author..." />
-    <input type="submit" value="Search" />
-</form>
 <table class="table">
     <thead>
     <tr>
@@ -85,17 +68,28 @@
     { 
         DisplayLinkToFirstPage = PagedListDisplayMode.Always, 
         DisplayLinkToLastPage = PagedListDisplayMode.Always,
-        LinkToFirstPageFormat = "<< First",
-        LinkToPreviousPageFormat = "< Previous",
-        LinkToNextPageFormat = "Next >",
-        LinkToLastPageFormat = "Last >>",
+        LinkToFirstPageFormat = "<<",
+        LinkToPreviousPageFormat = "<",
+        LinkToNextPageFormat = ">",
+        LinkToLastPageFormat = ">>",
         MaximumPageNumbersToDisplay = 5,
-        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+        DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+        PageClasses = new[] { "page-item" },
     })
 <div class="text-center mt-3">
     <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
 </div>
 <script>
+$(document).ready(function () {
+        // When the page size dropdown changes
+        $("#pageSize").change(function () {
+            // Redirect to the same action method with the selected page size as a query string parameter
+            window.location.href = "?pageSize=" + $(this).val();
+        });
+    });
+ $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 $(window).on('unload', function() {
     var pdfEmbed = $('.modal.show embed');
 
@@ -123,49 +117,18 @@ $(window).on('unload', function() {
     }
 });
 </script>
-@* <script> *@
-@* *@
-@* // When the book is closed or the page is changed *@
-@* document.getElementById("pdfEmbed-" + BookId).addEventListener("pagechange", function() { *@
-@*     // Get the current page number *@
-@*     var currentPage = document.getElementById("pdfEmbed-" + item.BookId).currentPage; *@
-@*     // Store the current page number in local storage *@
-@*     localStorage.setItem("lastReadPage-" + item.BookId, currentPage); *@
-@* }); *@
-@* *@
-@* // When the book is opened *@
-@* window.addEventListener("load", function() { *@
-@*     // Get the last read page number from local storage *@
-@*     var lastReadPage = localStorage.getItem("lastReadPage-" + item.BookId); *@
-@*     // If a last read page was found *@
-@*     if (lastReadPage) { *@
-@*         // Go to the last read page *@
-@*         document.getElementById("pdfEmbed-" + item.BookId).currentPage = lastReadPage; *@
-@*     } *@
-@* }); *@
-@* *@
-@* </script> *@
-@* // When the book is closed or the page is changed *@
-@* document.getElementById("pdfEmbed-" + item.BookId).addEventListener("pagechange", function() { *@
-@* // Get the current page number *@
-@* var currentPage = document.getElementById("pdfEmbed-" + item.BookId).currentPage; *@
-@* // Store the current page number in local storage *@
-@* localStorage.setItem("lastReadPage-" + item.BookId, currentPage); *@
-@* }); *@
-@* *@
-@* // When the user logs out *@
-@* document.getElementById("logoutButton").addEventListener("click", function() { *@
-@* // Remove the last read page from local storage *@
-@* localStorage.removeItem("lastReadPage-" + item.BookId); *@
-@* }); *@
-@* *@
-@* // When the book is opened *@
-@* window.addEventListener("load", function() { *@
-@* // Get the last read page number from local storage *@
-@* var lastReadPage = localStorage.getItem("lastReadPage-" + item.BookId); *@
-@* // If a last read page was found *@
-@* if (lastReadPage) { *@
-@* // Go to the last read page *@
-@* document.getElementById("pdfEmbed-" + item.BookId).currentPage = lastReadPage; *@
-@* } *@
-@* }); *@
+<script>
+$('#search_input').on('keyup', function() {
+    var value = $(this).val().toLowerCase();
+
+    // Filter for table
+    $('table tbody tr').filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+
+    // Filter for book items
+    $('.book-item').filter(function() {
+        $(this).toggle($(this).find('div').text().toLowerCase().indexOf(value) > -1)
+    });
+});
+</script>

@@ -1,11 +1,10 @@
-using System.Drawing.Imaging;
+
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
-using Spire.Pdf;
 
 namespace LibraryManagement.Controllers;
 

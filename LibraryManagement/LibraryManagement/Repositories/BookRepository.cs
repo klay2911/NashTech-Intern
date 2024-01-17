@@ -21,7 +21,7 @@ public class BookRepository : ILibraryRepository<Book>
         return await _context.Books.ToListAsync();
     }
 
-    public async Task<IEnumerable<Book>> GetAllAsync(bool includeCategory = false)
+    public virtual async Task<IEnumerable<Book>> GetAllAsync(bool includeCategory = false)
     {
         if (includeCategory)
         {

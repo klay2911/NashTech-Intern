@@ -9,29 +9,12 @@
     Layout = "_SuperUserLayout";
     ViewData["Title"] = "Book Page";
 }
-<style>
-    .pagination li a {
-        border: 1px solid #ddd; /* Gray */
-        margin: 0 4px;
-        padding: 10px 12px;
-        text-decoration: none;
-        transition: background-color .3s;
-    }
-
-    .pagination li.active a {
-        background-color: #4CAF50; /* Green */
-        color: white;
-    }
-</style>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 
 <div class="row">
     <div class="col-md-6">
-        <form asp-action="Index" method="get">
-            <input type="text" name="searchTerm" placeholder="Search books..." />
-            <input type="submit" value="Search" />
-        </form>
     </div>
-    <div class="col-md-6" style="left: 295px; width: 200px">
+    <div class="col-md-6 " style="left: 295px; width: 200px">
             <form asp-action="Create" method="get">
                 <button type="submit" class="btn btn-success" style="width: 100px">
                 <i class="bi bi-plus-square-fill"></i>
@@ -83,12 +66,13 @@
     { 
         DisplayLinkToFirstPage = PagedListDisplayMode.Always,
         DisplayLinkToLastPage = PagedListDisplayMode.Always,
-        LinkToFirstPageFormat = "<< First",
-        LinkToPreviousPageFormat = "< Previous",
-        LinkToNextPageFormat = "Next >",
-        LinkToLastPageFormat = "Last >>",
+        LinkToFirstPageFormat = "<<",
+        LinkToPreviousPageFormat = "<",
+        LinkToNextPageFormat = ">",
+        LinkToLastPageFormat = ">>",
         MaximumPageNumbersToDisplay = 5,
-        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+        DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+        PageClasses = new[] { "page-item" },
     })
 
     <div class="text-center mt-3">

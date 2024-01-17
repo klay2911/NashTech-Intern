@@ -3,6 +3,10 @@
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestServiceTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests.GetAllBooks_ReturnsAllBooks&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookBorrowingRequestDetailsServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.BookServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.CategoryServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::7E039E8E-2E68-466A-8011-EC1C254DCC7F::net7.0::UnitTest.Services.UserServiceTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	

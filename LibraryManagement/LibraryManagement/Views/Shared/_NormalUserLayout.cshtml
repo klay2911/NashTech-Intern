@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - Library Management</title>
+    <title>@ViewData["Title"] Library Management</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/LibraryManagement.styles.css" asp-append-version="true"/>
@@ -29,6 +29,10 @@
                         <a class="nav-link text-dark" asp-controller="BorrowingRequest" asp-action="GetBorrowedBooks">Borrowed Book</a>
                     </li>
                 </ul>
+                <form class="search">
+                    <input type="text" id="search_input" placeholder="Search...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
             </div>
             <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,7 +50,6 @@
                     </li>
                 </ul>
             </div>
-
             @* <form asp-action="Logout" asp-controller="Account" method="post"> *@
             @*     <button type="submit" class="btn btn-danger" > *@
             @*             <i class="bi bi-box-arrow-right"></i> *@
@@ -66,9 +69,82 @@
         &copy; 2023 - Library Management 
     </div>
 </footer>
+<script>
+    $(document).ready(function () {
+        // When the page size dropdown changes
+        $("#pageSize").change(function () {
+            // Redirect to the same action method with the selected page size as a query string parameter
+            window.location.href = "?pageSize=" + $(this).val();
+        });
+    });
+
+    // function updatePageSize() {
+    //         var select = document.getElementById("pageSize");
+    //         var selectedValue = select.options[select.selectedIndex].value;
+    //         document.getElementById("display").innerText = "Current page size: " + selectedValue;
+    //     }
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    $('#search_input').on('keyup', function() {
+        var value = $(this).val().toLowerCase();
+    
+        $('.book-item').each(function() {
+            var title = $(this).find('div').text().toLowerCase();
+            if (title.indexOf(value) > -1) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+</script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<style>
+header {
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+}
+.search {
+  display: flex; /* Use flexbox layout */
+  align-items: center; /* Align the items vertically */
+  justify-content: center; /* Align the items horizontally */
+}
+
+.search input[type=text] {
+  width: 300px; /* Set the width */
+  height: 30px; /* Set the height */
+  border: none; /* Remove the border */
+  border-radius: 15px; /* Add some border radius */
+  padding: 5px 10px; /* Add some padding */
+  margin: 0 10px; /* Add some margin */
+  outline: gray; /* Remove the outline */
+  box-shadow: 0 0 15px rgba(0,0,0,0.3); /* Add some shadow */
+}
+
+.search button {
+  width: 40px; /* Set the width */
+  height: 40px; /* Set the height */
+  border: none; /* Remove the border */
+  border-radius: 50%; /* Make the button circular */
+  background-color: transparent; /* Make the background transparent */
+  color: white; /* Set the text color */
+  cursor: pointer; /* Change the cursor to pointer */
+  outline: none; /* Remove the outline */
+  position: absolute; /* Position the button absolutely */
+  right: 25px; /* Move the button to the right */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Add some shadow */
+}
+
+/* Style the search icon */
+.search i {
+  font-size: 20px; /* Set the font size */
+}
+
+</style>

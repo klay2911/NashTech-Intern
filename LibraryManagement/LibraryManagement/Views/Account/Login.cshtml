@@ -1,38 +1,86 @@
 @model UserLogin
-@{
-    ViewBag.Title = "Login";
-}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
 <style>
-        .short-alert {
-            height: 60px;  
-        }
-</style>
+    body {
+      background-color: white;
+    }
+    .form-control {
+      border-radius: 10px;
+    }
+    .login-form {
+      margin-top: 50px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px grey;
+    }
+    .btn-primary {
+        border-radius: 15px;
+    }
+    .login-form h2 {
+      color: rgb(24, 61, 163);
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: bold; /* Made the login label bold */
+    }
+    .login-form .btn-primary {
+      background-color: rgb(24, 61, 163);
+      border-color: rgb(24, 61, 163);
+      border-radius: 15px; /* Added border radius to login button */
+    }
+    .login-form .btn-primary:hover {
+      background-color: white;
+      color: rgb(119, 119, 199);
+    }
+    .login-form .btn-default {
+      background-color: white;
+      border-color: grey;
+      border-radius: 0;
+    }
+    .login-form .btn-default:hover {
+      background-color: grey;
+      color: white;
+    }
+    /* Added styles for labels and inputs to be in the same line */
+    .form-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .form-group label {
+      margin-right: 10px;
+    }
+    /* Added styles for better accessibility */
+    .form-group input {
+      margin-left: 10px;
+    }
+  </style>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserName)
-                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "User name" })
-                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = " text-danger" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = " text-danger" })
-                </div>
-                    @if (!ViewData.ModelState.IsValid)
-                    {
-                        <div class="alert alert-danger short-alert">
-                             @Html.ValidationSummary(true, "")
-                        </div>
-                    }
-                <div class="form-group">
-                    <input type="submit" value="Login" class="btn btn-primary" />
-                </div>
-            }
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <form class="login-form" method="post" asp-action="Login" asp-controller="Account">
+        <h2>NB Public Library</h2>
+        <div class="form-group">
+          <label asp-for="UserName">Username:</label>
+          <input asp-for="UserName" class="form-control" placeholder="Enter username" required minlength="6">
+          <span asp-validation-for="UserName" class="text-danger"></span>
         </div>
+        <div class="form-group">
+          <label asp-for="Password">Password:</label>
+          <input asp-for="Password" class="form-control" placeholder="Enter password" required minlength="6">
+          <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        @* <div asp-validation-summary="All" class="alert alert-danger short-alert"></div> *@
+        <div class="form-group">
+          <input type="submit" value="Login" class="btn btn-primary w-100" /> 
+        </div>
+      </form>
     </div>
+  </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

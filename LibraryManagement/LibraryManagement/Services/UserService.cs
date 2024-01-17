@@ -39,6 +39,10 @@ public class UserService : IUserService
         return _unitOfWork.UserRepository.GetById(id);
     }
 
+    public string GetUserRole(User user)
+    {
+        return _unitOfWork.UserRepository.GetUserRole(user);
+    }
  
     public User GetUserByUserNameAndPassword(string userName, string password)
     {

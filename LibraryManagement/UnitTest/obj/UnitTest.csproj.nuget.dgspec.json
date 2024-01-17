@@ -14,15 +14,12 @@
         "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,10 +38,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "FreeSpire.PDF": {
-              "target": "Package",
-              "version": "[8.6.0, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[7.0.11, )"
@@ -71,14 +64,6 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
-            "PdfSharpCore": {
-              "target": "Package",
-              "version": "[1.3.62, )"
-            },
-            "PdfiumViewer": {
-              "target": "Package",
-              "version": "[2.13.0, )"
-            },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[7.0.0, )"
@@ -99,6 +84,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -107,7 +110,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Acer\\.dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -121,14 +124,12 @@
         "outputPath": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\UnitTest\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Acer\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -155,10 +156,6 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
-            "FreeSpire.PDF": {
-              "target": "Package",
-              "version": "[8.6.0, )"
-            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[17.5.0, )"
@@ -178,10 +175,6 @@
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[4.4.2, )"
-            },
-            "PdfSharpCore": {
-              "target": "Package",
-              "version": "[1.3.62, )"
             },
             "System.Linq.Async": {
               "target": "Package",
@@ -203,12 +196,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Acer\\.dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

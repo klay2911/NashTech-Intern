@@ -8,31 +8,8 @@
     Layout = "_NormalUserLayout";
     ViewData["Title"] = "Viewing Book Page";
 }
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 <style>
-    .pagination li a {
-        border: 1px solid #ddd; 
-        margin: 0 4px;
-        padding: 10px 12px;
-        text-decoration: none;
-        transition: background-color .3s;
-    }
-    
-    .pagination li.active a {
-        background-color: #4CAF50; 
-        color: white;
-    }
-    .pagination li a {
-        border: 1px solid #ddd; 
-        margin: 0 4px;
-        padding: 10px 12px;
-        text-decoration: none;
-        transition: background-color .3s;
-    }
-    
-    .pagination li.active a {
-        background-color: #4CAF50; 
-        color: white;
-    }
     .book-container {
         display: flex;
         flex-wrap: wrap;
@@ -50,9 +27,9 @@
         height: 150px;
     }
 </style>
-<form asp-action="Index" method="get">
-    <input type="text" name="searchTerm" placeholder="Search books..." />
-</form>
+@* <form asp-action="Index" method="get"> *@
+@*     <input type="text" name="searchTerm" placeholder="Search books..." /> *@
+@* </form> *@
 <br/>
 <form asp-action="CreateBorrowingRequest" asp-controller="BorrowingRequest" method="post">
     <input type="submit" value="Request Borrowing" class="btn btn-success" />
@@ -82,16 +59,40 @@
     <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
 </div>
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchTerm = ViewBag.SearchTerm }), 
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page}), 
     new PagedListRenderOptions 
     { 
         DisplayLinkToFirstPage = PagedListDisplayMode.Always, 
         DisplayLinkToLastPage = PagedListDisplayMode.Always,
-        LinkToFirstPageFormat = "<< First",
-        LinkToPreviousPageFormat = "< Previous",
-        LinkToNextPageFormat = "Next >",
-        LinkToLastPageFormat = "Last >>",
+        LinkToFirstPageFormat = "<<",
+        LinkToPreviousPageFormat = "<",
+        LinkToNextPageFormat = ">",
+        LinkToLastPageFormat = ">>",
         MaximumPageNumbersToDisplay = 5,
-        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+        DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+        PageClasses = new[] { "page-item" },
     })
+<script>
+$(document).ready(function () {
+        // When the page size dropdown changes
+        $("#pageSize").change(function () {
+            // Redirect to the same action method with the selected page size as a query string parameter
+            window.location.href = "?pageSize=" + $(this).val();
+        });
+    });
+ $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+$('#search_input').on('keyup', function() {
+    var value = $(this).val().toLowerCase();
 
+    $('.book-item').each(function() {
+        var title = $(this).find('div').text().toLowerCase();
+        if (title.indexOf(value) > -1) {
+            $(this).show();
+        } else {
+            $(this).hide();
+        }
+    });
+});
+</script>

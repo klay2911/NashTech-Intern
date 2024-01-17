@@ -249,6 +249,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\0.-QuyDinh_VietBaoCao_KLTN.pdf",
+      "PackagePath": "staticwebassets\\pdfs\\0.-QuyDinh_VietBaoCao_KLTN.pdf"
+    },
+    {
       "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\00. LT .NET-Gioi thieu.pdf",
       "PackagePath": "staticwebassets\\pdfs\\00. LT .NET-Gioi thieu.pdf"
     },
@@ -267,6 +271,10 @@
     {
       "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\60 Crystal Report.pdf",
       "PackagePath": "staticwebassets\\pdfs\\60 Crystal Report.pdf"
+    },
+    {
+      "Id": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\ClassQ1.pdf",
+      "PackagePath": "staticwebassets\\pdfs\\ClassQ1.pdf"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.LibraryManagement.Microsoft.AspNetCore.StaticWebAssets.props",

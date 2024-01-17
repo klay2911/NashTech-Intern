@@ -17,7 +17,7 @@ public class LibraryContext: DbContext
 
             entity.Property(a => a.BookId)
                 .UseIdentityColumn(1)
-                .HasColumnName("ProductId")
+                .HasColumnName("BookId")
                 .IsRequired();
 
             entity.Property(a => a.Title)

@@ -1,10 +1,8 @@
-using System.Drawing.Imaging;
 using LibraryManagement.Interfaces;
 using LibraryManagement.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Spire.Pdf;
 using X.PagedList;
 
 namespace LibraryManagement.Controllers;
@@ -157,17 +155,24 @@ public class BorrowingRequestController : Controller
     }
 
     
-    [Authorize(Roles = "SuperUser")]
-    [HttpGet]
-    public async Task<IActionResult> ViewBorrowingRequests(int? page, string searchTerm = "")  
-    {  
-        const int pageSize = 5;  
-        var pageNumber = (page ?? 1);
-        var borrowingRequests = await _borrowingRequestService.GetAllBorrowingRequests(pageNumber, pageSize, searchTerm);  
-
-        return View(borrowingRequests);
+    // [Authorize(Roles = "SuperUser")]
+    // [HttpGet]
+    // public async Task<IActionResult> ViewBorrowingRequests(int? page, string searchTerm = "")  
+    // {  
+    //     const int pageSize = 5;  
+    //     var pageNumber = (page ?? 1);
+    //     var borrowingRequests = await _borrowingRequestService.GetAllBorrowingRequests(pageNumber, pageSize, searchTerm);  
+    //
+    //     return View(borrowingRequests);
+    // }
+    public async Task<IActionResult> ViewBorrowingRequests(int? page, int pageSize = 10)
+    {
+        int pageNumber = (page ?? 1);
+        var requests = await _borrowingRequestService.GetAllBorrowingRequests(pageNumber, pageSize);
+        ViewBag.PageSize = pageSize;
+        return View(requests);
     }
-    
+
     [Authorize(Roles = "SuperUser")]
     [HttpGet]
     public async Task<IActionResult> DetailsRequest(int requestId)

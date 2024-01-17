@@ -35,7 +35,10 @@ public class UserRepository : ILibraryRepository<User>
     {
         throw new NotImplementedException();
     }
-    
+    public string GetUserRole(User user)
+    {
+        return user.Role.ToString();
+    }
     public virtual async Task<User> CreateAsync(User user)
     {
         _context.Users.Add(user);

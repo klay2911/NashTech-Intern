@@ -20,7 +20,6 @@ public class BookBorrowingRequestDetailsServiceTests
         _mockRequestDetailsRepository = new Mock<BookBorrowingRequestDetailsRepository>();
         _mockUnitOfWork.Setup(uow => uow.BookBorrowingRequestDetailsRepository).Returns(_mockRequestDetailsRepository.Object);
         _mockUnitOfWork.Setup(uow => uow.BookRepository).Returns(_mockBookRepository.Object);
-
         _requestDetailsService = new BookBorrowingRequestDetailsService(_mockUnitOfWork.Object);
     }
 

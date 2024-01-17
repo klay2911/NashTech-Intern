@@ -10,31 +10,13 @@
     ViewData["Title"] = "Category Page";
 
 }
-<style>
-    .pagination li a {
-        border: 1px solid #ddd; /* Gray */
-        margin: 0 4px;
-        padding: 10px 12px;
-        text-decoration: none;
-        transition: background-color .3s;
-    }
-    
-    .pagination li.active a {
-        background-color: #4CAF50; /* Green */
-        color: white;
-    }
-    </style>
-
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
 <div class="row">
     <div class="col-md-6">
-        <form asp-action="Index" method="get">
-            <input type="text" name="searchTerm" placeholder="Search books..." />
-            <input type="submit" value="Search" />
-        </form>
     </div>
-    <div class="col-md-6 d-flex" style="left: 62px">
-            <form asp-action="Create" method="get">
-                <button type="submit" class="btn btn-success" style="width: 100px">
+    <div class="col-md-6" style="left: 62px">
+        <form asp-action="Create" method="get">
+            <button type="submit" class="btn btn-success" style="width: 100px">
                 <i class="bi bi-plus-square-fill"></i>
             </button>
         </form>
@@ -72,14 +54,15 @@
     <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest"  class="btn btn-primary">Back to Home Page</a>
 </div>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchTerm = ViewBag.SearchTerm }), 
-    new PagedListRenderOptions 
+    new PagedListRenderOptions
     { 
-        DisplayLinkToFirstPage = PagedListDisplayMode.Always, 
+        DisplayLinkToFirstPage = PagedListDisplayMode.Always,
         DisplayLinkToLastPage = PagedListDisplayMode.Always,
-        LinkToFirstPageFormat = "<< First",
-        LinkToPreviousPageFormat = "< Previous",
-        LinkToNextPageFormat = "Next >",
-        LinkToLastPageFormat = "Last >>",
+        LinkToFirstPageFormat = "<<",
+        LinkToPreviousPageFormat = "<",
+        LinkToNextPageFormat = ">",
+        LinkToLastPageFormat = ">>",
         MaximumPageNumbersToDisplay = 5,
-        DisplayEllipsesWhenNotShowingAllPageNumbers = false
+        DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+        PageClasses = new[] { "page-item" },
     })

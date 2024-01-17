@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2l24OBr3gPLT1cPRxlgw1e1P9FUqzINqAtBLxTD2jjs=",
+  "Hash": "zuVI9vsmuxqQXolPJJulK8g/jZMYkfkriLb/tIEZ8Zo=",
   "Source": "LibraryManagement",
   "BasePath": "_content/LibraryManagement",
   "Mode": "Default",
@@ -1088,6 +1088,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
+      "Identity": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\0.-QuyDinh_VietBaoCao_KLTN.pdf",
+      "SourceId": "LibraryManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\",
+      "BasePath": "_content/LibraryManagement",
+      "RelativePath": "pdfs/0.-QuyDinh_VietBaoCao_KLTN.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pdfs\\0.-QuyDinh_VietBaoCao_KLTN.pdf"
+    },
+    {
       "Identity": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\00. LT .NET-Gioi thieu.pdf",
       "SourceId": "LibraryManagement",
       "SourceType": "Discovered",
@@ -1171,6 +1188,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\pdfs\\60 Crystal Report.pdf"
+    },
+    {
+      "Identity": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\pdfs\\ClassQ1.pdf",
+      "SourceId": "LibraryManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\NashTech Intern\\Intern\\NashTech-Intern\\LibraryManagement\\LibraryManagement\\wwwroot\\",
+      "BasePath": "_content/LibraryManagement",
+      "RelativePath": "pdfs/ClassQ1.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pdfs\\ClassQ1.pdf"
     }
   ]
 }

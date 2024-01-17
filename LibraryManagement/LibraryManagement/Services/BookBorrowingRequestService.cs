@@ -14,15 +14,9 @@ public class BookBorrowingRequestService : IBookBorrowingRequestService
     {
         _unitOfWork = unitOfWork;
     }
-    public async Task<IPagedList<BookBorrowingRequest>> GetAllBorrowingRequests(int pageNumber, int pageSize, string searchTerm = "")
+    public async Task<IPagedList<BookBorrowingRequest>> GetAllBorrowingRequests(int pageNumber, int pageSize)
     {
         var requests = await _unitOfWork.BookBorrowingRequestRepository.GetAll();
-
-        if (!string.IsNullOrEmpty(searchTerm))
-        {
-            requests = requests.Where(r => r.BookBorrowingRequestDetails.Any(d => d.Book.Title.Contains(searchTerm)));
-        }
-
         int totalCount = requests.Count();
 
         var pagedRequests = requests.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();

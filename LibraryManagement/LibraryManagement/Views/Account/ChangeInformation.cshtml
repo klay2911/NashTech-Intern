@@ -2,34 +2,55 @@
 
 @{
     ViewBag.Title = "Change Information";
-    Layout = "_NormalUserLayout";
+    Layout = ViewBag.UserRole switch
+    {
+        "NormalUser" => "_NormalUserLayout",
+        "SuperUser" => "_SuperUserLayout",
+        _ => "_Layout"
+        };
 }
 
+@if (TempData["Warning"] != null)
+{
+    <div class="alert alert-danger">@TempData["Warning"]</div>
+}
 <form asp-action="ChangeInformation" method="post">
-    <input type="hidden" asp-for="UserId" class="form-control"/>
-    <input type="hidden" asp-for="UserName" class="form-control"/>
-    <input type="hidden" asp-for="Password" class="form-control"/>
-    <input type="hidden" asp-for="Role" class="form-control"/>
+    <input type="hidden" asp-for="UserId" class="form-control" readonly/>
+    <input type="hidden" asp-for="UserName" class="form-control" readonly/>
+    <input type="hidden" asp-for="Password" class="form-control" readonly/>
+    <input type="hidden" asp-for="Role" class="form-control" readonly/>
     <div class="form-group">
         <label for="FirstName">First Name</label>
-        <input type="text" class="form-control" id="FirstName" asp-for="FirstName" placeholder="Enter first name">
+        <input type="text" class="form-control" id="FirstName" asp-for="FirstName" placeholder="Enter first name" readonly>
     </div>
     <div class="form-group">
         <label for="LastName">Last Name</label>
-        <input type="text" class="form-control" id="LastName" asp-for="LastName" placeholder="Enter last name">
+        <input type="text" class="form-control" id="LastName" asp-for="LastName" placeholder="Enter last name" readonly>
     </div>
     <div class="form-group">
         <label for="Email">Email</label>
-        <input type="email" class="form-control" id="Email" asp-for="Email" placeholder="Enter email">
+        <input type="email" class="form-control" id="Email" asp-for="Email" placeholder="Enter email" readonly>
     </div>
     <div class="form-group">
         <label for="Dob">Date of Birth</label>
-        <input type="date" class="form-control" id="Dob" asp-for="Dob">
+        <input type="date" class="form-control" id="Dob" asp-for="Dob" readonly>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    @* <button type="submit" class="btn btn-primary" disabled>Submit</button> *@
 </form>
 <div class="text-center mt-3">
-    <a asp-action="Index" asp-controller="BorrowingRequest"  class="btn btn-primary">Back to Home Page</a>
+    @if (ViewBag.UserRole == "NormalUser")
+    {
+        <a asp-action="Index" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
+    }
+    else if (ViewBag.UserRole == "SuperUser")
+    {
+        <a asp-action="ViewBorrowingRequests" asp-controller="BorrowingRequest" class="btn btn-primary">Back to Home Page</a>
+    }
+    else
+    {
+        <a asp-action="Index" asp-controller="Book" class="btn btn-primary">Back to Home Page</a>
+    }
 </div>
+
 
 
